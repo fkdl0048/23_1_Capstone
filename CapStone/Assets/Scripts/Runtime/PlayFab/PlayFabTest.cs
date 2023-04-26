@@ -10,12 +10,12 @@ public class PlayFabTest : MonoBehaviour
     public void LoginTest()
     {
         var request = new LoginWithEmailAddressRequest() { Email = EmailInput.text, Password = PasswordInput.text};
-        PlayFabClientAPI.LoginWithEmailAddress(request, (e) => Debug.Log($"{e.LastLoginTime} 로그인 성공") , error => Debug.LogError(error.GenerateErrorReport()));
+        PlayFabClientAPI.LoginWithEmailAddress(request, (e) => Debug.Log($"{e.LastLoginTime} 로그인 성공") , error => GameManager.UI.SetWarningText("로그인 실패"));
     }
 
     public void ResisterTest()
     {
         var request = new RegisterPlayFabUserRequest() {Email = EmailInput.text, Password = PasswordInput.text, Username = "abcasds"};
-        PlayFabClientAPI.RegisterPlayFabUser(request, result => Debug.Log($" 회원가입 성공"), error => Debug.LogError(error.GenerateErrorReport()));
+        PlayFabClientAPI.RegisterPlayFabUser(request, result => Debug.Log($" 회원가입 성공"), error => GameManager.UI.SetWarningText("회원가입 실패"));
     }
 }
