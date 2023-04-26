@@ -1,0 +1,6 @@
+Instructions
+========================
+
+The cellphone UI is a basic UI to hold icons.
+You can extend it horizontally or vertically.
+

@@ -1,0 +1,10 @@
+Instructions
+========================
+
+Any sort of Bars can found on bars.png
+Icon shaped counters can be found in counters.
+
+All are 8x8 tiles that can be stacked and tiled.
+
+They can be used as 9 patch files as well.
+
