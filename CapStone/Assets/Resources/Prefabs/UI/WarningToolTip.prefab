@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 81233452854379851}
   - component: {fileID: 6619631924422036563}
   m_Layer: 5
-  m_Name: WarningCanvas
+  m_Name: WarningToolTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

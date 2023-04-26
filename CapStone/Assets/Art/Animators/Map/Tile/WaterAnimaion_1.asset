@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: Fountain
+  m_Name: WaterAnimaion_1
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: -758316215, guid: edfc12f9d328a464caeda509c12be3f5, type: 3}
-  - {fileID: -1048745382, guid: edfc12f9d328a464caeda509c12be3f5, type: 3}
-  - {fileID: 1273259702, guid: edfc12f9d328a464caeda509c12be3f5, type: 3}
-  - {fileID: 1171759678, guid: edfc12f9d328a464caeda509c12be3f5, type: 3}
-  m_MinSpeed: 5
-  m_MaxSpeed: 5
+  - {fileID: -590358142, guid: 8ab53fbffd343cf48bbde7bdb18a3fc5, type: 3}
+  - {fileID: 916630889, guid: 8ab53fbffd343cf48bbde7bdb18a3fc5, type: 3}
+  m_MinSpeed: 3
+  m_MaxSpeed: 3
   m_AnimationStartTime: 0
   m_AnimationStartFrame: 0
   m_TileColliderType: 0
