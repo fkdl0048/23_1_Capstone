@@ -1,0 +1,10 @@
+Instructions
+========================
+
+So panels! How to explain this... Imagine windows INSIDE of windows?
+Panels are for that, to have subdivision inside of window panes.
+
+There are regular panels and vertical/horizontal panels that change between colors.
+So panels are 16x16, but can be used as 8x8 if you want although some panels might not work.
+
+Each panel is a 9 item division. Three rows, the top, middle and bottom, then left, center, right.

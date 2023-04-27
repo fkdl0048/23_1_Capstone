@@ -12,11 +12,15 @@ public class GameManager : MonoBehaviour
     private readonly ResourceManager _resource = new ResourceManager();
     private readonly DataManager _data = new DataManager();
     private readonly SoundManager _sound = new SoundManager();
+    private readonly UIManager _ui = new UIManager();
+    private readonly PlayfabManager _playfab = new PlayfabManager();
 
     public static InputManager Input => _instance._input;
     public static ResourceManager Resource => _instance._resource;
     public static DataManager Data => _instance._data;
     public static SoundManager Sound => _instance._sound;
+    public static UIManager UI => _instance._ui;
+    public static PlayfabManager Playfab => _instance._playfab;
     
     static void Init()
     {
@@ -33,6 +37,8 @@ public class GameManager : MonoBehaviour
             _instance = go.GetComponent<GameManager>();
             
             // 추가적인 매니저 초기화
+            _instance._playfab.Init();
+            _instance._ui.Init();
         }
     }
 

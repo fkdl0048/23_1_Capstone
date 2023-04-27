@@ -1,0 +1,212 @@
+Change log
+========================
+
+V3.1 [27-02-2023]
+----------------
+Changed the characters so they are easier to integrate in a game
+
+V3.0 [27-02-2023]
+----------------
+Revamped the characters
+* New shadows and dust specs
+* New clothing items
+* New hairstyles
+* Improved animations
+* Added premade characters
+
+V2.07 [13-12-2023]
+----------------
+Revamped the terrains
+
+V2.06 [16-10-2022]
+----------------
+Added fish seller stall
+Added fish seller shop
+Added premade pink house (paid version only)
+Added premade wooden cabin (paid version only)
+
+V2.05 [09-10-2022]
+----------------
+Added ore seller stall
+Added colours for animated potion house (paid version only)
+
+
+V2.04 [06-10-2022]
+----------------
+Added new potion stall
+
+
+V2.03 [03-10-2022]
+----------------
+Added new potion shop
+Added potion shop animation (paid version only)
+
+
+V2.02 [01-10-2022]
+----------------
+Added new marketplace building (paid version only)
+Added new marketplace stall
+
+V2.01 [29-09-2022]
+----------------
+Improved the housing system
+New Wall colours
+New Roof colours
+
+V2.00 [18-09-2022]
+----------------
+Terrain revamp. Added four season to pack (paid version only)
+Added rock cliffs.
+Added seasonal items (paid version only)
+
+
+V1.20 [6-08-2022]
+----------------
+Added the bushes destruction animations 
+
+V1.19 [6-08-2022]
+----------------
+Added the bushes
+Separated shadows from assets on outside assets
+
+V1.18 [5-08-2022]
+----------------
+Added the squared terrain
+
+
+V1.17 [27-07-2022]
+----------------
+Reconfigured the assets in to folders for each of them
+
+V1.16 [26-06-2022]
+----------------
+Added children clothing
+
+V1.15 [19-06-2022]
+----------------
+Added children hair
+
+V1.14 [6-04-2022]
+----------------
+Added children characters
+Basic child clothes
+
+V1.13 [29-04-2022]
+----------------
+Revamped the kitchen cabinets
+Added a new style
+Added new fridges
+
+V1.12 [15-04-2022]
+----------------
+Added new tables
+Added twin beds
+Added table cloths
+
+V1.11 [11-03-2022]
+----------------
+Added a new Skin Tone
+Added colours to all hairs (red, blonde, Browns, Black, Purple)
+Added a new Balding Gray hair
+
+V1.10 [04-03-2022]
+----------------
+Added street lamps
+Added street signs
+
+V1.9 [25-02-2022]
+----------------
+Added Opening doors inside
+Added trash cans
+Added standup mailboxes
+Added Trees inside pens
+Added benches without back support
+Improved cobblestones
+Added new cobblestones
+Added Wood Signs
+Added empty boxes
+Added new flower
+
+
+V1.8 [18-02-2022]
+----------------
+Added new doors
+Added new above door asset
+Removed Aseprite files to commercial version
+
+V1.7 [11-02-2022]
+----------------
+Added lamps
+Added mailboxes
+Added a town statue
+Added benches
+Added crates
+
+V1.6.2 [07-02-2022]
+----------------
+Fixed export of khakis pants
+
+V1.6.1 [05-02-2022]
+----------------
+Fixed colours and shadows on the housing tiles
+Fixed wrong left side for tShirts and shoes
+
+V1.6 [02-02-2022]
+----------------
+Added Kitchen Sink
+Added Kitchen cabinets
+Added Kitchen cuboards
+Added Table cloths
+Added Fridges
+
+V1.5 [26-01-2022]
+----------------
+Added wooden chairs & tables
+Added bookcases and books
+Added Coaches
+Updated wall system
+Added Fireplace (no animation)
+
+V1.4 [19-01-2022]
+----------------
+Added the new housing system
+Added interior walls
+Added new chimneys 
+Added smoke for chimneys
+
+V1.3 [12-01-2022]
+----------------
+Updated the character in 4 directions
+Merged the hands into one unique character layer
+Updates all clothing items to reflect these new directions
+Updates all hairs items to reflect these new directions
+
+V1.2 [07-01-2022]
+----------------
+New Assets:
+* Animated Ground(dirt) shore
+* Middle Trees
+    * Pointy
+    * Cilinder
+    * Round
+* Big Tree (Round)
+* Fountains:
+    * Unstable water movement
+    * Stable water
+
+Format:
+* Updated tiles sheet to be easier to pick tiles
+
+--
+
+V1.1 [04-01-2022]
+-----------------
+* Added sideways for water animation
+* Corrected brown terrain stairs
+* added horizontal and vertical pathways
+
+--
+
+V1.0 [03-01-2022]
+-----------------
+* Released v1.0

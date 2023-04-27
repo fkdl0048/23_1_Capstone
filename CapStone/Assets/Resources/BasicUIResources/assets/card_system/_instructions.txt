@@ -1,0 +1,9 @@
+Instructions
+========================
+
+Cards are 16x16 Tiles. Can be used as 9 patch as well.
+
+Cards.png contains the card backgrounds.
+Cards_value_icons.png contains icons that can hold numbers or other icons, like magic costs.
+
+
