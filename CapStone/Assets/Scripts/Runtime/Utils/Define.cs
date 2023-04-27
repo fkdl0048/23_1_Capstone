@@ -9,6 +9,12 @@ namespace Enums
         Pause,
         End,
     }
+
+    enum ItemType
+    {
+        Material,
+        Furniture,
+    }
 }
 
 namespace Structs
