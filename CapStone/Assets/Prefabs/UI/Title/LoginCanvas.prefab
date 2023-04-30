@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 4225586907575093896}
   - component: {fileID: 4225586907575093897}
   - component: {fileID: 4225586907575093894}
+  - component: {fileID: 1220313786651946770}
   m_Layer: 5
   m_Name: LoginButton
   m_TagString: Untagged
@@ -198,9 +199,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayFabTest, Assembly-CSharp
-        m_MethodName: LoginTest
+      - m_Target: {fileID: 1220313786651946770}
+        m_TargetAssemblyTypeName: LoginPlayer, Assembly-CSharp
+        m_MethodName: Login
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -210,6 +211,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1220313786651946770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4225586907575093892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf7e9032012539946b76bda0cfc48c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _emailInputField: {fileID: 4225586909329446318}
+  _passwordInputField: {fileID: 4225586908126844840}
 --- !u!1 &4225586907618006666
 GameObject:
   m_ObjectHideFlags: 0
@@ -2318,6 +2333,7 @@ GameObject:
   - component: {fileID: 4225586909531336158}
   - component: {fileID: 4225586909531336159}
   - component: {fileID: 4225586909531336156}
+  - component: {fileID: 1238312931}
   m_Layer: 5
   m_Name: RegisterButton
   m_TagString: Untagged
@@ -2428,9 +2444,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayFabTest, Assembly-CSharp
-        m_MethodName: ResisterTest
+      - m_Target: {fileID: 1238312931}
+        m_TargetAssemblyTypeName: RegisterPlayer, Assembly-CSharp
+        m_MethodName: Register
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2440,6 +2456,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1238312931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4225586909531336154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b7677f47829c8e4eae264d88cc2875c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _emailInputField: {fileID: 4225586909329446318}
+  _passwordInputField: {fileID: 4225586908126844840}
 --- !u!1 &4225586909553479360
 GameObject:
   m_ObjectHideFlags: 0
