@@ -1,0 +1,16 @@
+Instructions
+========================
+
+There are three types of nodes each with different types of color, 
+marking 9 types of nodes for each node.
+
+In order from left to right:
+
+* Citrine
+* Aquamarine
+* Emerald
+* Amethyst
+* Topaz
+* Ruby
+* Amber
+* Diamond

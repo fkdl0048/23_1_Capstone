@@ -1,0 +1,87 @@
+Change log
+========================
+
+V3.2 [28-04-2023]
+-----------------
+* Added Hazmat suit clothing
+* Added fishing rod animations hairstyles
+
+V3.1 [23-04-2023]
+-----------------
+* Added Fishing rod animations
+
+V3.0 [12-03-2023]
+-----------------
+* Updated the character animations
+* Added clothing to all animations
+* Added hairstyles to all animations
+
+V2.3 [21-02-2023]
+-----------------
+* Added the sprites for the seed packs
+
+
+V2.2 [19-10-2022]
+-----------------
+* Added the fork animation
+
+V2.1 [11-10-2022]
+-----------------
+* Added smelted bars
+* Added static and animated furnaces
+
+V2.0 [27-09-2022]
+-----------------
+* Added pickaxe animations
+* Added mining nodes for crystals/gems
+* Added gems produce
+* Added mining nodes for ores
+* Added ores produce
+
+V1.8 [30-08-2022]
+-----------------
+* Added clothing to shovel animations
+
+V1.7 [30-08-2022]
+-----------------
+* Fixed seeds for watermelon and pumpkin
+* Added the Shovel animation hairs
+
+V1.6 [14-08-2022]
+-----------------
+* Added the shovel skin tones animation
+
+V1.5 [7-07-2022]
+-----------------
+* Added the strawberry crop
+
+V1.4 [27-07-2022]
+-----------------
+* Reconfigured the assets on specific folders
+* Added cotton crop
+* Added more seed packs
+
+
+V1.3 [19-03-2022]
+-----------------
+* Added Calf
+
+V1.2 [04-03-2022]
+-----------------
+* Added color for pigs
+* Added piglet
+* Added wallowing animations
+
+
+V1.1 [25-02-2022]
+-----------------
+* Added color for chickens
+* Added chick
+* Added peck animations
+
+
+
+
+V1.0 [15-02-2022]
+-----------------
+* Released v1.0
