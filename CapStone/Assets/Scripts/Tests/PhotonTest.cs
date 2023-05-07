@@ -9,18 +9,19 @@ using TMPro;
 
 public class PhotonTest : MonoBehaviourPunCallbacks
 {
-
-
     #region PrivateVariables
 
     #endregion
+
     #region Protected Variables
     #endregion
+
     #region PublicVariables
     public TMP_InputField m_roomName;
     public TMP_InputField m_nickName;
     public Button m_spawnPlayerBtn;
-
+    public GameObject m_plazaObject;
+    public GameObject m_houseObject;
     #endregion
 
      #region PublicMethod
@@ -81,13 +82,13 @@ public class PhotonTest : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.Instantiate("PhotonTest/Player", new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
     }
+
     #endregion
+
     #region PrivateMethod
 
     #endregion
+
     #region ProtectedMethod
     #endregion
-
-
-
 }
