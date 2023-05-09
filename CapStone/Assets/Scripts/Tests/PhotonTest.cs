@@ -4,7 +4,6 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
-using UnityEditor;
 using TMPro;
 
 public class PhotonTest : MonoBehaviourPunCallbacks
@@ -20,8 +19,6 @@ public class PhotonTest : MonoBehaviourPunCallbacks
     public TMP_InputField m_roomName;
     public TMP_InputField m_nickName;
     public Button m_spawnPlayerBtn;
-    public GameObject m_plazaObject;
-    public GameObject m_houseObject;
     #endregion
 
      #region PublicMethod
@@ -78,10 +75,7 @@ public class PhotonTest : MonoBehaviourPunCallbacks
     public override void OnJoinRoomFailed(short returnCode, string message) => print("방참가실패");
 
 
-    public void SpawnPlayer()
-    {
-        PhotonNetwork.Instantiate("PhotonTest/Player", new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
-    }
+   
 
     #endregion
 

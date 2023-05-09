@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class player_controller : MonoBehaviour
+public class player_controller : MonoBehaviourPunCallbacks
 {   
     [SerializeField]
     private float speed = 5f; // 이동 속도
@@ -32,29 +32,38 @@ public class player_controller : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer sprite;
-    
-    public PhotonView PV;
+
+    //이민석 추가
+    public PhotonView m_PV;
+    public int m_playerPosIndex = -1;
 
     void Start()
     {     
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         this.animator = GetComponent<Animator>();
-        this.tree = GameObject.Find("tree");
-        this.grid = GameObject.Find("Grid");
-        this.water = grid.transform.Find("water").gameObject;
-        this.farm = grid.transform.Find("farm").gameObject;
-        this.plantGenerator = GameObject.Find("plantGenerator");
+        //this.tree = GameObject.Find("tree");
+        //this.grid = GameObject.Find("Grid");
+        //this.water = grid.transform.Find("water").gameObject;
+        //this.farm = grid.transform.Find("farm").gameObject;
+        //this.plantGenerator = GameObject.Find("plantGenerator");
+
+        m_PV = this.GetComponent<PhotonView>(); 
+
         ptCount = 0;
         
     }
 
     void Update()
     {
-        Move();
-        Logging();
-        Fishing();
-        Farming();
+        if (m_PV.IsMine)
+        {
+            Move();
+            Logging();
+            Fishing();
+            Farming();
+        }
+        
     }
 
     void OnTriggerStay2D(Collider2D collision)
