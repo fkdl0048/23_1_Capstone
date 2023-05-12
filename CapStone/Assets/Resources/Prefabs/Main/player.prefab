@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3520134697875576456}
   - component: {fileID: 860735181220740890}
   - component: {fileID: 2509574080173296720}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 750630987
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 1939917071, guid: 1d21abee525b71844a3ff7f679a8d921, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -109,6 +109,7 @@ MonoBehaviour:
   plantGenerator: {fileID: 0}
   m_PV: {fileID: 0}
   m_playerPosIndex: -1
+  m_quizState: 0
 --- !u!50 &7034751681422510007
 Rigidbody2D:
   serializedVersion: 4
