@@ -4,23 +4,21 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
-using UnityEditor;
 using TMPro;
 
 public class PhotonTest : MonoBehaviourPunCallbacks
 {
-
-
     #region PrivateVariables
 
     #endregion
+
     #region Protected Variables
     #endregion
+
     #region PublicVariables
     public TMP_InputField m_roomName;
     public TMP_InputField m_nickName;
     public Button m_spawnPlayerBtn;
-
     #endregion
 
      #region PublicMethod
@@ -77,17 +75,14 @@ public class PhotonTest : MonoBehaviourPunCallbacks
     public override void OnJoinRoomFailed(short returnCode, string message) => print("방참가실패");
 
 
-    public void SpawnPlayer()
-    {
-        PhotonNetwork.Instantiate("PhotonTest/Player", new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
-    }
+   
+
     #endregion
+
     #region PrivateMethod
 
     #endregion
+
     #region ProtectedMethod
     #endregion
-
-
-
 }

@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     private readonly SoundManager _sound = new SoundManager();
     private readonly UIManager _ui = new UIManager();
     private readonly PlayfabManager _playfab = new PlayfabManager();
+    private readonly PlayerManager _player= new PlayerManager();
 
     public static InputManager Input => _instance._input;
     public static ResourceManager Resource => _instance._resource;
@@ -21,7 +22,8 @@ public class GameManager : MonoBehaviour
     public static SoundManager Sound => _instance._sound;
     public static UIManager UI => _instance._ui;
     public static PlayfabManager Playfab => _instance._playfab;
-    
+    public static PlayerManager Player => _instance._player;
+
     static void Init()
     {
         if (_instance == null)
