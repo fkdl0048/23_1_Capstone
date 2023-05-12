@@ -259,6 +259,8 @@ MonoBehaviour:
   m_visitBtnParent: {fileID: 2091871747}
   m_plazaObject: {fileID: 1630563836}
   m_houseObject: {fileID: 891113955}
+  mainCamera: {fileID: 789921095}
+  parent: {fileID: 328876949}
 --- !u!114 &23077721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1560,6 +1562,7 @@ GameObject:
   - component: {fileID: 789921098}
   - component: {fileID: 789921097}
   - component: {fileID: 789921096}
+  - component: {fileID: 789921099}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1633,6 +1636,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &789921099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789921095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcd8f966a6f798346ac98213add7658c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 6223209397148179325, guid: 8998ea0757b05cc49b51fe64577d4a85, type: 3}
+  CameraSpeed: 10
 --- !u!1 &792144158
 GameObject:
   m_ObjectHideFlags: 0
