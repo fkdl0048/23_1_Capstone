@@ -1,0 +1,18 @@
+Instructions
+========================
+
+There are three types of nodes and 4 different colours.
+
+In order from left to right:
+
+* Coal
+* Copper
+* Tin
+* Silver
+* Iron
+* Gold
+* Mithril
+* Thorium
+* Platinum
+* Orichalcum
+* Uranium

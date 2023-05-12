@@ -1,0 +1,12 @@
+Instructions
+========================
+
+There are three types of furnace:
+
+* Brick (64x64)
+* Mound of rocks (48x48)
+* Metal (48x48)
+
+* Rocks and Metal have both with and without fire bellows.
+
+All have static images and animations (5 frames) for smelting.

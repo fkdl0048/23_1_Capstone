@@ -1,0 +1,18 @@
+Instructions
+========================
+
+Buttons are on a 8x8 grid. They are can be tiled or used as 9patch.
+
+Buttons have:
+
+A cross button to make curves in buttons like a return key. 
+And the 4 variations with are a subset of the cross buttons:
+* Big Square button
+* Horizontal button
+* Vertical button
+* Small Square button
+
+See examples on how to build buttons.
+
+They come in the same colours as the windows.
+
