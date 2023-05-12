@@ -8,6 +8,15 @@ public class player_controller : MonoBehaviourPunCallbacks
 {   
     [SerializeField]
     private float speed = 5f; // 이동 속도
+    [SerializeField]
+    private GameObject tree;
+    [SerializeField]
+    private GameObject water;
+    [SerializeField]
+    private GameObject farm;
+    [SerializeField]
+    private GameObject plantGenerator;
+
     private float xMove, yMove;
     private bool isThereTree = false; // 근처에 벌목할 수 있는 나무가 있는지
     private bool isThereWater = false; // 근처에 낚시가능한 물이 있는지
@@ -22,13 +31,8 @@ public class player_controller : MonoBehaviourPunCallbacks
     private int ptCount = 0; // 식물 개수
     private int nowPlant = -1; // 현재 관리하는 식물
 
-    private GameObject tree;
-    private GameObject grid;
-    private GameObject water;
-    private GameObject farm;
     private GameObject[] plants = new GameObject[3];
-    private GameObject plantGenerator;
-
+    
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer sprite;
@@ -38,10 +42,10 @@ public class player_controller : MonoBehaviourPunCallbacks
     public int m_playerPosIndex = -1;
 
     void Start()
-    {     
-        rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
-        this.animator = GetComponent<Animator>();
+    {
+        rb = this.GetComponent<Rigidbody2D>();
+        sprite = this.GetComponent<SpriteRenderer>();
+        animator = this.GetComponent<Animator>();
         //this.tree = GameObject.Find("tree");
         //this.grid = GameObject.Find("Grid");
         //this.water = grid.transform.Find("water").gameObject;
@@ -109,21 +113,20 @@ public class player_controller : MonoBehaviourPunCallbacks
     {
         if (nowFishing) // 현재 낚시중이면 이동 불가
             return;
-        //if (PV.IsMine)
-        // {
+
         xMove = 0;
         yMove = 0;
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
             xMove = speed * Time.deltaTime;
-            sprite.flipX = false;
+            m_PV.RPC("FlipXRPC",RpcTarget.AllBuffered,false);
             animator.SetBool("isMoving", true);
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
             xMove = -speed * Time.deltaTime;
-            sprite.flipX = true;
+            m_PV.RPC("FlipXRPC", RpcTarget.AllBuffered, true);
             animator.SetBool("isMoving", true);
         }
         if (Input.GetKey(KeyCode.UpArrow))
@@ -149,7 +152,6 @@ public class player_controller : MonoBehaviourPunCallbacks
         if (isThereTree) {
             if(tree.GetComponent<logging>().HP <= 0) // 벌목이 완료되면
             {
-                animator.SetTrigger("idle");
                 isThereTree = false; // 행동 중지
                 return;
             }
@@ -252,6 +254,12 @@ public class player_controller : MonoBehaviourPunCallbacks
                 animator.SetTrigger("handUp");
                 plants[nowPlant].GetComponent<Animator>().SetBool("harvest", true);
             }
+    }
+
+    [PunRPC]
+    void FlipXRPC(bool flip)
+    {
+        sprite.flipX = flip;
     }
 }
 
