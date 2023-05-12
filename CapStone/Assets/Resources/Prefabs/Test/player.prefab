@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3520134697875576456}
   - component: {fileID: 860735181220740890}
   - component: {fileID: 2509574080173296720}
+  - component: {fileID: 2252487515011946635}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -103,6 +104,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  tree: {fileID: 0}
+  water: {fileID: 0}
+  farm: {fileID: 0}
+  plantGenerator: {fileID: 0}
   m_PV: {fileID: 0}
   m_playerPosIndex: -1
 --- !u!50 &7034751681422510007
@@ -164,9 +169,10 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 3
   OwnershipTransfer: 0
-  observableSearch: 2
+  observableSearch: 0
   ObservedComponents:
   - {fileID: 860735181220740890}
+  - {fileID: 2252487515011946635}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -202,3 +208,39 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.25, y: 0.3}
   m_Direction: 0
+--- !u!114 &2252487515011946635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6223209397148179325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 1
+    Name: isMoving
+  - Type: 4
+    SynchronizeType: 1
+    Name: isFishing
+  - Type: 9
+    SynchronizeType: 1
+    Name: isLogging
+  - Type: 9
+    SynchronizeType: 1
+    Name: getFish
+  - Type: 9
+    SynchronizeType: 1
+    Name: isWatering
+  - Type: 9
+    SynchronizeType: 1
+    Name: handUp
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
