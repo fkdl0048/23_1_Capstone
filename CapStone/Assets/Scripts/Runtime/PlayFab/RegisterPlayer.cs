@@ -11,6 +11,6 @@ public class LoginPlayer : MonoBehaviour
         string email = _emailInputField.text;
         string password = _passwordInputField.text;
         
-        GameManager.Playfab.PlayerLogin(email, password);
+        //GameManager.Playfab.PlayerLogin(email, password);
     }
 }

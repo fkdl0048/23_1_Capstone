@@ -11,6 +11,6 @@ public class RegisterPlayer : MonoBehaviour
         string email = _emailInputField.text;
         string password = _passwordInputField.text;
         
-        GameManager.Playfab.PlayerRegister(email, password);
+        //GameManager.Playfab.PlayerRegister(email, password);
     }
 }
