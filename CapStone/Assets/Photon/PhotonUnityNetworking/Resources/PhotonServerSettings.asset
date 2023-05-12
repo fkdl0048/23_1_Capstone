@@ -42,6 +42,7 @@ MonoBehaviour:
   - CheckRequestHouseWatch
   - SpawnPlayerPhoton
   - UpdatePlayerPosIndex
+  - FlipXRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
