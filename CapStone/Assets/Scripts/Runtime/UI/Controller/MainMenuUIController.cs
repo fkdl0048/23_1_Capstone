@@ -3,16 +3,16 @@ using PlayFab.ClientModels;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuController : MonoBehaviour
+public class MainMenuUIController : MonoBehaviour
 {
     private UINavigation _uiNavigation;
-    private MainMenuView _mainMenuView;
+    private MainMenuUIView _mainMenuView;
     
     private void Start()
     {
         // initialize the UI Navigation
         _uiNavigation = new UINavigation();
-        _mainMenuView = _uiNavigation.UIViewPush("MainMenuView") as MainMenuView;
+        _mainMenuView = _uiNavigation.UIViewPush("MainMenuView") as MainMenuUIView;
         
         _mainMenuView.LoginButton.onClick.AddListener(() =>
         {

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainMenuView : UIView
+public class MainMenuUIView : UIView
 {
     [SerializeField] private TextMeshProUGUI _emailInput;
     [SerializeField] private TextMeshProUGUI _passwordInput;
