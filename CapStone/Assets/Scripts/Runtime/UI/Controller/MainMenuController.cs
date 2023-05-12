@@ -1,6 +1,7 @@
 using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -26,7 +27,6 @@ public class MainMenuController : MonoBehaviour
 
     private void OnDisable()
     {
-        // remove listeners from the buttons
         _mainMenuView.LoginButton.onClick.RemoveAllListeners();
         _mainMenuView.RegisterButton.onClick.RemoveAllListeners();
     }
@@ -65,8 +65,7 @@ public class MainMenuController : MonoBehaviour
         PlayFabClientAPI.UpdateUserTitleDisplayName(request,
             result =>
             {
-                // 이동
-                Debug.Log("씬 이동");
+                MoveGameScene();
             },
             error =>
             {
@@ -86,12 +85,16 @@ public class MainMenuController : MonoBehaviour
         PlayFabClientAPI.LoginWithEmailAddress(request,
             result =>
             {
-                var popup = _uiNavigation.PopupPush("DefalutPopup") as DefalutPopup;
-                popup.SetText("로그인 성공!");
+                MoveGameScene();
             }, error =>
             {
                 var popup = _uiNavigation.PopupPush("DefalutPopup") as DefalutPopup;
                 popup.SetText("로그인 실패!");
             });
+    }
+    
+    private void MoveGameScene()
+    {
+        SceneManager.LoadScene("Game");
     }
 }
