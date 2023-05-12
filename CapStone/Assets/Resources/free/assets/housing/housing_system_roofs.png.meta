@@ -1,0 +1,1179 @@
+fileFormatVersion: 2
+guid: 0567ab9785ceee54094ed4a53979ac6c
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: housing_system_roofs_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 533
+        width: 138
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8ef28f0488d94f8f888a2114f9c01bb
+      internalID: 1825348153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_1
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 613
+        width: 72
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e5bd624d1e194cd69539805d36ea87e
+      internalID: 665099174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_2
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 603
+        width: 72
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8ee07596d8f14c9b877d22ae49750d9
+      internalID: 1387387164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_3
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 533
+        width: 138
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ce2656f849064ee88b0ad168b5912e0
+      internalID: 26296204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_4
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 613
+        width: 72
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70c8cdc2616b2476cbde35c723239fb1
+      internalID: 1474580963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_5
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 603
+        width: 72
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c2245fb0b9374cb9b30f81c9da3c493
+      internalID: 1261948097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_6
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 533
+        width: 138
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b1d21fc6dc5544bf9544d1759861b3d
+      internalID: 293462400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_7
+      rect:
+        serializedVersion: 2
+        x: 964
+        y: 613
+        width: 72
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27838448341074a62a000c69ec232bb6
+      internalID: -1689669467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_8
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 603
+        width: 72
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e257482fad3294bbbb8266f64d45da97
+      internalID: -175536593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_9
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 533
+        width: 58
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d87651a02aa34cb38c2cfa262981909
+      internalID: 2061554298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_10
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 533
+        width: 58
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09ca41be0e17f424e9577c3457a2a2ad
+      internalID: -2073808925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_11
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 533
+        width: 58
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7615333f6151b4e45b89aa82e8dbff9b
+      internalID: -1788193214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_12
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 357
+        width: 138
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d8687b443bc5417fae663db2d102c71
+      internalID: 91706885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_13
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 437
+        width: 72
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5e3174fc64fd4842bf39a8e20da827a
+      internalID: 1514864675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_14
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 427
+        width: 72
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90bec50cf61e94bf083432a9100f6b12
+      internalID: 2129961771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_15
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 357
+        width: 138
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 978d564191cef4b589d82d3cf3919918
+      internalID: 1720665915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_16
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 437
+        width: 72
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a87ace0fb1cb64adb96609a17d869056
+      internalID: -956387823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_17
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 427
+        width: 72
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cb2be151343f4fb68ba6b41564edd9c
+      internalID: -1104026897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_18
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 357
+        width: 138
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e27eda0dffb346c7b908ec903ae7a6a
+      internalID: 1378644294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_19
+      rect:
+        serializedVersion: 2
+        x: 964
+        y: 437
+        width: 72
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98d703736ce8f4d04bfae8908a85f7ce
+      internalID: 302011887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_20
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 427
+        width: 72
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79527d112167549329a5f30bf92bbf54
+      internalID: 116137108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_21
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 357
+        width: 58
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47d99380743a249c295fd3f207b35e15
+      internalID: -1911128415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_22
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 357
+        width: 58
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbf80e30d57c845dca2090a7e8cd7692
+      internalID: 689435664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_23
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 357
+        width: 58
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fd27bd296328439f8fc7bfa97dbb5a3
+      internalID: 364877618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_24
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 181
+        width: 138
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb7642d5958c54ec9bdf85aa0f9cb4e2
+      internalID: -1815532389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_25
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 261
+        width: 72
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb405decbfd3f49c5bb61e08bc49d004
+      internalID: 404818413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_26
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 251
+        width: 72
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7f01d1945d9344779dfee5e99a14fb8
+      internalID: -1104405892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_27
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 181
+        width: 138
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 605a1723c8a9444559e7a892934f0319
+      internalID: -1964556102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_28
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 261
+        width: 72
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f8d9e86ffe334ddf9577eabd4ee7131
+      internalID: -688985829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_29
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 251
+        width: 72
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c837624edbb8b47caa6c987f228ec592
+      internalID: 190175481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_30
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 181
+        width: 138
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dbc76219bff349a4b22182f5e85c27a
+      internalID: -812587320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_31
+      rect:
+        serializedVersion: 2
+        x: 964
+        y: 261
+        width: 72
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7bbcb37cd6384e5c9c5e67e2a6e53d1
+      internalID: 292025243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_32
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 251
+        width: 72
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e647dadbcafa486ebeb38776973648d
+      internalID: 1263638406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_33
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 181
+        width: 58
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c9e00fceec3f45c68fc912b7240b757
+      internalID: -1384582302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_34
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 181
+        width: 58
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f627eebf882c4f4b8fa4f4e289ec660
+      internalID: -1747066602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_35
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 181
+        width: 58
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4e4eb23f106a4b139c65fd7aa59dae1
+      internalID: -1215457191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_36
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 5
+        width: 138
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90ff81af0768c47eb94fcc3ec0655858
+      internalID: -596423650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_37
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 85
+        width: 72
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3b8cff5600734cb993143c8fbbee8e7
+      internalID: -1657884611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_38
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 75
+        width: 72
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42a79bb4602c241abab2e5945cbeb18c
+      internalID: -1490239672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_39
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 5
+        width: 138
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b30fb3e6b5e214e9eb09440387aef292
+      internalID: 266757658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_40
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 85
+        width: 72
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 831fc4e6266e147929d5639107fef183
+      internalID: -1169238000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_41
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 75
+        width: 72
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c138d2ecadf7477a94b3405637e2c80
+      internalID: -281915519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_42
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 5
+        width: 138
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58615c35b15cc4fdf9c0963bcee5514c
+      internalID: 1213402821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_43
+      rect:
+        serializedVersion: 2
+        x: 964
+        y: 85
+        width: 72
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bd010fca81614fa596e60d55609ca41
+      internalID: 490865538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_44
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 75
+        width: 72
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf72b0aa4deec43cf86e67250815d26c
+      internalID: -225435573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_45
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 5
+        width: 58
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad503f03ee66c4700aabe523fcee5b9b
+      internalID: -1996357965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_46
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 5
+        width: 58
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8edada350c2b24207acfcdc84e27ae35
+      internalID: 1377313255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: housing_system_roofs_47
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 5
+        width: 58
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1241cc7caef04c90b5a1ef07d69aa90
+      internalID: -324700432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      housing_system_roofs_0: 1825348153
+      housing_system_roofs_1: 665099174
+      housing_system_roofs_10: -2073808925
+      housing_system_roofs_11: -1788193214
+      housing_system_roofs_12: 91706885
+      housing_system_roofs_13: 1514864675
+      housing_system_roofs_14: 2129961771
+      housing_system_roofs_15: 1720665915
+      housing_system_roofs_16: -956387823
+      housing_system_roofs_17: -1104026897
+      housing_system_roofs_18: 1378644294
+      housing_system_roofs_19: 302011887
+      housing_system_roofs_2: 1387387164
+      housing_system_roofs_20: 116137108
+      housing_system_roofs_21: -1911128415
+      housing_system_roofs_22: 689435664
+      housing_system_roofs_23: 364877618
+      housing_system_roofs_24: -1815532389
+      housing_system_roofs_25: 404818413
+      housing_system_roofs_26: -1104405892
+      housing_system_roofs_27: -1964556102
+      housing_system_roofs_28: -688985829
+      housing_system_roofs_29: 190175481
+      housing_system_roofs_3: 26296204
+      housing_system_roofs_30: -812587320
+      housing_system_roofs_31: 292025243
+      housing_system_roofs_32: 1263638406
+      housing_system_roofs_33: -1384582302
+      housing_system_roofs_34: -1747066602
+      housing_system_roofs_35: -1215457191
+      housing_system_roofs_36: -596423650
+      housing_system_roofs_37: -1657884611
+      housing_system_roofs_38: -1490239672
+      housing_system_roofs_39: 266757658
+      housing_system_roofs_4: 1474580963
+      housing_system_roofs_40: -1169238000
+      housing_system_roofs_41: -281915519
+      housing_system_roofs_42: 1213402821
+      housing_system_roofs_43: 490865538
+      housing_system_roofs_44: -225435573
+      housing_system_roofs_45: -1996357965
+      housing_system_roofs_46: 1377313255
+      housing_system_roofs_47: -324700432
+      housing_system_roofs_5: 1261948097
+      housing_system_roofs_6: 293462400
+      housing_system_roofs_7: -1689669467
+      housing_system_roofs_8: -175536593
+      housing_system_roofs_9: 2061554298
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
