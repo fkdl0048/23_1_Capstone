@@ -528,6 +528,7 @@ GameObject:
   - component: {fileID: 4225586907797781909}
   - component: {fileID: 4225586907797781906}
   - component: {fileID: 4225586907797781907}
+  - component: {fileID: 784953885}
   m_Layer: 5
   m_Name: LoginCanvas
   m_TagString: Untagged
@@ -622,6 +623,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &784953885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4225586907797781904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c6fec878dc7241479a7e28bcd3be124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _emailInput: {fileID: 4225586909329446318}
+  _passwordInput: {fileID: 4225586908126844840}
+  _loginButton: {fileID: 4225586907575093894}
+  _registerButton: {fileID: 4225586909531336156}
 --- !u!1 &4225586908126844838
 GameObject:
   m_ObjectHideFlags: 0

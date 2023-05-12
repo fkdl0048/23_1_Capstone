@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 81233452854379851}
   - component: {fileID: 8431930285438566203}
   m_Layer: 5
-  m_Name: InputToolTip
+  m_Name: InputPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
