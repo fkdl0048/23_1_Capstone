@@ -42,7 +42,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     public void SpawnPlayer()
     {   
-        m_isMinePlayer = PhotonNetwork.Instantiate("ArtResource/assets/character/player", new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
+        m_isMinePlayer = PhotonNetwork.Instantiate("Prefabs/Test/player", new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
         
         m_PV.RPC("SpawnPlayerPhoton", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID);
     }
