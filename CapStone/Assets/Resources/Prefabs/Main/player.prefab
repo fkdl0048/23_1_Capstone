@@ -103,6 +103,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  tree: {fileID: 0}
+  water: {fileID: 0}
+  farm: {fileID: 0}
+  plantGenerator: {fileID: 0}
   m_PV: {fileID: 0}
   m_playerPosIndex: -1
 --- !u!50 &7034751681422510007
