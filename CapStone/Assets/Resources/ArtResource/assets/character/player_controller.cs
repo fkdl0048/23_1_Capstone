@@ -36,6 +36,8 @@ public class player_controller : MonoBehaviourPunCallbacks
     //¿ÃπŒºÆ √ﬂ∞°
     public PhotonView m_PV;
     public int m_playerPosIndex = -1;
+    private GameObject m_oZone;
+    private GameObject m_xZone;
 
     void Start()
     {     

@@ -53,7 +53,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         m_plazaObject.SetActive(false);
         m_houseObject.SetActive(true);
 
-        m_PV.RPC("UpdatePlayerPosIndex", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID,int.Parse(clickObj.name));
+        m_PV.RPC("UpdatePlayerPosIndex", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID , int.Parse(clickObj.name));
     }
     #endregion
 
@@ -101,10 +101,12 @@ public class PlayerManager : MonoBehaviourPunCallbacks
                 iter.GetComponent<player_controller>().m_playerPosIndex = _posIndex;
                 break;
             }
-
         }
 
         int cnt = 0;
+
+        _posIndex = m_isMinePlayer.GetComponent<player_controller>().m_playerPosIndex;
+
         foreach (var iter in m_playerList)
         {
             if (cnt == m_playerCount)
@@ -118,9 +120,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
                 continue;
             }
 
-            iter.SetActive(true);
-
-            
+            iter.SetActive(true); 
         }
     }
 
