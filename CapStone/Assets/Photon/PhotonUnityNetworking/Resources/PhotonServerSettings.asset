@@ -39,6 +39,19 @@ MonoBehaviour:
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
+<<<<<<< Updated upstream
+=======
+  - CheckRequestHouseWatch
+  - SpawnPlayerPhoton
+  - UpdatePlayerPosIndex
+  - FilpXRPC
+  - MoveRPC
+  - FarmingRPC
+  - FishingRPC
+  - LoggingRPC
+  - filpXRPC
+  - flipXRPC
+>>>>>>> Stashed changes
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0
