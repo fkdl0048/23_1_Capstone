@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fe74757f5ba42f399bfb6524be2652, type: 3}
+  m_Name: Roof
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: Roof
+  <Tile>k__BackingField: {fileID: 0}
+  <PreviewSprite>k__BackingField: {fileID: 293462400, guid: 0567ab9785ceee54094ed4a53979ac6c, type: 3}
+  <GameObject>k__BackingField: {fileID: 1532759991141541728, guid: 3b6aacf10db6341659a2d8f550e8c5c2, type: 3}
+  <UseCustomCollisionSpace>k__BackingField: 1
+  <CollisionSpace>k__BackingField:
+    x: 0
+    y: 0
+    width: 10
+    height: 10

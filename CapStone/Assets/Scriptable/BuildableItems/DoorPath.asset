@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fe74757f5ba42f399bfb6524be2652, type: 3}
+  m_Name: DoorPath
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: Door Path
+  <Tile>k__BackingField: {fileID: 11400000, guid: 025a12456343f4ec2943d6a3b33078b5, type: 2}
+  <PreviewSprite>k__BackingField: {fileID: 1595288422, guid: 5ba9d38f328e8254796ff85af23dc3ce, type: 3}
+  <GameObject>k__BackingField: {fileID: 0}
+  <UseCustomCollisionSpace>k__BackingField: 1
+  <CollisionSpace>k__BackingField:
+    x: 0
+    y: 0
+    width: 1
+    height: 1

@@ -47,9 +47,9 @@ public class player_controller : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
-        this.animator = GetComponent<Animator>();
+        rb = this.GetComponent<Rigidbody2D>();
+        sprite = this.GetComponent<SpriteRenderer>();
+        animator = this.GetComponent<Animator>();
         //this.tree = GameObject.Find("tree");
         //this.grid = GameObject.Find("Grid");
         //this.water = grid.transform.Find("water").gameObject;
