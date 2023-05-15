@@ -55,6 +55,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
         m_PV.RPC("UpdatePlayerPosIndex", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID , int.Parse(clickObj.name));
     }
+
+    public void CheckAnswer()
+    {
+        this.GetComponent<OXQuiz>().CheckAnswer(m_playerList);
+    }
     #endregion
 
     #region PrivateMethod
