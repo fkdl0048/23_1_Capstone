@@ -40,13 +40,16 @@ public class player_controller : MonoBehaviourPunCallbacks
     //이민석 추가
     public PhotonView m_PV;
     public int m_playerPosIndex = -1;
+    private GameObject m_oZone;
+    private GameObject m_xZone;
+
+    public int m_quizState = 0;
 
     void Start()
     {
-        PhotonNetwork.OfflineMode = true;
-        rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
-        this.animator = GetComponent<Animator>();
+        rb = this.GetComponent<Rigidbody2D>();
+        sprite = this.GetComponent<SpriteRenderer>();
+        animator = this.GetComponent<Animator>();
         //this.tree = GameObject.Find("tree");
         //this.grid = GameObject.Find("Grid");
         //this.water = grid.transform.Find("water").gameObject;
@@ -73,14 +76,24 @@ public class player_controller : MonoBehaviourPunCallbacks
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision == tree.GetComponent<BoxCollider2D>()) // 해당 오브젝트가 나무일때만
-            isThereTree = true;
+        //if (collision == tree.GetComponent<BoxCollider2D>()) // 해당 오브젝트가 나무일때만
+        //    isThereTree = true;
 
-        if (collision == water.GetComponent<BoxCollider2D>()) // 해당 오브젝트가 물일때만
-            isThereWater = true;
+        //if (collision == water.GetComponent<BoxCollider2D>()) // 해당 오브젝트가 물일때만
+        //    isThereWater = true;
 
-        if (collision == farm.GetComponent<BoxCollider2D>()) // 해당 오브젝트가 농장일때만
-            isThereFarm = true;
+        //if (collision == farm.GetComponent<BoxCollider2D>()) // 해당 오브젝트가 농장일때만
+        //    isThereFarm = true;
+
+        if (collision.gameObject.name == "OZone")
+        {
+            m_quizState = 1;
+        }
+        else if (collision.gameObject.name == "XZone")
+        {
+            m_quizState = 2;
+
+        }
 
         for (int i = 0; i < ptCount; i++) // 해당 오브젝트가 식물일때만
         {
@@ -94,14 +107,19 @@ public class player_controller : MonoBehaviourPunCallbacks
 
     void OnTriggerExit2D(Collider2D collision) // 오브젝트에서 멀어지면 상호작용 불가
     {
-        if (collision == tree.GetComponent<BoxCollider2D>()) // 해당 오브젝트가 나무일때만
-            isThereTree = false;
+        //if (collision == tree.GetComponent<BoxCollider2D>()) // 해당 오브젝트가 나무일때만
+        //    isThereTree = false;
 
-        if (collision == water.GetComponent<BoxCollider2D>()) // 해당 오브젝트가 물일때만
-            isThereWater = false;
+        //if (collision == water.GetComponent<BoxCollider2D>()) // 해당 오브젝트가 물일때만
+        //    isThereWater = false;
 
-        if (collision == farm.GetComponent<BoxCollider2D>()) // 해당 오브젝트가 농장일때만
-            isThereFarm = false;
+        //if (collision == farm.GetComponent<BoxCollider2D>()) // 해당 오브젝트가 농장일때만
+        //    isThereFarm = false;
+
+        if (collision.gameObject.name == "OZone" || collision.gameObject.name == "XZone")
+        {
+            m_quizState = 0;
+        }
 
         for (int i = 0; i < ptCount; i++) // 해당 오브젝트가 식물일때만
         {

@@ -20,8 +20,12 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject m_visitBtnParent;
     [SerializeField] public GameObject m_plazaObject;
     [SerializeField] public GameObject m_houseObject;
+    [SerializeField] private GameObject mainCamera; // 기존 카메라
+    [SerializeField] private GameObject playerCamera; // 플레이어를 따라다닐 카메라
+    [SerializeField] private GameObject parent; // 플레이어가 생성되는 부모 폴더
 
     private GameObject m_isMinePlayer;
+    
     #endregion
 
     #region PublicMethod
@@ -30,6 +34,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         m_playerList = new GameObject[20];
         m_PV = GetComponent<PhotonView>();
         m_visitBtnParent.SetActive(false);
+
     }
 
     private void Update()
@@ -42,8 +47,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     public void SpawnPlayer()
     {   
-        m_isMinePlayer = PhotonNetwork.Instantiate("ArtResource/assets/character/player", new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
-        
+        m_isMinePlayer = PhotonNetwork.Instantiate("Prefabs/Test/player", new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
+        m_isMinePlayer.name = "player(Clone)" + m_playerCount; // 카메라를 위한 플레이어 구분
         m_PV.RPC("SpawnPlayerPhoton", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID);
     }
 
@@ -53,7 +58,12 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         m_plazaObject.SetActive(false);
         m_houseObject.SetActive(true);
 
-        m_PV.RPC("UpdatePlayerPosIndex", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID,int.Parse(clickObj.name));
+        m_PV.RPC("UpdatePlayerPosIndex", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID , int.Parse(clickObj.name));
+    }
+
+    public void CheckAnswer()
+    {
+        this.GetComponent<OXQuiz>().CheckAnswer(m_playerList);
     }
     #endregion
 
@@ -88,7 +98,20 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         //{
         //    m_playerList[m_playerCount++] = target;
         //}
+
+        target.name = "player(Clone)" + m_playerCount;
         m_playerList[m_playerCount++] = target;
+
+        GameObject CharacterCamera = Instantiate(playerCamera) as GameObject; // 플레이어마다 전용 카메라
+        CharacterCamera.name = "CharacterCamera(Clone)" + (m_playerCount-1); // 카메라 구분
+        CharacterCamera.GetComponent<cameraController>().target = parent.transform.Find("player(Clone)" + (m_playerCount - 1)).gameObject;
+
+        if (target.GetComponent<PhotonView>().IsMine) // 나의 카메라만 작동
+        { 
+            CharacterCamera.GetComponent<Camera>().depth = 0; // 플레이어 카메라 활성화
+        }
+
+
     }
 
     [PunRPC]
@@ -101,10 +124,12 @@ public class PlayerManager : MonoBehaviourPunCallbacks
                 iter.GetComponent<player_controller>().m_playerPosIndex = _posIndex;
                 break;
             }
-
         }
 
         int cnt = 0;
+
+        _posIndex = m_isMinePlayer.GetComponent<player_controller>().m_playerPosIndex;
+
         foreach (var iter in m_playerList)
         {
             if (cnt == m_playerCount)
@@ -118,9 +143,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
                 continue;
             }
 
-            iter.SetActive(true);
-
-            
+            iter.SetActive(true); 
         }
     }
 
