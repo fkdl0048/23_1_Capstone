@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 81233452854379849}
   - component: {fileID: 81233452854379850}
   - component: {fileID: 81233452854379851}
-  - component: {fileID: 9138103682594593818}
+  - component: {fileID: 5551815952451159293}
   m_Layer: 5
-  m_Name: NotiToolTip
+  m_Name: DefalutPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &9138103682594593818
+--- !u!114 &5551815952451159293
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8061269cbbbbcc47b7a9e44d3f16bda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _notiText: {fileID: 3387089352553063410}
+  setText: {fileID: 3387089352553063410}
 --- !u!1 &81233453666875072
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,10 +313,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 81233452854379844}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 5551815952451159293}
+        m_TargetAssemblyTypeName: UIView, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

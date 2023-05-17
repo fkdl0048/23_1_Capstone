@@ -33,6 +33,13 @@ public class PhotonTest : MonoBehaviourPunCallbacks
 
     }
 
+    public void LoginToPhotonServer()
+    {
+        ConnectToServer();
+        JoinLobby();
+        JoinCreateRoom();
+    }
+
     public void ConnectToServer()
     {
         PhotonNetwork.ConnectUsingSettings();
@@ -59,7 +66,11 @@ public class PhotonTest : MonoBehaviourPunCallbacks
     public void JoinPhotonRoom()
     {
         PhotonNetwork.JoinRoom(m_roomName.text);
+    }
 
+    public void JoinCreateRoom()
+    {
+        PhotonNetwork.JoinOrCreateRoom(m_roomName.text, new RoomOptions { MaxPlayers = 10 }, null);
     }
 
     public override void OnCreatedRoom() => print("방만들기완료");
@@ -73,8 +84,6 @@ public class PhotonTest : MonoBehaviourPunCallbacks
     public override void OnCreateRoomFailed(short returnCode, string message) => print("방만들기실패");
 
     public override void OnJoinRoomFailed(short returnCode, string message) => print("방참가실패");
-
-
    
 
     #endregion
