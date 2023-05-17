@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
@@ -10,6 +11,7 @@ public class PhotonTest : MonoBehaviourPunCallbacks
 {
     #region PrivateVariables
 
+    private string m_playerName = "random";
     #endregion
 
     #region Protected Variables
@@ -33,30 +35,38 @@ public class PhotonTest : MonoBehaviourPunCallbacks
 
     }
 
-    public void LoginToPhotonServer()
+    public async void LoginToPhotonServer(string _playerName)
     {
-        ConnectToServer();
-        JoinLobby();
-        JoinCreateRoom();
+        m_playerName = _playerName;
+        await ConnectToServer();
+        await Task.Delay(1000);
+        await JoinLobby();
+        await Task.Delay(1000);
+        await JoinCreateRoom();
+        
     }
 
-    public void ConnectToServer()
+    public Task ConnectToServer()
     {
         PhotonNetwork.ConnectUsingSettings();
+
+        return Task.Delay(1000);
     }
 
     public override void OnConnectedToMaster()
     {
-        print("¼­¹öÁ¢¼Ó¿Ï·á");
-        PhotonNetwork.LocalPlayer.NickName = m_nickName.text;
+        print("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿Ï·ï¿½");
+        PhotonNetwork.LocalPlayer.NickName = m_playerName;
     }
 
-    public void JoinLobby()
+    public Task JoinLobby()
     {
         PhotonNetwork.JoinLobby();
+        
+        return Task.Delay(1000);
     }
 
-    public override void OnJoinedLobby() => print("·ÎºñÁ¢¼Ó¿Ï·á");
+    public override void OnJoinedLobby() => print("ï¿½Îºï¿½ï¿½ï¿½ï¿½Ó¿Ï·ï¿½");
 
     public void CreatePhotonRoom()
     {
@@ -68,22 +78,24 @@ public class PhotonTest : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinRoom(m_roomName.text);
     }
 
-    public void JoinCreateRoom()
+    public Task JoinCreateRoom()
     {
-        PhotonNetwork.JoinOrCreateRoom(m_roomName.text, new RoomOptions { MaxPlayers = 10 }, null);
+        PhotonNetwork.JoinOrCreateRoom("Room1", new RoomOptions { MaxPlayers = 10 }, null);
+        
+        return Task.Delay(1000);
     }
 
-    public override void OnCreatedRoom() => print("¹æ¸¸µé±â¿Ï·á");
+    public override void OnCreatedRoom() => print("ï¿½æ¸¸ï¿½ï¿½ï¿½Ï·ï¿½");
 
     public override void OnJoinedRoom()
     {
-        print("¹æÂü°¡¿Ï·á");
+        print("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½");
         m_spawnPlayerBtn.gameObject.SetActive(true);   
     }
 
-    public override void OnCreateRoomFailed(short returnCode, string message) => print("¹æ¸¸µé±â½ÇÆÐ");
+    public override void OnCreateRoomFailed(short returnCode, string message) => print("ï¿½æ¸¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 
-    public override void OnJoinRoomFailed(short returnCode, string message) => print("¹æÂü°¡½ÇÆÐ");
+    public override void OnJoinRoomFailed(short returnCode, string message) => print("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
    
 
     #endregion
