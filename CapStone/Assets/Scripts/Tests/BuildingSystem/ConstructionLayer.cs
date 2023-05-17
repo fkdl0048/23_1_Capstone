@@ -17,14 +17,20 @@ namespace BuildingSystem
             var coords = _tilemap.WorldToCell(worldCoords);
             if (item.Tile != null)
             {
-                _tilemap.SetTile(coords, item.Tile);
+                var tileChangeData = new TileChangeData(
+                    coords,
+                    item.Tile,
+                    Color.white,
+                    Matrix4x4.Translate(item.TileOffset)
+                );
+                _tilemap.SetTile(tileChangeData, false);
             }
 
             if (item.GameObject != null)
             {
                 itemObject = Instantiate(
                     item.GameObject,
-                    _tilemap.CellToWorld(coords) + _tilemap.cellSize / 2,
+                    _tilemap.CellToWorld(coords) + _tilemap.cellSize / 2 + item.TileOffset,
                     Quaternion.identity
                     );
             }
