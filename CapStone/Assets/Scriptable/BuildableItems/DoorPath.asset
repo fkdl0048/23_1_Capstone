@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: DoorPath
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Door Path
-  <Tile>k__BackingField: {fileID: 11400000, guid: 025a12456343f4ec2943d6a3b33078b5, type: 2}
-  <PreviewSprite>k__BackingField: {fileID: 1595288422, guid: 5ba9d38f328e8254796ff85af23dc3ce, type: 3}
+  <Tile>k__BackingField: {fileID: 11400000, guid: 03dc7a15fb0e2442fabed253844c2851, type: 2}
+  <TileOffset>k__BackingField: {x: 0, y: -0.5, z: 0}
+  <PreviewSprite>k__BackingField: {fileID: 745703028, guid: 652221c54a5f164439aab36b381cc2e3, type: 3}
   <GameObject>k__BackingField: {fileID: 0}
   <UseCustomCollisionSpace>k__BackingField: 1
   <CollisionSpace>k__BackingField:
     x: 0
     y: 0
     width: 1
-    height: 1
+    height: 2
