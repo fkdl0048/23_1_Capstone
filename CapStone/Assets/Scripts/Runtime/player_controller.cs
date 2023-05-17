@@ -7,7 +7,7 @@ using Photon.Realtime;
 public class player_controller : MonoBehaviourPunCallbacks
 {   
     [SerializeField]
-    private float speed = 5f; // ÀÌµ¿ ¼Óµµ
+    private float speed = 5f; // ï¿½Ìµï¿½ ï¿½Óµï¿½
     [SerializeField]
     private GameObject[] tree;
     [SerializeField]
@@ -18,21 +18,21 @@ public class player_controller : MonoBehaviourPunCallbacks
     private GameObject plantGenerator;
 
     private float xMove, yMove;
-    private bool isThereTree = false; // ±ÙÃ³¿¡ ¹ú¸ñÇÒ ¼ö ÀÖ´Â ³ª¹«°¡ ÀÖ´ÂÁö
-    private bool isThereWater = false; // ±ÙÃ³¿¡ ³¬½Ã°¡´ÉÇÑ ¹°ÀÌ ÀÖ´ÂÁö
-    private bool isThereFarm = false; // ±ÙÃ³¿¡ ³ó»ç°¡´ÉÇÑ ¶¥ÀÌ ÀÖ´ÂÁö
-    private bool isTherePlant = false; // ±ÙÃ³¿¡ ½Ä¹°ÀÌ ÀÖ´ÂÁö
+    private bool isThereTree = false; // ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½
+    private bool isThereWater = false; // ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½
+    private bool isThereFarm = false; // ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ç°¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½
+    private bool isTherePlant = false; // ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½Ä¹ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½
 
-    private bool nowFishing = false; // ÇöÀç ³¬½Ã ÁßÀÎÁö
-    private float totaltime = 0.0f; // ³¬½Ã ½Ã°£ ÃøÁ¤
-    private int fishCount = 0; // ÀâÀº ¹°°í±â ¼ö
-    private string[] fish = new string[] { "»ý¼±1", "»ý¼±2", "»ý¼±3", "»ý¼±4", "»ý¼±5" }; // ¹°°í±â Á¾·ù
+    private bool nowFishing = false; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    private float totaltime = 0.0f; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private int fishCount = 0; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+    private string[] fish = new string[] { "ï¿½ï¿½ï¿½ï¿½1", "ï¿½ï¿½ï¿½ï¿½2", "ï¿½ï¿½ï¿½ï¿½3", "ï¿½ï¿½ï¿½ï¿½4", "ï¿½ï¿½ï¿½ï¿½5" }; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private int random = 0;
-    private int ptCount = 0; // ½Ä¹° °³¼ö
-    private int nowPlant = -1; // ÇöÀç °ü¸®ÇÏ´Â ½Ä¹°
+    private int ptCount = 0; // ï¿½Ä¹ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private int nowPlant = -1; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ä¹ï¿½
     private int i;
 
-    private int nowTree; // ÇöÀç »óÈ£ÀÛ¿ëÇÏ´Â ³ª¹«
+    private int nowTree; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½Û¿ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     private GameObject[] plants = new GameObject[3];
     
@@ -40,9 +40,13 @@ public class player_controller : MonoBehaviourPunCallbacks
     private Animator animator;
     private SpriteRenderer sprite;
 
-    //ÀÌ¹Î¼® Ãß°¡
+    //ï¿½Ì¹Î¼ï¿½ ï¿½ß°ï¿½
     public PhotonView m_PV;
     public int m_playerPosIndex = -1;
+    private GameObject m_oZone;
+    private GameObject m_xZone;
+
+    public int m_quizState = 0;
 
     void Start()
     {
@@ -77,7 +81,7 @@ public class player_controller : MonoBehaviourPunCallbacks
     {
         for(i = 0; i < tree.Length; i++) {
             if (collision == tree[i].GetComponent<BoxCollider2D>())
-            { // ÇØ´ç ¿ÀºêÁ§Æ®°¡ ³ª¹«ÀÏ¶§¸¸
+            { // ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½ï¿½ï¿½
                 isThereTree = true;
                 tree[i].transform.Find("Canvas-tree").gameObject.SetActive(true);
                 nowTree = i;
@@ -87,17 +91,34 @@ public class player_controller : MonoBehaviourPunCallbacks
 
         for (i = 0; i < water.Length; i++)
         {
-            if (collision == water[i].GetComponent<BoxCollider2D>()) // ÇØ´ç ¿ÀºêÁ§Æ®°¡ ¹°ÀÏ¶§¸¸
+            if (collision == water[i].GetComponent<BoxCollider2D>()) // ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¶ï¿½ï¿½ï¿½
                 isThereWater = true;
         }
 
         for (i = 0; i < farm.Length; i++)
         {
-            if (collision == farm[i].GetComponent<BoxCollider2D>()) // ÇØ´ç ¿ÀºêÁ§Æ®°¡ ³óÀåÀÏ¶§¸¸
+            if (collision == farm[i].GetComponent<BoxCollider2D>()) // ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½ï¿½ï¿½
                 isThereFarm = true;
+        //if (collision == tree.GetComponent<BoxCollider2D>()) // ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½ï¿½ï¿½
+        //    isThereTree = true;
+
+        //if (collision == water.GetComponent<BoxCollider2D>()) // ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¶ï¿½ï¿½ï¿½
+        //    isThereWater = true;
+
+        //if (collision == farm.GetComponent<BoxCollider2D>()) // ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½ï¿½ï¿½
+        //    isThereFarm = true;
+
+        if (collision.gameObject.name == "OZone")
+        {
+            m_quizState = 1;
+        }
+        else if (collision.gameObject.name == "XZone")
+        {
+            m_quizState = 2;
+
         }
 
-        for (i = 0; i < ptCount; i++) // ÇØ´ç ¿ÀºêÁ§Æ®°¡ ½Ä¹°ÀÏ¶§¸¸
+        for (i = 0; i < ptCount; i++) // ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ä¹ï¿½ï¿½Ï¶ï¿½ï¿½ï¿½
         {
             if (plants[i] != null && collision == plants[i].GetComponent<BoxCollider2D>())
             {
@@ -107,12 +128,12 @@ public class player_controller : MonoBehaviourPunCallbacks
         }
     }
 
-    void OnTriggerExit2D(Collider2D collision) // ¿ÀºêÁ§Æ®¿¡¼­ ¸Ö¾îÁö¸é »óÈ£ÀÛ¿ë ºÒ°¡
+    void OnTriggerExit2D(Collider2D collision) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½Û¿ï¿½ ï¿½Ò°ï¿½
     {
         for (i = 0; i < tree.Length; i++)
         {
             if (collision == tree[i].GetComponent<BoxCollider2D>())
-            { // ÇØ´ç ¿ÀºêÁ§Æ®°¡ ³ª¹«ÀÏ¶§¸¸
+            { // ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½ï¿½ï¿½
                 isThereTree = false;
                 tree[i].transform.Find("Canvas-tree").gameObject.SetActive(false);
             }
@@ -120,26 +141,38 @@ public class player_controller : MonoBehaviourPunCallbacks
 
         for (i = 0; i < water.Length; i++)
         {
-            if (collision == water[i].GetComponent<BoxCollider2D>()) // ÇØ´ç ¿ÀºêÁ§Æ®°¡ ¹°ÀÏ¶§¸¸
+            if (collision == water[i].GetComponent<BoxCollider2D>()) // ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¶ï¿½ï¿½ï¿½
                 isThereWater = false;
         }
 
         for (i = 0; i < farm.Length; i++)
         {
-            if (collision == farm[i].GetComponent<BoxCollider2D>()) // ÇØ´ç ¿ÀºêÁ§Æ®°¡ ³óÀåÀÏ¶§¸¸
+            if (collision == farm[i].GetComponent<BoxCollider2D>()) // ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½ï¿½ï¿½
                 isThereFarm = false;
+        //if (collision == tree.GetComponent<BoxCollider2D>()) // ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½ï¿½ï¿½
+        //    isThereTree = false;
+
+        //if (collision == water.GetComponent<BoxCollider2D>()) // ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¶ï¿½ï¿½ï¿½
+        //    isThereWater = false;
+
+        //if (collision == farm.GetComponent<BoxCollider2D>()) // ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½ï¿½ï¿½
+        //    isThereFarm = false;
+
+        if (collision.gameObject.name == "OZone" || collision.gameObject.name == "XZone")
+        {
+            m_quizState = 0;
         }
 
-        for (int i = 0; i < ptCount; i++) // ÇØ´ç ¿ÀºêÁ§Æ®°¡ ½Ä¹°ÀÏ¶§¸¸
+        for (int i = 0; i < ptCount; i++) // ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ä¹ï¿½ï¿½Ï¶ï¿½ï¿½ï¿½
         {
             if (plants[i] != null && collision == plants[i].GetComponent<BoxCollider2D>())
                 isTherePlant = false;
         }
     }
 
-    private void Move() // Ä³¸¯ÅÍ ÀÌµ¿
+    private void Move() // Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
     {
-        if (nowFishing) // ÇöÀç ³¬½ÃÁßÀÌ¸é ÀÌµ¿ ºÒ°¡
+        if (nowFishing) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½Ìµï¿½ ï¿½Ò°ï¿½
             return;
 
         xMove = 0;
@@ -168,59 +201,59 @@ public class player_controller : MonoBehaviourPunCallbacks
             animator.SetBool("isMoving", true);
         }
 
-        if (!(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))) // Å°¸¦ ´©¸£Áö ¾ÊÀº »óÅÂ¸é ÀÌµ¿ ¾Ö´Ï¸ÞÀÌ¼Ç ÁßÁö
+        if (!(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))) // Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½Ìµï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½
             animator.SetBool("isMoving", false);
 
         this.transform.Translate(new Vector3(xMove, yMove, 0));
       
     }
 
-    private void Logging() // ¹ú¸ñ
+    private void Logging() // ï¿½ï¿½ï¿½ï¿½
     {
         if (isThereTree) {
-            if(tree[nowTree].GetComponent<logging>().HP <= 0) // ¹ú¸ñÀÌ ¿Ï·áµÇ¸é
+            if(tree[nowTree].GetComponent<logging>().HP <= 0) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½Ç¸ï¿½
             {
-                isThereTree = false; // Çàµ¿ ÁßÁö
-                tree[nowTree].transform.Find("Canvas-tree").gameObject.SetActive(false); // Ã¼·Â¹Ù ¾Èº¸ÀÌ°Ô
+                isThereTree = false; // ï¿½àµ¿ ï¿½ï¿½ï¿½ï¿½
+                tree[nowTree].transform.Find("Canvas-tree").gameObject.SetActive(false); // Ã¼ï¿½Â¹ï¿½ ï¿½Èºï¿½ï¿½Ì°ï¿½
                 return;
             }
-            if (Input.GetKeyDown(KeyCode.Z)) // µµ³¢Áú ÇÒ¶§¸¶´Ù 1¾¿ °¨¼Ò
+            if (Input.GetKeyDown(KeyCode.Z)) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¶ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             {
                 animator.SetTrigger("isLogging");
                 tree[nowTree].GetComponent<logging>().HP--;
                 tree[nowTree].GetComponent<treeHP>().DecreaseHP();
-                print(tree[nowTree].GetComponent<logging>().HP + " ¹ø ³²¾Ò½À´Ï´Ù.");            
+                print(tree[nowTree].GetComponent<logging>().HP + " ï¿½ï¿½ ï¿½ï¿½ï¿½Ò½ï¿½ï¿½Ï´ï¿½.");            
             }
         }
     }
 
-    private void Fishing() // ³¬½Ã
+    private void Fishing() // ï¿½ï¿½ï¿½ï¿½
     {
         if (isThereWater)
         {
-            if (!nowFishing && Input.GetKeyDown(KeyCode.A)) // AÅ°¸¦ ´©¸£¸é ³¬½Ã ½ÃÀÛ
+            if (!nowFishing && Input.GetKeyDown(KeyCode.A)) // AÅ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             {
-                print("³¬½Ã ½ÃÀÛ");
+                print("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
                 nowFishing = true;
                 animator.SetBool("isFishing", true);
 
             }
 
-            if (nowFishing && Input.GetKeyDown(KeyCode.S)) // SÅ°¸¦ ´©¸£¸é ³¬½Ã Á¾·á
+            if (nowFishing && Input.GetKeyDown(KeyCode.S)) // SÅ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             {
                 nowFishing = false;
                 animator.SetBool("isFishing", false);
-                print("³¬½Ã ³¡ " + fishCount + "¸¶¸® ³¬¾Ò½À´Ï´Ù.");
+                print("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ " + fishCount + "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ò½ï¿½ï¿½Ï´ï¿½.");
             }
 
             if (nowFishing)
             {
-                if (totaltime >= Random.Range(10, 30)) // ¾à 10ÃÊ~30ÃÊ¸¶´Ù ¹°°í±â ³¬À½
+                if (totaltime >= Random.Range(10, 30)) // ï¿½ï¿½ 10ï¿½ï¿½~30ï¿½Ê¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 {
-                    totaltime = 0; // ½Ã°£ ÃÊ±âÈ­
+                    totaltime = 0; // ï¿½Ã°ï¿½ ï¿½Ê±ï¿½È­
                     random = Random.Range(0, 5);
                     animator.SetTrigger("getFish");
-                    print(fish[random] + " ¹°°í±â¸¦ ³¬¾Ò½À´Ï´Ù!");
+                    print(fish[random] + " ï¿½ï¿½ï¿½ï¿½ï¿½â¸¦ ï¿½ï¿½ï¿½Ò½ï¿½ï¿½Ï´ï¿½!");
                     fishCount++;
                 }
 
@@ -235,7 +268,7 @@ public class player_controller : MonoBehaviourPunCallbacks
         if (isThereFarm)
         {
             if (Input.GetKeyDown(KeyCode.S))
-            { // SÅ° ´­·¯¼­ ¾¾¾Ñ ½É±â
+            { // SÅ° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½É±ï¿½
                 if (ptCount > 2)
                     return;
                 plantGenerator.GetComponent<plantGenerator>().Planting();
@@ -243,17 +276,17 @@ public class player_controller : MonoBehaviourPunCallbacks
                 ptCount++;
             }
 
-            if (Input.GetKeyDown(KeyCode.D)) // DÅ° ´­·¯¼­ ¹° ÁÖ±â
+            if (Input.GetKeyDown(KeyCode.D)) // DÅ° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö±ï¿½
             { 
                 animator.SetTrigger("isWatering");
-                if (isTherePlant)  // ¹ç¿¡ ½Ä¹°ÀÌ ÀÖ´Ù¸é »óÈ£ÀÛ¿ë
+                if (isTherePlant)  // ï¿½ç¿¡ ï¿½Ä¹ï¿½ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½ ï¿½ï¿½È£ï¿½Û¿ï¿½
                     Watering();
             }
 
-            if (Input.GetKeyDown(KeyCode.X)) // XÅ°·Î ¼öÈ®ÇÏ±â
+            if (Input.GetKeyDown(KeyCode.X)) // XÅ°ï¿½ï¿½ ï¿½ï¿½È®ï¿½Ï±ï¿½
             {
                 animator.SetTrigger("handUp");
-                if (isTherePlant)  // ¹ç¿¡ ½Ä¹°ÀÌ ÀÖ´Ù¸é »óÈ£ÀÛ¿ë
+                if (isTherePlant)  // ï¿½ç¿¡ ï¿½Ä¹ï¿½ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½ ï¿½ï¿½È£ï¿½Û¿ï¿½
                     Harvest();
             }
         }
@@ -261,14 +294,14 @@ public class player_controller : MonoBehaviourPunCallbacks
 
     private void Watering()
     {
-        print("½Ä¹°¿¡ ¹°À» ÁÝ´Ï´Ù.");
-            if (plants[nowPlant].GetComponent<growPlant>().droop == true) // ÇÑ¹ø ½Ãµç ÈÄ¿¡ ¼ºÀåÇÔ
+        print("ï¿½Ä¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ý´Ï´ï¿½.");
+            if (plants[nowPlant].GetComponent<growPlant>().droop == true) // ï¿½Ñ¹ï¿½ ï¿½Ãµï¿½ ï¿½Ä¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             {
                 plants[nowPlant].GetComponent<growPlant>().droop = false;
                 plants[nowPlant].GetComponent<Animator>().SetBool("droop", false);
                 plants[nowPlant].GetComponent<growPlant>().growReady = true;
                 if (plants[nowPlant].GetComponent<Animator>().GetBool("growReady"))
-                { // ¼ºÀå
+                { // ï¿½ï¿½ï¿½ï¿½
                     plants[nowPlant].GetComponent<Animator>().SetInteger("level", ++plants[nowPlant].GetComponent<growPlant>().level);
                     plants[nowPlant].GetComponent<Animator>().SetBool("growReady", false);
                 }
@@ -279,7 +312,7 @@ public class player_controller : MonoBehaviourPunCallbacks
 
     private void Harvest()
     {
-            if (plants[nowPlant].GetComponent<growPlant>().level >= 4 && plants[nowPlant].GetComponent<growPlant>().droop == false) // ¼ºÀå ¿Ï·áÀÎ ½Ä¹°Àº ¼öÈ® °¡´É
+            if (plants[nowPlant].GetComponent<growPlant>().level >= 4 && plants[nowPlant].GetComponent<growPlant>().droop == false) // ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½Ä¹ï¿½ï¿½ï¿½ ï¿½ï¿½È® ï¿½ï¿½ï¿½ï¿½
             {
                 animator.SetTrigger("handUp");
                 plants[nowPlant].GetComponent<Animator>().SetBool("harvest", true);
