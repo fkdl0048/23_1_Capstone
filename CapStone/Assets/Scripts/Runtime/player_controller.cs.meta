@@ -3,12 +3,7 @@ guid: 980ca1b27d67fec458093f457c2b5bf5
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - tree: {fileID: 8640003830746500335, guid: b93cb9cdf0534d14fb4a82a52504ba57, type: 3}
-  - water: {fileID: 4665600405980510360, guid: c7a2eb54a8234484a9e6da8bc9586a1c, type: 3}
-  - farm: {fileID: 4885880323635103852, guid: e0864bed131a052498421e8ae02c6f52, type: 3}
-  - plantGenerator: {instanceID: 0}
-  - m_PV: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
