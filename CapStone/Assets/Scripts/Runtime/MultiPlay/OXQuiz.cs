@@ -53,11 +53,23 @@ public class OXQuiz : MonoBehaviourPunCallbacks
      public void CheckAnswer(GameObject[] _playerList)
      {   
         foreach (var iter in _playerList){
-            if(iter.GetComponent<player_controller>().m_quizState != m_answer)
+            if (iter == null)
+                break;
+
+            if(iter.GetComponent<player_controller>().m_quizState == m_answer)
+            {
+                Debug.Log("Correct!");
+            }
+            else if(iter.GetComponent<player_controller>().m_quizState == 0)
+            {
+                Debug.Log("Not Participate in");
+            }
+            else
             {
                 iter.transform.position = Vector3.zero;
-                Debug.Log("catch");
+                Debug.Log("Incorrect!");
             }
+
         }
      }
     #endregion
