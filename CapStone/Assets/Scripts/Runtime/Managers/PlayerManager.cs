@@ -20,9 +20,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject m_visitBtnParent;
     [SerializeField] public GameObject m_plazaObject;
     [SerializeField] public GameObject m_houseObject;
-    [SerializeField] private GameObject mainCamera; // ±âÁ¸ Ä«¸Þ¶ó
-    [SerializeField] private GameObject playerCamera; // ÇÃ·¹ÀÌ¾î¸¦ µû¶ó´Ù´Ò Ä«¸Þ¶ó
-    [SerializeField] private GameObject parent; // ÇÃ·¹ÀÌ¾î°¡ »ý¼ºµÇ´Â ºÎ¸ð Æú´õ
+    [SerializeField] private GameObject mainCamera; // ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½
+    [SerializeField] private GameObject playerCamera; // ï¿½Ã·ï¿½ï¿½Ì¾î¸¦ ï¿½ï¿½ï¿½ï¿½Ù´ï¿½ Ä«ï¿½Þ¶ï¿½
+    [SerializeField] private GameObject parent; // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     private GameObject m_isMinePlayer;
     
@@ -48,7 +48,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     public void SpawnPlayer()
     {   
         m_isMinePlayer = PhotonNetwork.Instantiate("Prefabs/Test/player", new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
-        m_isMinePlayer.name = "player(Clone)" + m_playerCount; // Ä«¸Þ¶ó¸¦ À§ÇÑ ÇÃ·¹ÀÌ¾î ±¸ºÐ
+        m_isMinePlayer.name = "player(Clone)" + m_playerCount; // Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½
         m_PV.RPC("SpawnPlayerPhoton", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID);
     }
 
@@ -102,13 +102,13 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         target.name = "player(Clone)" + m_playerCount;
         m_playerList[m_playerCount++] = target;
 
-        GameObject CharacterCamera = Instantiate(playerCamera) as GameObject; // ÇÃ·¹ÀÌ¾î¸¶´Ù Àü¿ë Ä«¸Þ¶ó
-        CharacterCamera.name = "CharacterCamera(Clone)" + (m_playerCount-1); // Ä«¸Þ¶ó ±¸ºÐ
+        GameObject CharacterCamera = Instantiate(playerCamera) as GameObject; // ï¿½Ã·ï¿½ï¿½Ì¾î¸¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½
+        CharacterCamera.name = "CharacterCamera(Clone)" + (m_playerCount-1); // Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½
         CharacterCamera.GetComponent<cameraController>().target = parent.transform.Find("player(Clone)" + (m_playerCount - 1)).gameObject;
 
-        if (target.GetComponent<PhotonView>().IsMine) // ³ªÀÇ Ä«¸Þ¶ó¸¸ ÀÛµ¿
+        if (target.GetComponent<PhotonView>().IsMine) // ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½Ûµï¿½
         { 
-            CharacterCamera.GetComponent<Camera>().depth = 0; // ÇÃ·¹ÀÌ¾î Ä«¸Þ¶ó È°¼ºÈ­
+            CharacterCamera.GetComponent<Camera>().depth = 0; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Ä«ï¿½Þ¶ï¿½ È°ï¿½ï¿½È­
         }
 
 
