@@ -110,8 +110,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         { 
             CharacterCamera.GetComponent<Camera>().depth = 0; // 플레이어 카메라 활성화
         }
-
-
     }
 
     [PunRPC]
