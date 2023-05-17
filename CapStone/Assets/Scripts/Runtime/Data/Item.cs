@@ -1,7 +1,8 @@
+using System;
 using Enums;
 
-public abstract class Item
+public interface Item
 {
-    private ItemType itemType;
-    private int itemPrice;
+    public ItemType ItemType { get; set; }
+    public int ItemPrice { get; set; }
 }
