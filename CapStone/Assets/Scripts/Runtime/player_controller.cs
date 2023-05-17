@@ -5,9 +5,9 @@ using Photon.Pun;
 using Photon.Realtime;
 
 public class player_controller : MonoBehaviourPunCallbacks
-{   
+{
     [SerializeField]
-    private float speed = 5f; // �̵� �ӵ�
+    private float speed = 5f; // 이동 속도
     [SerializeField]
     private GameObject[] tree;
     [SerializeField]
@@ -18,29 +18,28 @@ public class player_controller : MonoBehaviourPunCallbacks
     private GameObject plantGenerator;
 
     private float xMove, yMove;
-    private bool isThereTree = false; // ��ó�� ������ �� �ִ� ������ �ִ���
-    private bool isThereWater = false; // ��ó�� ���ð����� ���� �ִ���
-    private bool isThereFarm = false; // ��ó�� ��簡���� ���� �ִ���
-    private bool isTherePlant = false; // ��ó�� �Ĺ��� �ִ���
+    private bool isThereTree = false; // 근처에 벌목할 수 있는 나무가 있는지
+    private bool isThereWater = false; // 근처에 낚시가능한 물이 있는지
+    private bool isThereFarm = false; // 근처에 농사가능한 땅이 있는지
+    private bool isTherePlant = false; // 근처에 식물이 있는지
 
-    private bool nowFishing = false; // ���� ���� ������
-    private float totaltime = 0.0f; // ���� �ð� ����
-    private int fishCount = 0; // ���� ������ ��
-    private string[] fish = new string[] { "����1", "����2", "����3", "����4", "����5" }; // ������ ����
+    private bool nowFishing = false; // 현재 낚시 중인지
+    private float totaltime = 0.0f; // 낚시 시간 측정
+    private int fishCount = 0; // 잡은 물고기 수
+    private string[] fish = new string[] { "생선1", "생선2", "생선3", "생선4", "생선5" }; // 물고기 종류
     private int random = 0;
-    private int ptCount = 0; // �Ĺ� ����
-    private int nowPlant = -1; // ���� �����ϴ� �Ĺ�
+    private int ptCount = 0; // 식물 개수
+    private int nowPlant = -1; // 현재 관리하는 식물
+    private int nowTree; // 현재 상호작용하는 나무
     private int i;
 
-    private int nowTree; // ���� ��ȣ�ۿ��ϴ� ����
-
     private GameObject[] plants = new GameObject[3];
-    
+
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer sprite;
 
-    //�̹μ� �߰�
+    //이민석 추가
     public PhotonView m_PV;
     public int m_playerPosIndex = -1;
     private GameObject m_oZone;
@@ -59,10 +58,10 @@ public class player_controller : MonoBehaviourPunCallbacks
         //this.farm = grid.transform.Find("farm").gameObject;
         //this.plantGenerator = GameObject.Find("plantGenerator");
 
-        m_PV = this.GetComponent<PhotonView>(); 
+        m_PV = this.GetComponent<PhotonView>();
 
-        //ptCount = 0;
-        
+        ptCount = 0;
+
     }
 
     void Update()
@@ -74,39 +73,33 @@ public class player_controller : MonoBehaviourPunCallbacks
             Fishing();
             Farming();
         }
-        
+
     }
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        for(i = 0; i < tree.Length; i++) {
-            if (collision == tree[i].GetComponent<BoxCollider2D>())
-            { // �ش� ������Ʈ�� �����϶���
-                isThereTree = true;
-                tree[i].transform.Find("Canvas-tree").gameObject.SetActive(true);
-                nowTree = i;
-                break;
-            }
-        }
 
-        for (i = 0; i < water.Length; i++)
-        {
-            if (collision == water[i].GetComponent<BoxCollider2D>()) // �ش� ������Ʈ�� ���϶���
-                isThereWater = true;
-        }
-
-        for (i = 0; i < farm.Length; i++)
-        {
-            if (collision == farm[i].GetComponent<BoxCollider2D>()) // �ش� ������Ʈ�� �����϶���
-                isThereFarm = true;
-        //if (collision == tree.GetComponent<BoxCollider2D>()) // �ش� ������Ʈ�� �����϶���
+        //for (i = 0; i < tree.Length; i++)
+        //{
+        //if (collision == tree[i].GetComponent<BoxCollider2D>()){ // 해당 오브젝트가 나무일때만
+        //    nowTree = i;
+        //    tree[i].transform.Find("Canvas-tree").gameObject.SetActive(true);
         //    isThereTree = true;
+        //    return;
+        //}
+        //}
 
-        //if (collision == water.GetComponent<BoxCollider2D>()) // �ش� ������Ʈ�� ���϶���
+        //for (i = 0; i < water.Length; i++)
+        //{
+        //if (collision == water[i].GetComponent<BoxCollider2D>()) // 해당 오브젝트가 물일때만
         //    isThereWater = true;
+        //}
 
-        //if (collision == farm.GetComponent<BoxCollider2D>()) // �ش� ������Ʈ�� �����϶���
+        //for (i = 0; i < farm.Length; i++)
+        //{
+        //if (collision == farm[i].GetComponent<BoxCollider2D>()) // 해당 오브젝트가 농장일때만
         //    isThereFarm = true;
+        //}
 
         if (collision.gameObject.name == "OZone")
         {
@@ -118,7 +111,7 @@ public class player_controller : MonoBehaviourPunCallbacks
 
         }
 
-        for (i = 0; i < ptCount; i++) // �ش� ������Ʈ�� �Ĺ��϶���
+        for (int i = 0; i < ptCount; i++) // 해당 오브젝트가 식물일때만
         {
             if (plants[i] != null && collision == plants[i].GetComponent<BoxCollider2D>())
             {
@@ -128,51 +121,42 @@ public class player_controller : MonoBehaviourPunCallbacks
         }
     }
 
-    void OnTriggerExit2D(Collider2D collision) // ������Ʈ���� �־����� ��ȣ�ۿ� �Ұ�
+    void OnTriggerExit2D(Collider2D collision) // 오브젝트에서 멀어지면 상호작용 불가
     {
-        for (i = 0; i < tree.Length; i++)
-        {
-            if (collision == tree[i].GetComponent<BoxCollider2D>())
-            { // �ش� ������Ʈ�� �����϶���
-                isThereTree = false;
-                tree[i].transform.Find("Canvas-tree").gameObject.SetActive(false);
-            }
-        }
-
-        for (i = 0; i < water.Length; i++)
-        {
-            if (collision == water[i].GetComponent<BoxCollider2D>()) // �ش� ������Ʈ�� ���϶���
-                isThereWater = false;
-        }
-
-        for (i = 0; i < farm.Length; i++)
-        {
-            if (collision == farm[i].GetComponent<BoxCollider2D>()) // �ش� ������Ʈ�� �����϶���
-                isThereFarm = false;
-        //if (collision == tree.GetComponent<BoxCollider2D>()) // �ش� ������Ʈ�� �����϶���
+        //for (i = 0; i < tree.Length; i++)
+        //{
+        //if (collision == tree[i].GetComponent<BoxCollider2D>()) // 해당 오브젝트가 나무일때만
+        //    tree[i].transform.Find("Canvas-tree").gameObject.SetActive(false);
         //    isThereTree = false;
+        //}
 
-        //if (collision == water.GetComponent<BoxCollider2D>()) // �ش� ������Ʈ�� ���϶���
+        //for (i = 0; i < water.Length; i++)
+        //{
+        //if (collision == water[i].GetComponent<BoxCollider2D>()) // 해당 오브젝트가 물일때만
         //    isThereWater = false;
+        //}
 
-        //if (collision == farm.GetComponent<BoxCollider2D>()) // �ش� ������Ʈ�� �����϶���
+        //for (i = 0; i < farm.Length; i++)
+        //{
+        //if (collision == farm[i].GetComponent<BoxCollider2D>()) // 해당 오브젝트가 농장일때만
         //    isThereFarm = false;
+        //}
 
         if (collision.gameObject.name == "OZone" || collision.gameObject.name == "XZone")
         {
             m_quizState = 0;
         }
 
-        for (int i = 0; i < ptCount; i++) // �ش� ������Ʈ�� �Ĺ��϶���
+        for (int i = 0; i < ptCount; i++) // 해당 오브젝트가 식물일때만
         {
             if (plants[i] != null && collision == plants[i].GetComponent<BoxCollider2D>())
                 isTherePlant = false;
         }
     }
 
-    private void Move() // ĳ���� �̵�
+    private void Move() // 캐릭터 이동
     {
-        if (nowFishing) // ���� �������̸� �̵� �Ұ�
+        if (nowFishing) // 현재 낚시중이면 이동 불가
             return;
 
         xMove = 0;
@@ -181,7 +165,7 @@ public class player_controller : MonoBehaviourPunCallbacks
         if (Input.GetKey(KeyCode.RightArrow))
         {
             xMove = speed * Time.deltaTime;
-            m_PV.RPC("FlipXRPC",RpcTarget.AllBuffered,false);
+            m_PV.RPC("FlipXRPC", RpcTarget.AllBuffered, false);
             animator.SetBool("isMoving", true);
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
@@ -201,66 +185,67 @@ public class player_controller : MonoBehaviourPunCallbacks
             animator.SetBool("isMoving", true);
         }
 
-        if (!(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))) // Ű�� ������ ���� ���¸� �̵� �ִϸ��̼� ����
+        if (!(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))) // 키를 누르지 않은 상태면 이동 애니메이션 중지
             animator.SetBool("isMoving", false);
 
         this.transform.Translate(new Vector3(xMove, yMove, 0));
-      
+
     }
 
-    private void Logging() // ����
+    private void Logging() // 벌목
     {
-        if (isThereTree) {
-            if(tree[nowTree].GetComponent<logging>().HP <= 0) // ������ �Ϸ�Ǹ�
+        if (isThereTree)
+        {
+            if (tree[nowTree].GetComponent<logging>().HP <= 0) // 벌목이 완료되면
             {
-                isThereTree = false; // �ൿ ����
-                tree[nowTree].transform.Find("Canvas-tree").gameObject.SetActive(false); // ü�¹� �Ⱥ��̰�
+                isThereTree = false; // 행동 중지
+                tree[nowTree].transform.Find("Canvas-tree").gameObject.SetActive(false); // 체력바 안보이게
                 return;
             }
-            if (Input.GetKeyDown(KeyCode.Z)) // ������ �Ҷ����� 1�� ����
+            if (Input.GetKeyDown(KeyCode.Z)) // 도끼질 할때마다 1씩 감소
             {
                 animator.SetTrigger("isLogging");
                 tree[nowTree].GetComponent<logging>().HP--;
                 tree[nowTree].GetComponent<treeHP>().DecreaseHP();
-                print(tree[nowTree].GetComponent<logging>().HP + " �� ���ҽ��ϴ�.");            
+                print(tree[nowTree].GetComponent<logging>().HP + " 번 남았습니다.");
             }
         }
     }
 
-    private void Fishing() // ����
+    private void Fishing() // 낚시
     {
         if (isThereWater)
         {
-            if (!nowFishing && Input.GetKeyDown(KeyCode.A)) // AŰ�� ������ ���� ����
+            if (!nowFishing && Input.GetKeyDown(KeyCode.A)) // A키를 누르면 낚시 시작
             {
-                print("���� ����");
+                print("낚시 시작");
                 nowFishing = true;
                 animator.SetBool("isFishing", true);
 
             }
 
-            if (nowFishing && Input.GetKeyDown(KeyCode.S)) // SŰ�� ������ ���� ����
+            if (nowFishing && Input.GetKeyDown(KeyCode.S)) // S키를 누르면 낚시 종료
             {
                 nowFishing = false;
                 animator.SetBool("isFishing", false);
-                print("���� �� " + fishCount + "���� ���ҽ��ϴ�.");
+                print("낚시 끝 " + fishCount + "마리 낚았습니다.");
             }
 
             if (nowFishing)
             {
-                if (totaltime >= Random.Range(10, 30)) // �� 10��~30�ʸ��� ������ ����
+                if (totaltime >= Random.Range(10, 30)) // 약 10초~30초마다 물고기 낚음
                 {
-                    totaltime = 0; // �ð� �ʱ�ȭ
+                    totaltime = 0; // 시간 초기화
                     random = Random.Range(0, 5);
                     animator.SetTrigger("getFish");
-                    print(fish[random] + " �����⸦ ���ҽ��ϴ�!");
+                    print(fish[random] + " 물고기를 낚았습니다!");
                     fishCount++;
                 }
 
                 totaltime += Time.deltaTime;
             }
         }
-        
+
     }
 
     private void Farming()
@@ -268,25 +253,25 @@ public class player_controller : MonoBehaviourPunCallbacks
         if (isThereFarm)
         {
             if (Input.GetKeyDown(KeyCode.S))
-            { // SŰ ������ ���� �ɱ�
+            { // S키 눌러서 씨앗 심기
                 if (ptCount > 2)
                     return;
                 plantGenerator.GetComponent<plantGenerator>().Planting();
-                plants[ptCount] = GameObject.Find("plant(Clone)"+ptCount);
+                plants[ptCount] = GameObject.Find("plant(Clone)" + ptCount);
                 ptCount++;
             }
 
-            if (Input.GetKeyDown(KeyCode.D)) // DŰ ������ �� �ֱ�
-            { 
+            if (Input.GetKeyDown(KeyCode.D)) // D키 눌러서 물 주기
+            {
                 animator.SetTrigger("isWatering");
-                if (isTherePlant)  // �翡 �Ĺ��� �ִٸ� ��ȣ�ۿ�
+                if (isTherePlant)  // 밭에 식물이 있다면 상호작용
                     Watering();
             }
 
-            if (Input.GetKeyDown(KeyCode.X)) // XŰ�� ��Ȯ�ϱ�
+            if (Input.GetKeyDown(KeyCode.X)) // X키로 수확하기
             {
                 animator.SetTrigger("handUp");
-                if (isTherePlant)  // �翡 �Ĺ��� �ִٸ� ��ȣ�ۿ�
+                if (isTherePlant)  // 밭에 식물이 있다면 상호작용
                     Harvest();
             }
         }
@@ -294,29 +279,29 @@ public class player_controller : MonoBehaviourPunCallbacks
 
     private void Watering()
     {
-        print("�Ĺ��� ���� �ݴϴ�.");
-            if (plants[nowPlant].GetComponent<growPlant>().droop == true) // �ѹ� �õ� �Ŀ� ������
-            {
-                plants[nowPlant].GetComponent<growPlant>().droop = false;
-                plants[nowPlant].GetComponent<Animator>().SetBool("droop", false);
-                plants[nowPlant].GetComponent<growPlant>().growReady = true;
-                if (plants[nowPlant].GetComponent<Animator>().GetBool("growReady"))
-                { // ����
-                    plants[nowPlant].GetComponent<Animator>().SetInteger("level", ++plants[nowPlant].GetComponent<growPlant>().level);
-                    plants[nowPlant].GetComponent<Animator>().SetBool("growReady", false);
-                }
-                plants[nowPlant].GetComponent<growPlant>().totaltime = 0;
+        print("식물에 물을 줍니다.");
+        if (plants[nowPlant].GetComponent<growPlant>().droop == true) // 한번 시든 후에 성장함
+        {
+            plants[nowPlant].GetComponent<growPlant>().droop = false;
+            plants[nowPlant].GetComponent<Animator>().SetBool("droop", false);
+            plants[nowPlant].GetComponent<growPlant>().growReady = true;
+            if (plants[nowPlant].GetComponent<Animator>().GetBool("growReady"))
+            { // 성장
+                plants[nowPlant].GetComponent<Animator>().SetInteger("level", ++plants[nowPlant].GetComponent<growPlant>().level);
+                plants[nowPlant].GetComponent<Animator>().SetBool("growReady", false);
             }
-        
+            plants[nowPlant].GetComponent<growPlant>().totaltime = 0;
+        }
+
     }
 
     private void Harvest()
     {
-            if (plants[nowPlant].GetComponent<growPlant>().level >= 4 && plants[nowPlant].GetComponent<growPlant>().droop == false) // ���� �Ϸ��� �Ĺ��� ��Ȯ ����
-            {
-                animator.SetTrigger("handUp");
-                plants[nowPlant].GetComponent<Animator>().SetBool("harvest", true);
-            }
+        if (plants[nowPlant].GetComponent<growPlant>().level >= 4 && plants[nowPlant].GetComponent<growPlant>().droop == false) // 성장 완료인 식물은 수확 가능
+        {
+            animator.SetTrigger("handUp");
+            plants[nowPlant].GetComponent<Animator>().SetBool("harvest", true);
+        }
     }
 
     [PunRPC]
@@ -325,6 +310,3 @@ public class player_controller : MonoBehaviourPunCallbacks
         sprite.flipX = flip;
     }
 }
-
-
-
