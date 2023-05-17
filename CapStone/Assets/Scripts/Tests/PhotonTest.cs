@@ -47,7 +47,7 @@ public class PhotonTest : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        print("¼­¹öÁ¢¼Ó¿Ï·á");
+        print("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿Ï·ï¿½");
         PhotonNetwork.LocalPlayer.NickName = m_nickName.text;
     }
 
@@ -56,7 +56,7 @@ public class PhotonTest : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinLobby();
     }
 
-    public override void OnJoinedLobby() => print("·ÎºñÁ¢¼Ó¿Ï·á");
+    public override void OnJoinedLobby() => print("ï¿½Îºï¿½ï¿½ï¿½ï¿½Ó¿Ï·ï¿½");
 
     public void CreatePhotonRoom()
     {
@@ -70,20 +70,20 @@ public class PhotonTest : MonoBehaviourPunCallbacks
 
     public void JoinCreateRoom()
     {
-        PhotonNetwork.JoinOrCreateRoom(m_roomName.text, new RoomOptions { MaxPlayers = 10 }, null);
+        PhotonNetwork.JoinOrCreateRoom("Room1", new RoomOptions { MaxPlayers = 10 }, null);
     }
 
-    public override void OnCreatedRoom() => print("¹æ¸¸µé±â¿Ï·á");
+    public override void OnCreatedRoom() => print("ï¿½æ¸¸ï¿½ï¿½ï¿½Ï·ï¿½");
 
     public override void OnJoinedRoom()
     {
-        print("¹æÂü°¡¿Ï·á");
+        print("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½");
         m_spawnPlayerBtn.gameObject.SetActive(true);   
     }
 
-    public override void OnCreateRoomFailed(short returnCode, string message) => print("¹æ¸¸µé±â½ÇÆÐ");
+    public override void OnCreateRoomFailed(short returnCode, string message) => print("ï¿½æ¸¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 
-    public override void OnJoinRoomFailed(short returnCode, string message) => print("¹æÂü°¡½ÇÆÐ");
+    public override void OnJoinRoomFailed(short returnCode, string message) => print("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
    
 
     #endregion
