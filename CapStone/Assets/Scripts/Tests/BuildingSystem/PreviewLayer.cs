@@ -12,7 +12,7 @@ namespace BuildingSystem
         {
             var coords = _tilemap.WorldToCell(worldCoords);
             _previewRederer.enabled = true;
-            _previewRederer.transform.position = _tilemap.CellToWorld(coords) + _tilemap.cellSize / 2;
+            _previewRederer.transform.position = _tilemap.CellToWorld(coords) + _tilemap.cellSize / 2 + item.TileOffset;
             _previewRederer.sprite = item.PreviewSprite;
             _previewRederer.color = isValid ? new Color(0, 1, 0, 0.5f) : new Color(1, 0, 0, 0.5f);
         }
