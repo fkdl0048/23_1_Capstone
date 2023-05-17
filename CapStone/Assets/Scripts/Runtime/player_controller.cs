@@ -9,11 +9,11 @@ public class player_controller : MonoBehaviourPunCallbacks
     [SerializeField]
     private float speed = 5f; // 이동 속도
     [SerializeField]
-    private GameObject tree;
+    private GameObject[] tree;
     [SerializeField]
-    private GameObject water;
+    private GameObject[] water;
     [SerializeField]
-    private GameObject farm;
+    private GameObject[] farm;
     [SerializeField]
     private GameObject plantGenerator;
 
@@ -30,6 +30,9 @@ public class player_controller : MonoBehaviourPunCallbacks
     private int random = 0;
     private int ptCount = 0; // 식물 개수
     private int nowPlant = -1; // 현재 관리하는 식물
+    private int i;
+
+    private int nowTree; // 현재 상호작용하는 나무
 
     private GameObject[] plants = new GameObject[3];
     
@@ -54,7 +57,7 @@ public class player_controller : MonoBehaviourPunCallbacks
 
         m_PV = this.GetComponent<PhotonView>(); 
 
-        ptCount = 0;
+        //ptCount = 0;
         
     }
 
@@ -72,16 +75,29 @@ public class player_controller : MonoBehaviourPunCallbacks
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision == tree.GetComponent<BoxCollider2D>()) // 해당 오브젝트가 나무일때만
-            isThereTree = true;
+        for(i = 0; i < tree.Length; i++) {
+            if (collision == tree[i].GetComponent<BoxCollider2D>())
+            { // 해당 오브젝트가 나무일때만
+                isThereTree = true;
+                tree[i].transform.Find("Canvas-tree").gameObject.SetActive(true);
+                nowTree = i;
+                break;
+            }
+        }
 
-        if (collision == water.GetComponent<BoxCollider2D>()) // 해당 오브젝트가 물일때만
-            isThereWater = true;
+        for (i = 0; i < water.Length; i++)
+        {
+            if (collision == water[i].GetComponent<BoxCollider2D>()) // 해당 오브젝트가 물일때만
+                isThereWater = true;
+        }
 
-        if (collision == farm.GetComponent<BoxCollider2D>()) // 해당 오브젝트가 농장일때만
-            isThereFarm = true;
+        for (i = 0; i < farm.Length; i++)
+        {
+            if (collision == farm[i].GetComponent<BoxCollider2D>()) // 해당 오브젝트가 농장일때만
+                isThereFarm = true;
+        }
 
-        for (int i = 0; i < ptCount; i++) // 해당 오브젝트가 식물일때만
+        for (i = 0; i < ptCount; i++) // 해당 오브젝트가 식물일때만
         {
             if (plants[i] != null && collision == plants[i].GetComponent<BoxCollider2D>())
             {
@@ -93,14 +109,26 @@ public class player_controller : MonoBehaviourPunCallbacks
 
     void OnTriggerExit2D(Collider2D collision) // 오브젝트에서 멀어지면 상호작용 불가
     {
-        if (collision == tree.GetComponent<BoxCollider2D>()) // 해당 오브젝트가 나무일때만
-            isThereTree = false;
+        for (i = 0; i < tree.Length; i++)
+        {
+            if (collision == tree[i].GetComponent<BoxCollider2D>())
+            { // 해당 오브젝트가 나무일때만
+                isThereTree = false;
+                tree[i].transform.Find("Canvas-tree").gameObject.SetActive(false);
+            }
+        }
 
-        if (collision == water.GetComponent<BoxCollider2D>()) // 해당 오브젝트가 물일때만
-            isThereWater = false;
+        for (i = 0; i < water.Length; i++)
+        {
+            if (collision == water[i].GetComponent<BoxCollider2D>()) // 해당 오브젝트가 물일때만
+                isThereWater = false;
+        }
 
-        if (collision == farm.GetComponent<BoxCollider2D>()) // 해당 오브젝트가 농장일때만
-            isThereFarm = false;
+        for (i = 0; i < farm.Length; i++)
+        {
+            if (collision == farm[i].GetComponent<BoxCollider2D>()) // 해당 오브젝트가 농장일때만
+                isThereFarm = false;
+        }
 
         for (int i = 0; i < ptCount; i++) // 해당 오브젝트가 식물일때만
         {
@@ -150,16 +178,18 @@ public class player_controller : MonoBehaviourPunCallbacks
     private void Logging() // 벌목
     {
         if (isThereTree) {
-            if(tree.GetComponent<logging>().HP <= 0) // 벌목이 완료되면
+            if(tree[nowTree].GetComponent<logging>().HP <= 0) // 벌목이 완료되면
             {
                 isThereTree = false; // 행동 중지
+                tree[nowTree].transform.Find("Canvas-tree").gameObject.SetActive(false); // 체력바 안보이게
                 return;
             }
             if (Input.GetKeyDown(KeyCode.Z)) // 도끼질 할때마다 1씩 감소
             {
                 animator.SetTrigger("isLogging");
-                tree.GetComponent<logging>().HP--;
-                print(tree.GetComponent<logging>().HP + " 번 남았습니다.");            
+                tree[nowTree].GetComponent<logging>().HP--;
+                tree[nowTree].GetComponent<treeHP>().DecreaseHP();
+                print(tree[nowTree].GetComponent<logging>().HP + " 번 남았습니다.");            
             }
         }
     }
