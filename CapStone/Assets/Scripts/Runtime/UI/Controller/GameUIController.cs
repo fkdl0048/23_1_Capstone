@@ -11,7 +11,23 @@ public class GameUIController : MonoBehaviour
     {
         _uiNavigation = new UINavigation();
         _gameUIView = _uiNavigation.UIViewPush("GameView") as GameUIView;
+        
+        _gameUIView.TestButyButton.onClick.AddListener(() =>
+        {
+            GameManager.Data.BuyItem("HardWood");
+        });
+        
+        GameManager.Data.GetPlayerMoney(money => { _gameUIView.MoneyText.text = money.ToString(); });
+
+        GameManager.Data.OnUpdateMoney += () =>
+        {
+            GameManager.Data.GetPlayerMoney(money => { _gameUIView.MoneyText.text = money.ToString(); });
+        };
+        
+        //_gameUIView.MoneyText.text = 
     }
+    
+    
 
     // Update is called once per frame
     void Update()

@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
             
             // 추가적인 매니저 초기화
             _instance._playfab.Init();
+            _instance._ui.Init();
         }
     }
 

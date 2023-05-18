@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -12,18 +13,7 @@ public class DataManager
     private const string VirtualCurrency = "CH";
     private const string CatalogVersion  = "Item";
     
-    // private async Task<int> GetItemPrice(string itmeID)
-    // {
-    //     int price = 0;
-    //     
-    //     var catalogItem = await PlayFabClientAPI.GetCatalogItemsAsync(new GetCatalogItemsRequest());
-    //
-    //     
-    //     Debug.Log("가격 !!" + price);
-    //
-    //     return price;
-    // }
-    
+    public Action OnUpdateMoney;
     // 인벤토리에 아이템 추가, 삭제, 해당 아이템 리스트 가져오기 등등 필요
 
     // 아이템 구매
@@ -40,15 +30,24 @@ public class DataManager
                     price = (int)item.VirtualCurrencyPrices[VirtualCurrency];
                 }
             }
-            
+
             PlayFabClientAPI.PurchaseItem(new PurchaseItemRequest
             {
                 CatalogVersion = CatalogVersion,
                 ItemId = itemID,
                 Price = price,
                 VirtualCurrency = VirtualCurrency,
-            
-            }, LogSuccess, LogFailure);
+
+            }, result =>
+            {
+                var popup = GameManager.UI.UINavigation.PopupPush("DefalutPopup") as DefalutPopup;
+                popup.SetText("구매 성공!");
+                OnUpdateMoney?.Invoke();
+            }, error =>
+            {
+                var popup = GameManager.UI.UINavigation.PopupPush("DefalutPopup") as DefalutPopup;
+                popup.SetText("구매 실패!");
+            });
         }, LogFailure);
     }
     
@@ -65,6 +64,7 @@ public class DataManager
             PlayFabClientAPI.AddUserVirtualCurrency(request, result =>
             {
                 Debug.Log("AddUserVirtualCurrency Success");
+                OnUpdateMoney?.Invoke();
             }, error =>
             {
                 Debug.Log(error.ErrorMessage);
@@ -81,13 +81,44 @@ public class DataManager
             PlayFabClientAPI.SubtractUserVirtualCurrency(request, result =>
             {
                 Debug.Log("SubtractUserVirtualCurrency Success");
+                OnUpdateMoney?.Invoke();
             }, error =>
             {
                 Debug.Log(error.ErrorMessage);
             });
         }
     }
+
+    public void  GetPlayerMoney(Action<int> onGetPlayerMoney)
+    {
+        var request = new GetUserInventoryRequest();
+        PlayFabClientAPI.GetUserInventory(request, result =>
+        {
+            Debug.Log("GetUserInventory Success");
+            onGetPlayerMoney?.Invoke(result.VirtualCurrency[VirtualCurrency]);
+        }, error =>
+        {
+            Debug.Log(error.ErrorMessage);
+            onGetPlayerMoney?.Invoke(0);
+        });
+    }
     
+    public void AddPlayerItem(string itemID)
+    {
+        var request = new AddUserVirtualCurrencyRequest
+        {
+            VirtualCurrency = VirtualCurrency,
+            Amount = 100
+        };
+        PlayFabClientAPI.AddUserVirtualCurrency(request, result =>
+        {
+            Debug.Log("AddUserVirtualCurrency Success");
+        }, error =>
+        {
+            Debug.Log(error.ErrorMessage);
+        });
+    }
+
     private void LogSuccess(PlayFabResultCommon result) {
         var requestName = result.Request.GetType().Name;
         Debug.Log(requestName + " successful");
