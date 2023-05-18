@@ -1,59 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
 using PlayFab.EconomyModels;
+using PlayFab.SharedModels;
 
 public class DataManager
 {
-    private int GetItemPrice(string itmeID)
+    private const string VirtualCurrency = "CH";
+    private const string CatalogVersion  = "Item";
+    
+    // private async Task<int> GetItemPrice(string itmeID)
+    // {
+    //     int price = 0;
+    //     
+    //     var catalogItem = await PlayFabClientAPI.GetCatalogItemsAsync(new GetCatalogItemsRequest());
+    //
+    //     
+    //     Debug.Log("가격 !!" + price);
+    //
+    //     return price;
+    // }
+    
+    // 인벤토리에 아이템 추가, 삭제, 해당 아이템 리스트 가져오기 등등 필요
+
+    // 아이템 구매
+    public void BuyItem(string itemID)
     {
         int price = 0;
         PlayFabClientAPI.GetCatalogItems(new GetCatalogItemsRequest(), result =>
         {
-            Debug.Log($"아이템 이름 : {itmeID}");
             var catalogItem = result.Catalog;
             foreach (var item in catalogItem)
             {
-                if (item.ItemId == itmeID)
+                if (item.ItemId == itemID)
                 {
-                    Debug.Log($"현재 : {item.ItemId }");
-                    price = (int)item.VirtualCurrencyPrices["RM"];
-                    
+                    price = (int)item.VirtualCurrencyPrices[VirtualCurrency];
                 }
             }
-        }, error =>
-        {
-            Debug.Log(error.ErrorMessage);
-        });
-        
-        Debug.Log("가격 !!" + price);
-
-        return price;
+            
+            PlayFabClientAPI.PurchaseItem(new PurchaseItemRequest
+            {
+                CatalogVersion = CatalogVersion,
+                ItemId = itemID,
+                Price = price,
+                VirtualCurrency = VirtualCurrency,
+            
+            }, LogSuccess, LogFailure);
+        }, LogFailure);
     }
-
-    // 아이템 구매
-    public void GetItem(string itemID)
-    {
-        var request = new PurchaseItemRequest
-        {
-            ItemId = itemID,
-            VirtualCurrency = "CH",
-            Price = 10
-        };
-        
-        Debug.Log("Price" + request.Price);
-        Debug.Log("VirtualCurrency" + request.VirtualCurrency);
-        
-        PlayFabClientAPI.PurchaseItem(request, result =>
-        {
-            Debug.Log("PurchaseItem Success");
-        }, error =>
-        {
-            Debug.Log(error.ErrorMessage);
-        });
-    }
+    
     
     public void SetPlayerMoney(int money)
     {
@@ -61,7 +59,7 @@ public class DataManager
         {
             var request = new AddUserVirtualCurrencyRequest
             {
-                VirtualCurrency = "CH",
+                VirtualCurrency = VirtualCurrency,
                 Amount = money
             };
             PlayFabClientAPI.AddUserVirtualCurrency(request, result =>
@@ -76,7 +74,7 @@ public class DataManager
         {
             var request = new SubtractUserVirtualCurrencyRequest
             {
-                VirtualCurrency = "CH",
+                VirtualCurrency = VirtualCurrency,
                 Amount = money
             };
         
@@ -90,5 +88,12 @@ public class DataManager
         }
     }
     
+    private void LogSuccess(PlayFabResultCommon result) {
+        var requestName = result.Request.GetType().Name;
+        Debug.Log(requestName + " successful");
+    }
 
+    void LogFailure(PlayFabError error) {
+        Debug.LogError(error.GenerateErrorReport());
+    }
 }
