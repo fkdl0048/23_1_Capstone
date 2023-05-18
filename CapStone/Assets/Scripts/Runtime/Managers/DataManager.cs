@@ -40,7 +40,7 @@ public class DataManager
         {
             ItemId = itemID,
             VirtualCurrency = "CH",
-            Price = GetItemPrice(itemID)
+            Price = 10
         };
         
         Debug.Log("Price" + request.Price);
@@ -54,4 +54,41 @@ public class DataManager
             Debug.Log(error.ErrorMessage);
         });
     }
+    
+    public void SetPlayerMoney(int money)
+    {
+        if (money >= 0)
+        {
+            var request = new AddUserVirtualCurrencyRequest
+            {
+                VirtualCurrency = "CH",
+                Amount = money
+            };
+            PlayFabClientAPI.AddUserVirtualCurrency(request, result =>
+            {
+                Debug.Log("AddUserVirtualCurrency Success");
+            }, error =>
+            {
+                Debug.Log(error.ErrorMessage);
+            });
+        }
+        else
+        {
+            var request = new SubtractUserVirtualCurrencyRequest
+            {
+                VirtualCurrency = "CH",
+                Amount = money
+            };
+        
+            PlayFabClientAPI.SubtractUserVirtualCurrency(request, result =>
+            {
+                Debug.Log("SubtractUserVirtualCurrency Success");
+            }, error =>
+            {
+                Debug.Log(error.ErrorMessage);
+            });
+        }
+    }
+    
+
 }

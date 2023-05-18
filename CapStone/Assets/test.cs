@@ -6,7 +6,7 @@ public class test : MonoBehaviour
 {
     public void SetTest()
     {
-        GameManager.Data.GetItem("HardWood");
+        GameManager.Data.SetPlayerMoney(10);
         //GameManager.Data.SetInventoryCustomData("One", null);
     }
 }
