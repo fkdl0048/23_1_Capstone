@@ -65,7 +65,7 @@ public class MainMenuUIController : MonoBehaviour
         PlayFabClientAPI.UpdateUserTitleDisplayName(request,
             result =>
             {
-                MoveGameScene(name);
+                MoveGameScene();
             },
             error =>
             {
@@ -85,7 +85,7 @@ public class MainMenuUIController : MonoBehaviour
         PlayFabClientAPI.LoginWithEmailAddress(request,
             result =>
             {
-                MoveGameScene(request.TitleId);
+                MoveGameScene();
             }, error =>
             {
                 var popup = _uiNavigation.PopupPush("DefalutPopup") as DefalutPopup;
@@ -93,11 +93,8 @@ public class MainMenuUIController : MonoBehaviour
             });
     }
     
-    private void MoveGameScene(string titleId)
+    private void MoveGameScene()
     {
-        PhotonTest test = new PhotonTest();
-        
-        test.LoginToPhotonServer(titleId);
-        SceneManager.LoadScene("PUN Test");
+        SceneManager.LoadScene("Game");
     }
 }

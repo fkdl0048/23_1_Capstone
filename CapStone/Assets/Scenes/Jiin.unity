@@ -379,6 +379,30 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+--- !u!114 &1282441105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282441086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f20b4456c6326a47a847843d99e4f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  tree:
+  - {fileID: 439169740}
+  - {fileID: 711142529}
+  water:
+  - {fileID: 1261035419}
+  farm:
+  - {fileID: 2042056475}
+  plantGenerator: {fileID: 454509476}
+  m_PV: {fileID: 0}
+  m_playerPosIndex: -1
+  m_quizState: 0
 --- !u!1 &1390717504
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,6 +556,10 @@ PrefabInstance:
       propertyPath: water
       value: 
       objectReference: {fileID: 1261035419}
+    - target: {fileID: 3065658868161202310, guid: 8998ea0757b05cc49b51fe64577d4a85, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3065658868161202310, guid: 8998ea0757b05cc49b51fe64577d4a85, type: 3}
       propertyPath: plantGenerator
       value: 
