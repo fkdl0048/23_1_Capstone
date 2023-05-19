@@ -7,6 +7,6 @@ public class test : MonoBehaviour
     public void SetTest()
     {
         //GameManager.Data.SetPlayerMoney(10);
-        GameManager.Data.BuyItem("HardWood");
+        GameManager.Data.AddPlayerItem("Fish");
     }
 }

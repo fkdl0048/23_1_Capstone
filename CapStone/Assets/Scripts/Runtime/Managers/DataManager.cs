@@ -1,11 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
-using PlayFab.EconomyModels;
 using PlayFab.SharedModels;
 
 public class DataManager
@@ -15,6 +11,7 @@ public class DataManager
     
     public Action OnUpdateMoney;
     // 인벤토리에 아이템 추가, 삭제, 해당 아이템 리스트 가져오기 등등 필요
+    // 파는거, 
 
     // 아이템 구매
     public void BuyItem(string itemID)
@@ -105,18 +102,35 @@ public class DataManager
     
     public void AddPlayerItem(string itemID)
     {
-        var request = new AddUserVirtualCurrencyRequest
+        int price = 0;
+        PlayFabClientAPI.GetCatalogItems(new GetCatalogItemsRequest(), result =>
         {
-            VirtualCurrency = VirtualCurrency,
-            Amount = 100
-        };
-        PlayFabClientAPI.AddUserVirtualCurrency(request, result =>
-        {
-            Debug.Log("AddUserVirtualCurrency Success");
-        }, error =>
-        {
-            Debug.Log(error.ErrorMessage);
-        });
+            var catalogItem = result.Catalog;
+            foreach (var item in catalogItem)
+            {
+                if (item.ItemId == itemID)
+                {
+                    price = (int)item.VirtualCurrencyPrices[VirtualCurrency];
+                }
+            }
+            
+            SetPlayerMoney(price);
+
+            PlayFabClientAPI.PurchaseItem(new PurchaseItemRequest
+            {
+                CatalogVersion = CatalogVersion,
+                ItemId = itemID,
+                Price = price,
+                VirtualCurrency = VirtualCurrency,
+
+            }, result =>
+            {
+                Debug.Log($"GetItem {result.GetType()}");
+            }, error =>
+            {
+                Debug.Log(error.ErrorMessage);
+            });
+        }, LogFailure);
     }
 
     private void LogSuccess(PlayFabResultCommon result) {
