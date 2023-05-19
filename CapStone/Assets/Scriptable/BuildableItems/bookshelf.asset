@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6fe74757f5ba42f399bfb6524be2652, type: 3}
-  m_Name: roof
+  m_Name: bookshelf
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: roof
-  <Tile>k__BackingField: {fileID: 0}
+  <Name>k__BackingField: 'bookshelf '
+  <Tile>k__BackingField: {fileID: 11400000, guid: bb5fa013ae24a49d9937a578098d0f95, type: 2}
   <TileOffset>k__BackingField: {x: 0, y: 0, z: 0}
-  <PreviewSprite>k__BackingField: {fileID: -664422443, guid: 833514ac1d28b31488bc2f03a1a167a7, type: 3}
-  <GameObject>k__BackingField: {fileID: 1532759991141541728, guid: 3b6aacf10db6341659a2d8f550e8c5c2, type: 3}
+  <PreviewSprite>k__BackingField: {fileID: -963789598, guid: 652221c54a5f164439aab36b381cc2e3, type: 3}
+  <GameObject>k__BackingField: {fileID: 0}
   <UseCustomCollisionSpace>k__BackingField: 1
   <CollisionSpace>k__BackingField:
     x: 0
     y: 0
-    width: 5
-    height: 5
+    width: 1
+    height: 1
   <ItemType>k__BackingField: 1
   <ItemPrice>k__BackingField: 100
