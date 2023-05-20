@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
@@ -10,6 +11,7 @@ public class PhotonTest : MonoBehaviourPunCallbacks
 {
     #region PrivateVariables
 
+    private string m_playerName = "random";
     #endregion
 
     #region Protected Variables
@@ -33,29 +35,35 @@ public class PhotonTest : MonoBehaviourPunCallbacks
 
     }
 
-    public void LoginToPhotonServer()
+    public async void LoginToPhotonServer(string _playerName)
     {
-        ConnectToServer();
-        JoinLobby();
-        JoinCreateRoom();
+        m_playerName = _playerName;
+        await ConnectToServer();
+        await Task.Delay(1000);
+        await JoinLobby();
+        await Task.Delay(1000);
+        await JoinCreateRoom();
         
-        Debug.Log("Check");
     }
 
-    public void ConnectToServer()
+    public Task ConnectToServer()
     {
         PhotonNetwork.ConnectUsingSettings();
+
+        return Task.Delay(1000);
     }
 
     public override void OnConnectedToMaster()
     {
         print("�������ӿϷ�");
-        PhotonNetwork.LocalPlayer.NickName = m_nickName.text;
+        PhotonNetwork.LocalPlayer.NickName = m_playerName;
     }
 
-    public void JoinLobby()
+    public Task JoinLobby()
     {
         PhotonNetwork.JoinLobby();
+        
+        return Task.Delay(1000);
     }
 
     public override void OnJoinedLobby() => print("�κ����ӿϷ�");
@@ -70,9 +78,11 @@ public class PhotonTest : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinRoom(m_roomName.text);
     }
 
-    public void JoinCreateRoom()
+    public Task JoinCreateRoom()
     {
-        PhotonNetwork.JoinOrCreateRoom(m_roomName.text, new RoomOptions { MaxPlayers = 10 }, null);
+        PhotonNetwork.JoinOrCreateRoom("Room1", new RoomOptions { MaxPlayers = 10 }, null);
+        
+        return Task.Delay(1000);
     }
 
     public override void OnCreatedRoom() => print("�游���Ϸ�");

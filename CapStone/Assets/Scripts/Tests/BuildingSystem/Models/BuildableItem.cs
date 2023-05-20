@@ -1,3 +1,4 @@
+using Enums;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -5,7 +6,7 @@ namespace BuildingSystem.Models
 {
     [CreateAssetMenu(menuName = "Building/New Building Item", fileName = "New Buildable Item")]
 
-    public class BuildableItem : ScriptableObject
+    public class BuildableItem : ScriptableObject, Item
     {
         [field: SerializeField]
         public string Name { get; private set; }
@@ -26,5 +27,10 @@ namespace BuildingSystem.Models
         [field: SerializeField]
         public RectInt CollisionSpace { get; private set; }
         
+        [field: SerializeField]
+        public ItemType ItemType { get; set; }
+        
+        [field: SerializeField]
+        public int ItemPrice { get; set; }
     }
 }

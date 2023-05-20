@@ -256,11 +256,12 @@ MonoBehaviour:
   m_playerListParent: {fileID: 328876949}
   m_playerList: []
   m_PV: {fileID: 0}
-  m_visitBtn: {fileID: 4255872102735090496, guid: dcd9f167832abe84199d6a3bfdee4231, type: 3}
+  m_visitBtn: {fileID: 87524541539594571, guid: be498cbef657b4ef9b7bb15ad23b0591, type: 3}
   m_visitBtnParent: {fileID: 2091871747}
   m_plazaObject: {fileID: 1630563836}
   m_houseObject: {fileID: 891113955}
   mainCamera: {fileID: 789921095}
+  playerCamera: {fileID: 1632750263909397188, guid: 0eeaed3d394a02249afbc680b9ad4b38, type: 3}
   parent: {fileID: 328876949}
 --- !u!114 &23077721
 MonoBehaviour:
