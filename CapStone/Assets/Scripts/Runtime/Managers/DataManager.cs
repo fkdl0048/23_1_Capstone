@@ -173,7 +173,7 @@ public class DataManager
     }
     
     // 인벤 가져오기
-    public void GetPlayerItem(Action<GetUserInventoryResult> onGetPlayerItem)
+    public void GetPlayerItems(Action<GetUserInventoryResult> onGetPlayerItem)
     {
         var request = new GetUserInventoryRequest();
         PlayFabClientAPI.GetUserInventory(request, result =>
@@ -186,4 +186,5 @@ public class DataManager
             onGetPlayerItem?.Invoke(null);
         });
     }
+    
 }

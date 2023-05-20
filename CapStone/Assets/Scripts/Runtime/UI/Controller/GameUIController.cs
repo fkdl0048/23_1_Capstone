@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using PlayFab;
+using PlayFab.ClientModels;
 using UnityEngine;
 
 public class GameUIController : MonoBehaviour
@@ -29,7 +31,11 @@ public class GameUIController : MonoBehaviour
             GameManager.Data.GetPlayerMoney(money => { _gameUIView.MoneyText.text = money.ToString(); });
         };
         
-        //_gameUIView.MoneyText.text = 
+        
+        PlayFabClientAPI.GetPlayerProfile(new GetPlayerProfileRequest(), result =>
+        {
+            _gameUIView.CharacterName.text = result.PlayerProfile.DisplayName;
+        }, error => Debug.LogWarning("불러오기 실패"));
     }
     
     
@@ -37,6 +43,9 @@ public class GameUIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            var popup = GameManager.UI.UINavigation.PopupPush("InventoryPopup") as InventoryPopup;
+        }
     }
 }

@@ -9,12 +9,14 @@ public class GameUIView : UIView
     [SerializeField] private Button _testButyButton;
     [SerializeField] private Button _testsellButton;
     [SerializeField] private TextMeshProUGUI _moneyText;
+    [SerializeField] private TextMeshProUGUI _CharacterName;
     
     // Start is called before the first frame update
     
     public Button TestButyButton => _testButyButton;
     public Button TestSellButton => _testsellButton;
     public TextMeshProUGUI MoneyText => _moneyText;
+    public TextMeshProUGUI CharacterName => _CharacterName;
     public override void Show()
     {
         base.Show();
