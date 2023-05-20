@@ -10,8 +10,6 @@ public class DataManager
     private const string CatalogVersion  = "Item";
     
     public Action OnUpdateMoney;
-    // 인벤토리에 아이템 추가, 삭제, 해당 아이템 리스트 가져오기 등등 필요
-    // 파는거, 
 
     // 아이템 구매
     public void BuyItem(string itemID)
@@ -48,8 +46,42 @@ public class DataManager
         }, LogFailure);
     }
     
-    
-    public void SetPlayerMoney(int money)
+    // 아이템 판매
+    public void SellItem(string itemID)
+    {
+        string itemInstanceId = null;
+        int price = 0;
+        PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest(), result =>
+        {
+            var inventory = result.Inventory;
+            foreach (var item in inventory)
+            {
+                if (item.ItemId == itemID)
+                {
+                    itemInstanceId = item.ItemInstanceId;
+                    price = (int)item.UnitPrice;
+                }
+            }
+            
+            var request = new ConsumeItemRequest() {ConsumeCount = 1, ItemInstanceId = itemInstanceId};
+            PlayFabClientAPI.ConsumeItem(request, result =>
+            {
+                SetPlayerMoney(price);
+                
+                var popup = GameManager.UI.UINavigation.PopupPush("DefalutPopup") as DefalutPopup;
+                popup.SetText("판매 성공!");
+                OnUpdateMoney?.Invoke();
+            }, error =>
+            {
+                var popup = GameManager.UI.UINavigation.PopupPush("DefalutPopup") as DefalutPopup;
+                popup.SetText("판매 실패!");
+            });
+            
+        }, LogFailure);
+    }
+
+
+    private void SetPlayerMoney(int money)
     {
         if (money >= 0)
         {
@@ -86,7 +118,7 @@ public class DataManager
         }
     }
 
-    public void  GetPlayerMoney(Action<int> onGetPlayerMoney)
+    public void GetPlayerMoney(Action<int> onGetPlayerMoney)
     {
         var request = new GetUserInventoryRequest();
         PlayFabClientAPI.GetUserInventory(request, result =>
@@ -126,10 +158,8 @@ public class DataManager
             }, result =>
             {
                 Debug.Log($"GetItem {result.GetType()}");
-            }, error =>
-            {
-                Debug.Log(error.ErrorMessage);
-            });
+            },
+            LogFailure);
         }, LogFailure);
     }
 
@@ -140,5 +170,20 @@ public class DataManager
 
     void LogFailure(PlayFabError error) {
         Debug.LogError(error.GenerateErrorReport());
+    }
+    
+    // 인벤 가져오기
+    public void GetPlayerItem(Action<GetUserInventoryResult> onGetPlayerItem)
+    {
+        var request = new GetUserInventoryRequest();
+        PlayFabClientAPI.GetUserInventory(request, result =>
+        {
+            Debug.Log("GetUserInventory Success");
+            onGetPlayerItem?.Invoke(result);
+        }, error =>
+        {
+            Debug.Log(error.ErrorMessage);
+            onGetPlayerItem?.Invoke(null);
+        });
     }
 }

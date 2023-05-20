@@ -17,6 +17,11 @@ public class GameUIController : MonoBehaviour
             GameManager.Data.BuyItem("HardWood");
         });
         
+        _gameUIView.TestSellButton.onClick.AddListener(() =>
+        {
+            GameManager.Data.SellItem("Fish");
+        });
+        
         GameManager.Data.GetPlayerMoney(money => { _gameUIView.MoneyText.text = money.ToString(); });
 
         GameManager.Data.OnUpdateMoney += () =>
