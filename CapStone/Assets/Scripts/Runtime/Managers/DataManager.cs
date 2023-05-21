@@ -66,10 +66,10 @@ public class DataManager
             var request = new ConsumeItemRequest() {ConsumeCount = 1, ItemInstanceId = itemInstanceId};
             PlayFabClientAPI.ConsumeItem(request, result =>
             {
-                SetPlayerMoney(price);
-                
+
                 var popup = GameManager.UI.UINavigation.PopupPush("DefalutPopup") as DefalutPopup;
                 popup.SetText("판매 성공!");
+                SetPlayerMoney(price);
                 OnUpdateMoney?.Invoke();
             }, error =>
             {
