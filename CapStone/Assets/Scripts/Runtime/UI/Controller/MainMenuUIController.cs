@@ -10,7 +10,6 @@ public class MainMenuUIController : MonoBehaviour
     
     private void Start()
     {
-        // initialize the UI Navigation
         _uiNavigation = new UINavigation();
         _mainMenuView = _uiNavigation.UIViewPush("MainMenuView") as MainMenuUIView;
         

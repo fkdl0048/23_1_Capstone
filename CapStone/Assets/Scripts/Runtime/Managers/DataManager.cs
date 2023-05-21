@@ -175,8 +175,7 @@ public class DataManager
     // 인벤 가져오기
     public void GetPlayerItems(Action<GetUserInventoryResult> onGetPlayerItem)
     {
-        var request = new GetUserInventoryRequest();
-        PlayFabClientAPI.GetUserInventory(request, result =>
+        PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest(), result =>
         {
             Debug.Log("GetUserInventory Success");
             onGetPlayerItem?.Invoke(result);
