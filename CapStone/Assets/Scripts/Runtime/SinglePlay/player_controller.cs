@@ -9,14 +9,12 @@ public class player_controller : MonoBehaviourPunCallbacks
     [SerializeField]
     private float speed = 5f; // 이동 속도
     [SerializeField]
-    private GameObject[] tree;
+    private GameObject tree;
     [SerializeField]
-    private GameObject[] water;
+    private GameObject water;
     [SerializeField]
-    private GameObject[] farm;
-    [SerializeField]
-    private GameObject plantGenerator;
-
+    private GameObject farm;
+   
     private float xMove, yMove;
     private bool isThereTree = false; // 근처에 벌목할 수 있는 나무가 있는지
     private bool isThereWater = false; // 근처에 낚시가능한 물이 있는지
@@ -28,12 +26,10 @@ public class player_controller : MonoBehaviourPunCallbacks
     private int fishCount = 0; // 잡은 물고기 수
     private string[] fish = new string[] { "생선1", "생선2", "생선3", "생선4", "생선5" }; // 물고기 종류
     private int random = 0;
-    private int ptCount = 0; // 식물 개수
     private int nowPlant = -1; // 현재 관리하는 식물
-    private int nowTree; // 현재 상호작용하는 나무
-    private int i;
+    private GameObject[] plants;
 
-    private GameObject[] plants = new GameObject[3];
+
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -52,15 +48,9 @@ public class player_controller : MonoBehaviourPunCallbacks
         rb = this.GetComponent<Rigidbody2D>();
         sprite = this.GetComponent<SpriteRenderer>();
         animator = this.GetComponent<Animator>();
-        //this.tree = GameObject.Find("tree");
-        //this.grid = GameObject.Find("Grid");
-        //this.water = grid.transform.Find("water").gameObject;
-        //this.farm = grid.transform.Find("farm").gameObject;
-        //this.plantGenerator = GameObject.Find("plantGenerator");
-
         m_PV = this.GetComponent<PhotonView>();
 
-        ptCount = 0;
+
 
     }
 
@@ -79,27 +69,25 @@ public class player_controller : MonoBehaviourPunCallbacks
     void OnTriggerStay2D(Collider2D collision)
     {
 
-        //for (i = 0; i < tree.Length; i++)
-        //{
-        //if (collision == tree[i].GetComponent<BoxCollider2D>()){ // 해당 오브젝트가 나무일때만
-        //    nowTree = i;
-        //    tree[i].transform.Find("Canvas-tree").gameObject.SetActive(true);
-        //    isThereTree = true;
-        //    return;
-        //}
-        //}
 
-        //for (i = 0; i < water.Length; i++)
-        //{
-        //if (collision == water[i].GetComponent<BoxCollider2D>()) // 해당 오브젝트가 물일때만
-        //    isThereWater = true;
-        //}
+        if (collision.GetComponent<Collider2D>().gameObject.CompareTag("tree")) // 해당 오브젝트가 나무일때만
+        {
+            tree = collision.GetComponent<Collider2D>().gameObject;
+            tree.transform.Find("Canvas-tree").gameObject.SetActive(true);
+            isThereTree = true;
+        }
+   
+        if (collision.GetComponent<Collider2D>().gameObject.CompareTag("water")) // 해당 오브젝트가 물일때만
+                isThereWater = true;
 
-        //for (i = 0; i < farm.Length; i++)
-        //{
-        //if (collision == farm[i].GetComponent<BoxCollider2D>()) // 해당 오브젝트가 농장일때만
-        //    isThereFarm = true;
-        //}
+        if (collision.GetComponent<Collider2D>().gameObject.CompareTag("farm")) // 해당 오브젝트가 농장일때만
+        {
+            farm = collision.GetComponent<Collider2D>().gameObject;
+            this.GetComponent<plantGenerator>().farm = this.farm;
+            this.GetComponent<plantGenerator>().farmSet = true;
+            isThereFarm = true;
+        }
+
 
         if (collision.gameObject.name == "OZone")
         {
@@ -111,50 +99,56 @@ public class player_controller : MonoBehaviourPunCallbacks
 
         }
 
-        for (int i = 0; i < ptCount; i++) // 해당 오브젝트가 식물일때만
+        if (isThereFarm)
         {
-            if (plants[i] != null && collision == plants[i].GetComponent<BoxCollider2D>())
+            for (int i = 0; i < farm.GetComponent<farming>().cnt; i++) // 해당 오브젝트가 식물일때만
             {
-                isTherePlant = true;
-                nowPlant = i;
+                plants = farm.GetComponent<farming>().plants;
+                if (plants[i] != null && collision == plants[i].GetComponent<BoxCollider2D>())
+                {
+                    isTherePlant = true;
+                    nowPlant = i;
+                }
             }
         }
     }
 
     void OnTriggerExit2D(Collider2D collision) // 오브젝트에서 멀어지면 상호작용 불가
     {
-        //for (i = 0; i < tree.Length; i++)
-        //{
-        //if (collision == tree[i].GetComponent<BoxCollider2D>()) // 해당 오브젝트가 나무일때만
-        //    tree[i].transform.Find("Canvas-tree").gameObject.SetActive(false);
-        //    isThereTree = false;
-        //}
 
-        //for (i = 0; i < water.Length; i++)
-        //{
-        //if (collision == water[i].GetComponent<BoxCollider2D>()) // 해당 오브젝트가 물일때만
-        //    isThereWater = false;
-        //}
+        if (collision.GetComponent<Collider2D>().gameObject.CompareTag("tree")) // 해당 오브젝트가 나무일때만
+        {
+            tree.transform.Find("Canvas-tree").gameObject.SetActive(false);
+            isThereTree = false;
+        }
 
-        //for (i = 0; i < farm.Length; i++)
-        //{
-        //if (collision == farm[i].GetComponent<BoxCollider2D>()) // 해당 오브젝트가 농장일때만
-        //    isThereFarm = false;
-        //}
+        if (collision.GetComponent<Collider2D>().gameObject.CompareTag("water")) // 해당 오브젝트가 물일때만
+            isThereWater = false;
+
+
+        if (collision.GetComponent<Collider2D>().gameObject.CompareTag("farm")) // 해당 오브젝트가 농장일때만
+        {
+            isThereFarm = false;
+        }
+
 
         if (collision.gameObject.name == "OZone" || collision.gameObject.name == "XZone")
         {
             m_quizState = 0;
         }
 
-        for (int i = 0; i < ptCount; i++) // 해당 오브젝트가 식물일때만
+        if (isThereFarm)
         {
-            if (plants[i] != null && collision == plants[i].GetComponent<BoxCollider2D>())
-                isTherePlant = false;
+            for (int i = 0; i < farm.GetComponent<farming>().cnt; i++) // 해당 오브젝트가 식물일때만
+            {
+                plants = farm.GetComponent<farming>().plants;
+                if (plants[i] != null && collision == plants[i].GetComponent<BoxCollider2D>())
+                    isTherePlant = false;
+            }
         }
     }
 
-    private void Move() // 캐릭터 이동
+        private void Move() // 캐릭터 이동
     {
         if (nowFishing) // 현재 낚시중이면 이동 불가
             return;
@@ -196,18 +190,17 @@ public class player_controller : MonoBehaviourPunCallbacks
     {
         if (isThereTree)
         {
-            if (tree[nowTree].GetComponent<logging>().HP <= 0) // 벌목이 완료되면
+            if (tree.GetComponent<logging>().HP <= 0) // 벌목이 완료되면
             {
                 isThereTree = false; // 행동 중지
-                tree[nowTree].transform.Find("Canvas-tree").gameObject.SetActive(false); // 체력바 안보이게
+                tree.transform.Find("Canvas-tree").gameObject.SetActive(false); // 체력바 안보이게
                 return;
             }
             if (Input.GetKeyDown(KeyCode.Z)) // 도끼질 할때마다 1씩 감소
             {
                 animator.SetTrigger("isLogging");
-                tree[nowTree].GetComponent<logging>().HP--;
-                tree[nowTree].GetComponent<treeHP>().DecreaseHP();
-                print(tree[nowTree].GetComponent<logging>().HP + " 번 남았습니다.");
+                m_PV.RPC("treeRPC",RpcTarget.AllBuffered);
+                print(tree.GetComponent<logging>().HP + " 번 남았습니다.");
             }
         }
     }
@@ -252,13 +245,13 @@ public class player_controller : MonoBehaviourPunCallbacks
     {
         if (isThereFarm)
         {
+            plants = farm.GetComponent<farming>().plants;
             if (Input.GetKeyDown(KeyCode.S))
             { // S키 눌러서 씨앗 심기
-                if (ptCount > 2)
+                if (farm.GetComponent<farming>().cnt > 2)
                     return;
-                plantGenerator.GetComponent<plantGenerator>().Planting();
-                plants[ptCount] = GameObject.Find("plant(Clone)" + ptCount);
-                ptCount++;
+                print("씨앗을 심었습니다.");
+                m_PV.RPC("plantingRPC", RpcTarget.AllBuffered);
             }
 
             if (Input.GetKeyDown(KeyCode.D)) // D키 눌러서 물 주기
@@ -279,16 +272,18 @@ public class player_controller : MonoBehaviourPunCallbacks
 
     private void Watering()
     {
+        plants = farm.GetComponent<farming>().plants;
         print("식물에 물을 줍니다.");
         if (plants[nowPlant].GetComponent<growPlant>().droop == true) // 한번 시든 후에 성장함
         {
             plants[nowPlant].GetComponent<growPlant>().droop = false;
             plants[nowPlant].GetComponent<Animator>().SetBool("droop", false);
             plants[nowPlant].GetComponent<growPlant>().growReady = true;
-            if (plants[nowPlant].GetComponent<Animator>().GetBool("growReady"))
+            if (plants[nowPlant].GetComponent<growPlant>().growReady)
             { // 성장
-                plants[nowPlant].GetComponent<Animator>().SetInteger("level", ++plants[nowPlant].GetComponent<growPlant>().level);
-                plants[nowPlant].GetComponent<Animator>().SetBool("growReady", false);
+                plants[nowPlant].GetComponent<growPlant>().level++;
+                plants[nowPlant].GetComponent<Animator>().SetInteger("level", plants[nowPlant].GetComponent<growPlant>().level);
+                plants[nowPlant].GetComponent<growPlant>().growReady = false;
             }
             plants[nowPlant].GetComponent<growPlant>().totaltime = 0;
         }
@@ -297,6 +292,7 @@ public class player_controller : MonoBehaviourPunCallbacks
 
     private void Harvest()
     {
+        plants = farm.GetComponent<farming>().plants;
         if (plants[nowPlant].GetComponent<growPlant>().level >= 4 && plants[nowPlant].GetComponent<growPlant>().droop == false) // 성장 완료인 식물은 수확 가능
         {
             animator.SetTrigger("handUp");
@@ -308,5 +304,18 @@ public class player_controller : MonoBehaviourPunCallbacks
     void FlipXRPC(bool flip)
     {
         sprite.flipX = flip;
+    }
+
+    [PunRPC]
+    void treeRPC()
+    {
+        tree.GetComponent<logging>().HP--;
+        tree.GetComponent<treeHP>().DecreaseHP();
+    }
+
+    [PunRPC]
+    void plantingRPC()
+    {
+        this.GetComponent<plantGenerator>().Planting();
     }
 }

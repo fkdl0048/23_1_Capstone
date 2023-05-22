@@ -21,8 +21,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     [SerializeField] public GameObject m_plazaObject;
     [SerializeField] public GameObject m_houseObject;
     [SerializeField] private GameObject mainCamera; // ���� ī�޶�
-    [SerializeField] private GameObject playerCamera; // �÷��̾ ����ٴ� ī�޶�
-    [SerializeField] private GameObject parent; // �÷��̾ �����Ǵ� �θ� ����
+    [SerializeField] private GameObject playerCamera; // �÷��̾ ����ٴ�?ī�޶�
 
     private GameObject m_isMinePlayer;
     
@@ -50,6 +49,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         m_isMinePlayer = PhotonNetwork.Instantiate("Prefabs/Test/player", new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
         m_isMinePlayer.name = "player(Clone)" + m_playerCount; // ī�޶� ���� �÷��̾� ����
         m_PV.RPC("SpawnPlayerPhoton", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID);
+
+        GameObject CharacterCamera = Instantiate(playerCamera) as GameObject; // �÷��̾�� ���� ī�޶�
+        CharacterCamera.GetComponent<cameraController>().target = m_isMinePlayer;
+        CharacterCamera.GetComponent<Camera>().depth = 0; // �÷��̾� ī�޶� Ȱ��ȭ
+        
     }
 
     public void VisitPlayerHouse()
@@ -101,15 +105,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
         target.name = "player(Clone)" + m_playerCount;
         m_playerList[m_playerCount++] = target;
-
-        GameObject CharacterCamera = Instantiate(playerCamera) as GameObject; // �÷��̾�� ���� ī�޶�
-        CharacterCamera.name = "CharacterCamera(Clone)" + (m_playerCount-1); // ī�޶� ����
-        CharacterCamera.GetComponent<cameraController>().target = parent.transform.Find("player(Clone)" + (m_playerCount - 1)).gameObject;
-
-        if (target.GetComponent<PhotonView>().IsMine) // ���� ī�޶� �۵�
-        { 
-            CharacterCamera.GetComponent<Camera>().depth = 0; // �÷��̾� ī�޶� Ȱ��ȭ
-        }
 
 
     }
