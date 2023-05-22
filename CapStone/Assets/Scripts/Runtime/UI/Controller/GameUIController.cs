@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using PlayFab;
+using PlayFab.ClientModels;
 using UnityEngine;
 
 public class GameUIController : MonoBehaviour
@@ -11,11 +13,39 @@ public class GameUIController : MonoBehaviour
     {
         _uiNavigation = new UINavigation();
         _gameUIView = _uiNavigation.UIViewPush("GameView") as GameUIView;
+        
+        _gameUIView.TestButyButton.onClick.AddListener(() =>
+        {
+            GameManager.Data.BuyItem("HardWood");
+        });
+        
+        _gameUIView.TestSellButton.onClick.AddListener(() =>
+        {
+            GameManager.Data.SellItem("Fish");
+        });
+        
+        GameManager.Data.GetPlayerMoney(money => { _gameUIView.MoneyText.text = money.ToString(); });
+
+        GameManager.Data.OnUpdateMoney += () =>
+        {
+            GameManager.Data.GetPlayerMoney(money => { _gameUIView.MoneyText.text = money.ToString(); });
+        };
+        
+        
+        PlayFabClientAPI.GetPlayerProfile(new GetPlayerProfileRequest(), result =>
+        {
+            _gameUIView.CharacterName.text = result.PlayerProfile.DisplayName;
+        }, error => Debug.LogWarning("불러오기 실패"));
     }
+    
+    
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            var popup = GameManager.UI.UINavigation.PopupPush("InventoryPopup") as InventoryPopup;
+        }
     }
 }

@@ -5,6 +5,15 @@ public class UIManager
 {
     private const string UIViewPath = "Prefabs/UI/";
     
+    private UINavigation _uiNavigation;
+    
+    public UINavigation UINavigation => _uiNavigation;
+
+    public void Init()
+    {
+        _uiNavigation = new UINavigation();
+    }
+
     public UIView GetUIView(string uiViewName)
     {
         try
