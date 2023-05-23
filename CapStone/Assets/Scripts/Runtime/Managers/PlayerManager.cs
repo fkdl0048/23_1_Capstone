@@ -32,7 +32,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     {
         m_playerList = new GameObject[20];
         m_PV = GetComponent<PhotonView>();
-        m_visitBtnParent.SetActive(false);
+        //m_visitBtnParent.SetActive(false);
 
     }
 
@@ -47,7 +47,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     public void SpawnPlayer()
     {   
         m_isMinePlayer = PhotonNetwork.Instantiate("Prefabs/Test/player", new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
-        m_isMinePlayer.name = "player(Clone)" + m_playerCount; // ī�޶� ���� �÷��̾� ����
+        m_isMinePlayer.name = "player(Clone)" + m_playerCount;
         m_PV.RPC("SpawnPlayerPhoton", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID);
 
         GameObject CharacterCamera = Instantiate(playerCamera) as GameObject; // �÷��̾�� ���� ī�޶�
