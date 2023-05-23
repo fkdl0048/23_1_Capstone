@@ -15,7 +15,7 @@ MonoBehaviour:
   <Name>k__BackingField: flower
   <Tile>k__BackingField: {fileID: 11400000, guid: e8b02def81176f348b1e9e50165d98a0, type: 2}
   <TileOffset>k__BackingField: {x: 0, y: -0.5, z: 0}
-  <PreviewSprite>k__BackingField: {fileID: 1237688016, guid: 652221c54a5f164439aab36b381cc2e3, type: 3}
+  <PreviewSprite>k__BackingField: {fileID: -29861573, guid: edfc12f9d328a464caeda509c12be3f5, type: 3}
   <GameObject>k__BackingField: {fileID: 0}
   <UseCustomCollisionSpace>k__BackingField: 1
   <CollisionSpace>k__BackingField:

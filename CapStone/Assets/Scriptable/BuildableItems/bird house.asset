@@ -15,7 +15,7 @@ MonoBehaviour:
   <Name>k__BackingField: bird house
   <Tile>k__BackingField: {fileID: 11400000, guid: 9b6fffb0eb4ef124aad345d3de2a2982, type: 2}
   <TileOffset>k__BackingField: {x: 0, y: -0.5, z: 0}
-  <PreviewSprite>k__BackingField: {fileID: 1237688016, guid: 652221c54a5f164439aab36b381cc2e3, type: 3}
+  <PreviewSprite>k__BackingField: {fileID: 589805031, guid: edfc12f9d328a464caeda509c12be3f5, type: 3}
   <GameObject>k__BackingField: {fileID: 0}
   <UseCustomCollisionSpace>k__BackingField: 1
   <CollisionSpace>k__BackingField:

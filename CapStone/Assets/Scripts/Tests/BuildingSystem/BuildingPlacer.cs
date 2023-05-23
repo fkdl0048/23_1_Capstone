@@ -26,6 +26,7 @@ namespace BuildingSystem
             if (!IsMouseWithinBuildableRange()) _previewLayer.ClearPreview();
             if (_constructionLayer == null) return;
             var mousePos = _mouseUser.MouseInWorldPosition;
+            Collider2D collider = Physics2D.OverlapPoint(mousePos);
 
             if (_mouseUser.IsMouseButtonPressed(MouseButton.Right))
             {
@@ -35,9 +36,9 @@ namespace BuildingSystem
 
             var isSpaceEmpty = _constructionLayer.IsEmpty(mousePos,
                 ActiveBuildable.UseCustomCollisionSpace ? ActiveBuildable.CollisionSpace : default);
-            
-            _previewLayer.ShowPreview(ActiveBuildable, mousePos, isSpaceEmpty);
-            if (_mouseUser.IsMouseButtonPressed(MouseButton.Left) && isSpaceEmpty)
+
+            _previewLayer.ShowPreview(ActiveBuildable, mousePos, isSpaceEmpty && collider == null);
+            if (_mouseUser.IsMouseButtonPressed(MouseButton.Left) && isSpaceEmpty && collider == null)
             {
                 _constructionLayer.Build(mousePos, ActiveBuildable);
             }
