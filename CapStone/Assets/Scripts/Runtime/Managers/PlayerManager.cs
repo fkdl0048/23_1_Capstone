@@ -63,7 +63,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     public void CheckAnswer()
     {
-        this.GetComponent<OXQuiz>().CheckAnswer(m_playerList);
+        this.GetComponent<OXQuiz>().StartQuiz(m_playerList);
     }
     #endregion
 

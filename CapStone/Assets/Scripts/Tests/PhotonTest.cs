@@ -43,7 +43,6 @@ public class PhotonTest : MonoBehaviourPunCallbacks
         JoinLobby();
         await Task.Delay(1000);
         JoinCreateRoom();
-        
     }
 
     public void ConnectToServer()
@@ -55,6 +54,7 @@ public class PhotonTest : MonoBehaviourPunCallbacks
     {
         print("�������ӿϷ�");
         PhotonNetwork.LocalPlayer.NickName = m_playerName;
+
     }
 
     public void JoinLobby()
