@@ -38,32 +38,28 @@ public class PhotonTest : MonoBehaviourPunCallbacks
     public async void LoginToPhotonServer(string _playerName)
     {
         m_playerName = _playerName;
-        await ConnectToServer();
+        ConnectToServer();
         await Task.Delay(1000);
-        await JoinLobby();
+        JoinLobby();
         await Task.Delay(1000);
-        await JoinCreateRoom();
-        
+        JoinCreateRoom();
     }
 
-    public Task ConnectToServer()
+    public void ConnectToServer()
     {
         PhotonNetwork.ConnectUsingSettings();
-
-        return Task.Delay(1000);
     }
 
     public override void OnConnectedToMaster()
     {
         print("�������ӿϷ�");
         PhotonNetwork.LocalPlayer.NickName = m_playerName;
+
     }
 
-    public Task JoinLobby()
+    public void JoinLobby()
     {
         PhotonNetwork.JoinLobby();
-        
-        return Task.Delay(1000);
     }
 
     public override void OnJoinedLobby() => print("�κ����ӿϷ�");
@@ -78,11 +74,10 @@ public class PhotonTest : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinRoom(m_roomName.text);
     }
 
-    public Task JoinCreateRoom()
+    public void JoinCreateRoom()
     {
         PhotonNetwork.JoinOrCreateRoom("Room1", new RoomOptions { MaxPlayers = 10 }, null);
-        
-        return Task.Delay(1000);
+
     }
 
     public override void OnCreatedRoom() => print("�游���Ϸ�");
