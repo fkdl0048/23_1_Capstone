@@ -17,6 +17,7 @@ public class OXQuiz : MonoBehaviourPunCallbacks
     private float m_countTime = 5f;
     private bool isRun = false;
     private int m_answer = 1;
+    private GameObject[] m_playerList;
     #endregion
 
     #region PublicMethod
@@ -36,31 +37,32 @@ public class OXQuiz : MonoBehaviourPunCallbacks
             {
                 isRun = false;
                 m_quizTimer.SetActive(false);
-                //CheckAnswer();
+                CheckAnswer();
                 m_countTime = m_limitTime;
             }
         }
     }
 
-    public void StartQuiz()
+    public void StartQuiz(GameObject[] _playerList)
     {
         m_quizTimer.SetActive(true);
         isRun = true;
+        m_playerList = _playerList;
     }
     #endregion
 
     #region PrivateMethod
-     public void CheckAnswer(GameObject[] _playerList)
+     public void CheckAnswer()
      {   
-        foreach (var iter in _playerList){
+        foreach (var iter in m_playerList){
             if (iter == null)
                 break;
 
-            if(iter.GetComponent<player_controller>().m_quizState == m_answer)
+            if (iter.GetComponent<player_controller>().m_quizState == m_answer)
             {
                 Debug.Log("Correct!");
             }
-            else if(iter.GetComponent<player_controller>().m_quizState == 0)
+            else if (iter.GetComponent<player_controller>().m_quizState == 0)
             {
                 Debug.Log("Not Participate in");
             }
@@ -69,7 +71,6 @@ public class OXQuiz : MonoBehaviourPunCallbacks
                 iter.transform.position = Vector3.zero;
                 Debug.Log("Incorrect!");
             }
-
         }
      }
     #endregion

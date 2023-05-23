@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
@@ -10,6 +11,7 @@ public class PhotonTest : MonoBehaviourPunCallbacks
 {
     #region PrivateVariables
 
+    private string m_playerName = "random";
     #endregion
 
     #region Protected Variables
@@ -33,10 +35,13 @@ public class PhotonTest : MonoBehaviourPunCallbacks
 
     }
 
-    public void LoginToPhotonServer()
+    public async void LoginToPhotonServer(string _playerName)
     {
+        m_playerName = _playerName;
         ConnectToServer();
+        await Task.Delay(1000);
         JoinLobby();
+        await Task.Delay(1000);
         JoinCreateRoom();
     }
 
@@ -48,7 +53,8 @@ public class PhotonTest : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         print("�������ӿϷ�");
-        PhotonNetwork.LocalPlayer.NickName = m_nickName.text;
+        PhotonNetwork.LocalPlayer.NickName = m_playerName;
+
     }
 
     public void JoinLobby()
@@ -71,6 +77,7 @@ public class PhotonTest : MonoBehaviourPunCallbacks
     public void JoinCreateRoom()
     {
         PhotonNetwork.JoinOrCreateRoom("Room1", new RoomOptions { MaxPlayers = 10 }, null);
+
     }
 
     public override void OnCreatedRoom() => print("�游���Ϸ�");
