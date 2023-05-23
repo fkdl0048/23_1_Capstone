@@ -25,12 +25,6 @@ public class MainMenuUIController : MonoBehaviour
         });
     }
 
-    private void OnDisable()
-    {
-        _mainMenuView.LoginButton.onClick.RemoveAllListeners();
-        _mainMenuView.RegisterButton.onClick.RemoveAllListeners();
-    }
-    
     private void PlayerRegister(string email, string password)
     {
         var request = new RegisterPlayFabUserRequest
@@ -95,6 +89,22 @@ public class MainMenuUIController : MonoBehaviour
     
     private void MoveGameScene()
     {
+        // temp
+        //SceneManager.LoadScene("PUN Test");
+        
         SceneManager.LoadScene("Game");
+        // PhotonTest _photonTest = FindObjectOfType<PhotonTest>();
+        // _photonTest.LoginToPhotonServer();
+    }
+    
+    private void OnDisable()
+    {
+        _mainMenuView.LoginButton.onClick.RemoveAllListeners();
+        _mainMenuView.RegisterButton.onClick.RemoveAllListeners();
+        //temp
+        // PhotonTest test = new PhotonTest();
+        //
+        // test.LoginToPhotonServer(titleId);
+
     }
 }
