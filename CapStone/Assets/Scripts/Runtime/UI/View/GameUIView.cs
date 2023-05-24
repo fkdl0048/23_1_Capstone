@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameUIView : UIView
 {
+    [SerializeField] private Button _testButyButton;
+    [SerializeField] private Button _testsellButton;
+    [SerializeField] private TextMeshProUGUI _moneyText;
+    [SerializeField] private TextMeshProUGUI _CharacterName;
+    
     // Start is called before the first frame update
-    void Start()
+    
+    public Button TestButyButton => _testButyButton;
+    public Button TestSellButton => _testsellButton;
+    public TextMeshProUGUI MoneyText => _moneyText;
+    public TextMeshProUGUI CharacterName => _CharacterName;
+    public override void Show()
     {
-        
+        base.Show();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Hide()
     {
-        
+        base.Hide();
     }
 }
