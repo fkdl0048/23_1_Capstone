@@ -81,18 +81,24 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     #region PrivateVariables
     private async void ConnectPhotonServer()
     {
+        bool check = true;
+
         ConnectToServer();
 
-        await Task.Delay(1000);
-        JoinLobby();
-        await Task.Delay(1000);
-        CreatePhotonRoom();
+        while (check)
+        {
+            if (PhotonNetwork.IsConnected)
+            {
+                JoinLobby();
+                check = false;
+                Invoke("CreatePhotonRoom", 2f);
+            }
+        }  
     }
 
     private void RequestSpawnPlayer()
     {
         m_playerManager.GetComponent<PlayerManager>().SpawnPlayer();
     }
-
     #endregion
 }
