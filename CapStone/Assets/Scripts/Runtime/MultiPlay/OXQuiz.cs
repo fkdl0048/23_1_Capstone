@@ -22,7 +22,8 @@ public class OXQuiz : MonoBehaviourPunCallbacks
 
     #region PublicMethod
     private void Start()
-    {   
+    {
+        m_quizTimer = Instantiate(Resources.Load("Prefabs/OXQuiz/QuizTimer") as GameObject);
         m_quizTimer.SetActive(false);
     }
 
@@ -73,5 +74,10 @@ public class OXQuiz : MonoBehaviourPunCallbacks
             }
         }
      }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        
+    }
     #endregion
 }

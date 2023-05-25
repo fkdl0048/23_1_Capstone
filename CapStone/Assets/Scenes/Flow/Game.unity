@@ -302,7 +302,8 @@ Transform:
   m_LocalPosition: {x: -13.942614, y: -18.674582, z: 0.057309486}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2171718918908677185}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -708,7 +709,6 @@ MonoBehaviour:
   m_houseObject: {fileID: 592100713}
   mainCamera: {fileID: 254535313}
   playerCamera: {fileID: 1632750263909397188, guid: 0eeaed3d394a02249afbc680b9ad4b38, type: 3}
-  parent: {fileID: 0}
 --- !u!4 &1437572636
 Transform:
   m_ObjectHideFlags: 0
@@ -1029,3 +1029,83 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &2171718918908677184
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 344722702}
+    m_Modifications:
+    - target: {fileID: 2171718918780709279, guid: 83e452b754acb47428eda5e031050e0b, type: 3}
+      propertyPath: m_Name
+      value: OXQuizSign
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171718918780709281, guid: 83e452b754acb47428eda5e031050e0b, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171718918780709281, guid: 83e452b754acb47428eda5e031050e0b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.942614
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171718918780709281, guid: 83e452b754acb47428eda5e031050e0b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 18.674582
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171718918780709281, guid: 83e452b754acb47428eda5e031050e0b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.057309486
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171718918780709281, guid: 83e452b754acb47428eda5e031050e0b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171718918780709281, guid: 83e452b754acb47428eda5e031050e0b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171718918780709281, guid: 83e452b754acb47428eda5e031050e0b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171718918780709281, guid: 83e452b754acb47428eda5e031050e0b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171718918780709281, guid: 83e452b754acb47428eda5e031050e0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171718918780709281, guid: 83e452b754acb47428eda5e031050e0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171718918780709281, guid: 83e452b754acb47428eda5e031050e0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 83e452b754acb47428eda5e031050e0b, type: 3}
+--- !u!4 &2171718918908677185 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2171718918780709281, guid: 83e452b754acb47428eda5e031050e0b, type: 3}
+  m_PrefabInstance: {fileID: 2171718918908677184}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2171718918908677186 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2171718918780709279, guid: 83e452b754acb47428eda5e031050e0b, type: 3}
+  m_PrefabInstance: {fileID: 2171718918908677184}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2171718918908677187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2171718918908677186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfcbad4f6a8a0b647a41848ed9ba8b49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_quizTimer: {fileID: 4291744066273434285, guid: 86bba293861e28b4891e569d684b5a8c, type: 3}
