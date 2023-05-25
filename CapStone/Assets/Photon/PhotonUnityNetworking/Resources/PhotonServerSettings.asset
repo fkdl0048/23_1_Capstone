@@ -43,6 +43,16 @@ MonoBehaviour:
   - SpawnPlayerPhoton
   - UpdatePlayerPosIndex
   - FlipXRPC
+  - treeCut
+  - plantSeed
+  - DroopRPC
+  - growRPC
+  - droopRPC
+  - plantRPC
+  - setPlantGenerator
+  - plantingRPC
+  - treeRPC
+  - timeRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

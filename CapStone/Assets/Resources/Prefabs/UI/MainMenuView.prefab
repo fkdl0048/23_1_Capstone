@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: 4370176471115528858}
   - component: {fileID: 4370176471115528859}
   - component: {fileID: 432821373699028245}
+  - component: {fileID: 8954564072232399063}
   m_Layer: 5
   m_Name: MainMenuView
   m_TagString: Untagged
@@ -387,6 +388,19 @@ MonoBehaviour:
   _passwordInput: {fileID: 4370176470639612064}
   _loginButton: {fileID: 4370176471168290190}
   _registerButton: {fileID: 4370176472051641044}
+--- !u!114 &8954564072232399063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4370176471115528856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378ee0c851a9b8a489ffef23a1d5569c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstInput: {fileID: 4370176472257273081}
 --- !u!1 &4370176471168290188
 GameObject:
   m_ObjectHideFlags: 0
