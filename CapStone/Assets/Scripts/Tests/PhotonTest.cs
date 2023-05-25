@@ -77,7 +77,6 @@ public class PhotonTest : MonoBehaviourPunCallbacks
     public void JoinCreateRoom()
     {
         PhotonNetwork.JoinOrCreateRoom("Room1", new RoomOptions { MaxPlayers = 10 }, null);
-
     }
 
     public override void OnCreatedRoom() => print("�游���Ϸ�");

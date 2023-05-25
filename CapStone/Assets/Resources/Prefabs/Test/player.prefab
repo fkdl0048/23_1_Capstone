@@ -110,6 +110,9 @@ MonoBehaviour:
   farm: {fileID: 0}
   m_PV: {fileID: 0}
   m_playerPosIndex: -1
+  m_oZone: {fileID: 5909083727302821851, guid: 9d7ffffe61fb12543adb84ba3b2c4da0, type: 3}
+  m_xZone: {fileID: 723546125989396982, guid: 2f69280f89b6ee2498207c1748eac858, type: 3}
+  m_oxSign: {fileID: 2171718918780709279, guid: 83e452b754acb47428eda5e031050e0b, type: 3}
   m_quizState: 0
 --- !u!50 &7034751681422510007
 Rigidbody2D:
