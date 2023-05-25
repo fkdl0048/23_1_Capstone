@@ -10,7 +10,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 {
     #region PublicVariables
     public GameObject m_playerListParent;
-    public GameObject[] m_playerList;
+    public static GameObject[] m_playerList;
     public PhotonView m_PV;
     #endregion
 
@@ -22,7 +22,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     [SerializeField] public GameObject m_houseObject;
     [SerializeField] private GameObject mainCamera; // ? ì™?™å ?™ì˜™ ì¹´å ?¨ë°??
     [SerializeField] private GameObject playerCamera; // ? ì‹œë¤„ì˜™? ì‹±?´ë? ? ì™?™å ?™ì˜™?Ÿå ?ì¹´å ?¨ë°??
-
+    [SerializeField] private GameObject m_oxQuiz;
     private GameObject m_isMinePlayer;
     
     #endregion
@@ -53,7 +53,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         GameObject CharacterCamera = Instantiate(playerCamera) as GameObject; // ? ì‹œë¤„ì˜™? ì‹±?´ë§ˆ? ì™??? ì™?™å ?™ì˜™ ì¹´å ?¨ë°??
         CharacterCamera.GetComponent<cameraController>().target = m_isMinePlayer;
         CharacterCamera.GetComponent<Camera>().depth = 0; // ? ì‹œë¤„ì˜™? ì‹±?µì˜™ ì¹´å ?¨ë°???œå ?™ì˜™??
-        
+
+        InitQuiz();
     }
 
     public void VisitPlayerHouse()
@@ -65,9 +66,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         m_PV.RPC("UpdatePlayerPosIndex", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID , int.Parse(clickObj.name));
     }
 
-    public void CheckAnswer()
+    public void InitQuiz()
     {
-        this.GetComponent<OXQuiz>().StartQuiz(m_playerList);
+        m_oxQuiz.GetComponent<OXQuiz>().InitQuiz(m_playerList);
     }
     #endregion
 
