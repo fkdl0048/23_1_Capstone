@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 860735181220740890}
   - component: {fileID: 2509574080173296720}
   - component: {fileID: 2252487515011946635}
+  - component: {fileID: 5636538360110796863}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -104,13 +105,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  tree:
-  - {fileID: 0}
-  water:
-  - {fileID: 0}
-  farm:
-  - {fileID: 0}
-  plantGenerator: {fileID: 0}
+  tree: {fileID: 0}
+  water: {fileID: 0}
+  farm: {fileID: 0}
   m_PV: {fileID: 0}
   m_playerPosIndex: -1
   m_quizState: 0
@@ -248,3 +245,18 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+--- !u!114 &5636538360110796863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6223209397148179325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89afd4ab3675e224b8cfebe6ff1713b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  farm: {fileID: 0}
+  farmSet: 0
+  plant: {fileID: 180996155437069639, guid: c124829877252814babf25edc0674c48, type: 3}
