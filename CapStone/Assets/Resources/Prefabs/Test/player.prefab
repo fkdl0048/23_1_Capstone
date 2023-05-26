@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 860735181220740890}
   - component: {fileID: 2509574080173296720}
   - component: {fileID: 2252487515011946635}
+  - component: {fileID: 7046967290580993812}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -383,9 +384,11 @@ MonoBehaviour:
   tree: {fileID: 0}
   water: {fileID: 0}
   farm: {fileID: 0}
-  plantGenerator: {fileID: 0}
   m_PV: {fileID: 0}
   m_playerPosIndex: -1
+  m_oZone: {fileID: 0}
+  m_xZone: {fileID: 0}
+  m_oxSign: {fileID: 0}
   m_quizState: 0
 --- !u!50 &7034751681422510007
 Rigidbody2D:
@@ -521,6 +524,18 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+--- !u!114 &7046967290580993812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6223209397148179325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126494ae2a10a34499272ed97a6c9f5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8202751423687132901
 GameObject:
   m_ObjectHideFlags: 0
