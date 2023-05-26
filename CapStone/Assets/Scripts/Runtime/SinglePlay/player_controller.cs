@@ -97,7 +97,7 @@ public class player_controller : MonoBehaviourPunCallbacks
 
         if (isThereFarm)
         {
-            for (int i = 0; i < farm.GetComponent<farming>().cnt; i++) // 해당 오브젝트가 식물일때만
+            for (int i = 0; i < farm.GetComponent<farming>().plants.Length; i++) // 해당 오브젝트가 식물일때만
             {
                 plants = farm.GetComponent<farming>().plants;
                 if (plants[i] != null && collision == plants[i].GetComponent<BoxCollider2D>())
@@ -139,7 +139,7 @@ public class player_controller : MonoBehaviourPunCallbacks
 
         if (isThereFarm)
         {
-            for (int i = 0; i < farm.GetComponent<farming>().cnt; i++) // 해당 오브젝트가 식물일때만
+            for (int i = 0; i < farm.GetComponent<farming>().plants.Length; i++) // 해당 오브젝트가 식물일때만
             {
                 plants = farm.GetComponent<farming>().plants;
                 if (plants[i] != null && collision == plants[i].GetComponent<BoxCollider2D>())
@@ -223,7 +223,7 @@ public class player_controller : MonoBehaviourPunCallbacks
     {
         if (isThereWater)
         {
-            if (!nowFishing && Input.GetKeyDown(KeyCode.A)) // A키를 누르면 낚시 시작
+            if (!nowFishing && Input.GetKeyDown(KeyCode.Z)) // A키를 누르면 낚시 시작
             {
                 print("낚시 시작");
                 nowFishing = true;
@@ -260,7 +260,7 @@ public class player_controller : MonoBehaviourPunCallbacks
         if (isThereFarm)
         {
             plants = farm.GetComponent<farming>().plants;
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.Z))
             { // S키 눌러서 씨앗 심기
                 if (farm.GetComponent<farming>().cnt > 2)
                     return;
@@ -268,14 +268,14 @@ public class player_controller : MonoBehaviourPunCallbacks
                 m_PV.RPC("plantingRPC", RpcTarget.AllBuffered);
             }
 
-            if (Input.GetKeyDown(KeyCode.D)) // D키 눌러서 물 주기
+            if (Input.GetKeyDown(KeyCode.A)) // D키 눌러서 물 주기
             {
                 animator.SetTrigger("isWatering");
                 if (isTherePlant)  // 밭에 식물이 있다면 상호작용
                     Watering();
             }
 
-            if (Input.GetKeyDown(KeyCode.X)) // X키로 수확하기
+            if (Input.GetKeyDown(KeyCode.S)) // X키로 수확하기
             {
                 animator.SetTrigger("handUp");
                 if (isTherePlant)  // 밭에 식물이 있다면 상호작용
@@ -287,37 +287,20 @@ public class player_controller : MonoBehaviourPunCallbacks
     private void Watering()
     {
         plants = farm.GetComponent<farming>().plants;
-        print("식물에 물을 줍니다.");
-        if (plants[nowPlant].GetComponent<growPlant>().droop == true) // 한번 시든 후에 성장함
-        {
-            plants[nowPlant].GetComponent<growPlant>().droop = false;
-            plants[nowPlant].GetComponent<Animator>().SetBool("droop", false);
-            plants[nowPlant].GetComponent<growPlant>().growReady = true;
-            if (plants[nowPlant].GetComponent<growPlant>().growReady)
-            { // 성장
-                plants[nowPlant].GetComponent<growPlant>().level++;
-                plants[nowPlant].GetComponent<Animator>().SetInteger("level", plants[nowPlant].GetComponent<growPlant>().level);
-                plants[nowPlant].GetComponent<growPlant>().growReady = false;
-            }
-            plants[nowPlant].GetComponent<growPlant>().totaltime = 0;
-        }
-
+        m_PV.RPC("wateringRPC", RpcTarget.AllBuffered, nowPlant);
     }
 
     private void Harvest()
     {
         plants = farm.GetComponent<farming>().plants;
-        if (plants[nowPlant].GetComponent<growPlant>().level >= 4 && plants[nowPlant].GetComponent<growPlant>().droop == false) // 성장 완료인 식물은 수확 가능
-        {
-            animator.SetTrigger("handUp");
-            plants[nowPlant].GetComponent<Animator>().SetBool("harvest", true);
-        }
+        m_PV.RPC("harvestRPC", RpcTarget.AllBuffered, nowPlant);
     }
 
     [PunRPC]
     void FlipXRPC(bool flip)
     {
-        sprite.flipX = flip;
+        if(sprite != null)
+            sprite.flipX = flip;
     }
 
     [PunRPC]
@@ -331,5 +314,22 @@ public class player_controller : MonoBehaviourPunCallbacks
     void plantingRPC()
     {
         this.GetComponent<plantGenerator>().Planting();
+    }
+
+    [PunRPC]
+    void wateringRPC(int plantIdx)
+    {
+        print("식물에 물을 줍니다.");
+        farm.GetComponent<farming>().nowPlant = plantIdx;
+        farm.GetComponent<farming>().watering();
+    }
+
+    [PunRPC]
+    void harvestRPC(int plantIdx)
+    { 
+        farm.GetComponent<farming>().nowPlant = plantIdx;
+        farm.GetComponent<farming>().harvest();
+        if (plants[nowPlant].GetComponent<growPlant>().level >= 4 && plants[nowPlant].GetComponent<growPlant>().droop == false)
+            farm.GetComponent<farming>().harvest_cnt++;
     }
 }

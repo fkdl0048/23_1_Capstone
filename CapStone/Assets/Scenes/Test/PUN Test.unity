@@ -254,14 +254,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerListParent: {fileID: 328876949}
-  m_playerList: []
   m_PV: {fileID: 0}
   m_visitBtn: {fileID: 87524541539594571, guid: be498cbef657b4ef9b7bb15ad23b0591, type: 3}
   m_visitBtnParent: {fileID: 2091871747}
   m_plazaObject: {fileID: 1630563836}
   m_houseObject: {fileID: 891113955}
   mainCamera: {fileID: 789921095}
-  playerCamera: {fileID: 1632750263909397188, guid: 0eeaed3d394a02249afbc680b9ad4b38, type: 3}
+  m_oxQuiz: {fileID: 2171718918780709279, guid: 83e452b754acb47428eda5e031050e0b, type: 3}
 --- !u!114 &23077721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37677,6 +37676,7 @@ GameObject:
   - component: {fileID: 1436140434}
   - component: {fileID: 1436140433}
   - component: {fileID: 1436140436}
+  - component: {fileID: 1436140437}
   m_Layer: 0
   m_Name: farm
   m_TagString: farm
@@ -37931,6 +37931,30 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  nowPlant: 0
+  PV: {fileID: 0}
+--- !u!114 &1436140437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436140431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 4
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1483064143
 GameObject:
   m_ObjectHideFlags: 0

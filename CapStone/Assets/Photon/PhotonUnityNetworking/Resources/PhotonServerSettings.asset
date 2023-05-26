@@ -54,6 +54,8 @@ MonoBehaviour:
   - treeRPC
   - timeRPC
   - RPC_StartQuiz
+  - harvestRPC
+  - wateringRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

@@ -21,7 +21,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     [SerializeField] public GameObject m_plazaObject;
     [SerializeField] public GameObject m_houseObject;
     [SerializeField] private GameObject mainCamera; // ? ì™?™å ?™ì˜™ ì¹´å ?¨ë°??
-    [SerializeField] private GameObject playerCamera; // ? ì‹œë¤„ì˜™? ì‹±?´ë? ? ì™?™å ?™ì˜™?Ÿå ?ì¹´å ?¨ë°??
     [SerializeField] private GameObject m_oxQuiz;
     private GameObject m_isMinePlayer;
     
@@ -50,11 +49,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         m_isMinePlayer.name = "player(Clone)" + m_playerCount;
         m_PV.RPC("SpawnPlayerPhoton", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID);
 
-        GameObject CharacterCamera = Instantiate(playerCamera) as GameObject; // ? ì‹œë¤„ì˜™? ì‹±?´ë§ˆ? ì™??? ì™?™å ?™ì˜™ ì¹´å ?¨ë°??
-        CharacterCamera.GetComponent<cameraController>().target = m_isMinePlayer;
-        CharacterCamera.GetComponent<Camera>().depth = 0; // ? ì‹œë¤„ì˜™? ì‹±?µì˜™ ì¹´å ?¨ë°???œå ?™ì˜™??
+        mainCamera.GetComponent<cameraController>().target = m_isMinePlayer;
 
-        InitQuiz();
+        //InitQuiz();
     }
 
     public void VisitPlayerHouse()
