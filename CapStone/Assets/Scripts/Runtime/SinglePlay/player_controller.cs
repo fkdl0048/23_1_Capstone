@@ -309,7 +309,10 @@ public class player_controller : MonoBehaviourPunCallbacks
     [PunRPC]
     void FlipXRPC(bool flip)
     {
-        //sprite.flipX = flip;
+        if (sprite == null)
+            return;
+
+        sprite.flipX = flip;
     }
 
     [PunRPC]
