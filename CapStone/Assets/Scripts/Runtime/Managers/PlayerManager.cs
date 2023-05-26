@@ -58,6 +58,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         {
             ShowVisitBtn();
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            ReturnPlaza();
+        }
+
     }
 
     public void SpawnPlayer()
@@ -81,6 +86,14 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         m_houseObject.SetActive(true);
 
         m_PV.RPC("UpdatePlayerPosIndex", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID , int.Parse(clickObj.name));
+    }
+
+    public void ReturnPlaza()
+    {
+        m_plazaObject.SetActive(true);
+        m_houseObject.SetActive(false);
+
+        m_PV.RPC("UpdatePlayerPosIndex", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID, 0);
     }
 
     public void InitQuiz()
