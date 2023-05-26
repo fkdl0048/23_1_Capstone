@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using Unity.VisualScripting;
 
 public class player_controller : MonoBehaviourPunCallbacks
 {
@@ -38,9 +39,9 @@ public class player_controller : MonoBehaviourPunCallbacks
     //이민석 추가
     public PhotonView m_PV;
     public int m_playerPosIndex = -1;
-    private GameObject m_oZone;
-    private GameObject m_xZone;
-
+    [SerializeField] private GameObject m_oZone;
+    [SerializeField] private GameObject m_xZone;
+    [SerializeField] private GameObject m_oxSign;
     public int m_quizState = 0;
 
     void Start()
@@ -49,9 +50,6 @@ public class player_controller : MonoBehaviourPunCallbacks
         sprite = this.GetComponent<SpriteRenderer>();
         animator = this.GetComponent<Animator>();
         m_PV = this.GetComponent<PhotonView>();
-
-
-
     }
 
     void Update()
@@ -68,8 +66,6 @@ public class player_controller : MonoBehaviourPunCallbacks
 
     void OnTriggerStay2D(Collider2D collision)
     {
-
-
         if (collision.GetComponent<Collider2D>().gameObject.CompareTag("tree")) // 해당 오브젝트가 나무일때만
         {
             tree = collision.GetComponent<Collider2D>().gameObject;
@@ -89,11 +85,11 @@ public class player_controller : MonoBehaviourPunCallbacks
         }
 
 
-        if (collision.gameObject.name == "OZone")
+        if (collision.gameObject.name == m_oZone.name)
         {
             m_quizState = 1;
         }
-        else if (collision.gameObject.name == "XZone")
+        else if (collision.gameObject.name == m_xZone.name)
         {
             m_quizState = 2;
 
@@ -111,6 +107,16 @@ public class player_controller : MonoBehaviourPunCallbacks
                 }
             }
         }
+
+        if (collision.gameObject.name == m_oxSign.name)
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                collision.GetComponent<OXQuiz>().StartQuiz();
+                m_quizState = 3;
+            }
+        }
+
     }
 
     void OnTriggerExit2D(Collider2D collision) // 오브젝트에서 멀어지면 상호작용 불가
@@ -131,12 +137,6 @@ public class player_controller : MonoBehaviourPunCallbacks
             isThereFarm = false;
         }
 
-
-        if (collision.gameObject.name == "OZone" || collision.gameObject.name == "XZone")
-        {
-            m_quizState = 0;
-        }
-
         if (isThereFarm)
         {
             for (int i = 0; i < farm.GetComponent<farming>().cnt; i++) // 해당 오브젝트가 식물일때만
@@ -146,9 +146,15 @@ public class player_controller : MonoBehaviourPunCallbacks
                     isTherePlant = false;
             }
         }
+
+        if (collision.gameObject.name == m_oZone.name  || collision.gameObject.name == m_xZone.name)
+        {
+            m_quizState = 0;
+        }
+
     }
 
-        private void Move() // 캐릭터 이동
+    private void Move() // 캐릭터 이동
     {
         if (nowFishing) // 현재 낚시중이면 이동 불가
             return;

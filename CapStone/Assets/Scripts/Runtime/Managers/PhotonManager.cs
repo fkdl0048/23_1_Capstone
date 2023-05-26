@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
@@ -16,7 +17,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     #region PrivateVariables
     private string m_roomName;
     private string m_playerName;
-
+    private bool check = false;
     [SerializeField] private GameObject m_playerManager;
     #endregion
 
@@ -34,7 +35,14 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         Invoke("RequestSpawnPlayer", 3f);
     }
 
-
+    private void Update()
+    {
+        if (check)
+        {
+            check = false;
+            CreatePhotonRoom();
+        }
+    }
 
     public void ConnectToServer()
     {
@@ -44,6 +52,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         PhotonNetwork.LocalPlayer.NickName = m_playerName;
+        check = true;
         print("SuccessConnectServer");
     }
 
@@ -78,19 +87,16 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     #endregion
 
     #region PrivateVariables
-    private async void ConnectPhotonServer()
+    private void ConnectPhotonServer()
     {
+        
+
         ConnectToServer();
-        Invoke("JoinLobby", 1f);
-        Invoke("CreatePhotonRoom", 2f);
-        //JoinLobby();
-        //CreatePhotonRoom();
     }
 
     private void RequestSpawnPlayer()
     {
         m_playerManager.GetComponent<PlayerManager>().SpawnPlayer();
     }
-
     #endregion
 }
