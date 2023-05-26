@@ -198,6 +198,14 @@ public class player_controller : MonoBehaviourPunCallbacks
             }
             if (Input.GetKeyDown(KeyCode.Z)) // 도끼질 할때마다 1씩 감소
             {
+                if(tree.transform.position.x < this.transform.position.x) // 나무가 플레이어보다 왼쪽에 있으면
+                {
+                    m_PV.RPC("FlipXRPC", RpcTarget.AllBuffered, true);
+                }
+                else if(tree.transform.position.x > this.transform.position.x)
+                {
+                    m_PV.RPC("FlipXRPC", RpcTarget.AllBuffered, false);
+                }
                 animator.SetTrigger("isLogging");
                 m_PV.RPC("treeRPC",RpcTarget.AllBuffered);
                 print(tree.GetComponent<logging>().HP + " 번 남았습니다.");
