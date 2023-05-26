@@ -14,7 +14,7 @@ namespace OpenAI
         [SerializeField] private NPCInfo npcInfo;
         [SerializeField] private WorldInfo worldInfo;
 
-        private OpenAIApi openai = new OpenAIApi("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");
+        private OpenAIApi openai = new OpenAIApi("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");
 
         private string userInput;
         private string Instruction = "Act as an NPC in the given context and reply to the questions of the Adventurer who talks to you.\n" +
