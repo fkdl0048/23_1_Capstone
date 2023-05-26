@@ -110,7 +110,6 @@ public class player_controller : MonoBehaviourPunCallbacks
 
         if (collision.gameObject.name == m_oxSign.name)
         {
-            Debug.Log("intpu");
             if (Input.GetKey(KeyCode.Space))
             {
                 collision.GetComponent<OXQuiz>().StartQuiz();
