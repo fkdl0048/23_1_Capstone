@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6fe74757f5ba42f399bfb6524be2652, type: 3}
-  m_Name: DoorPath
+  m_Name: flower
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Door Path
-  <Tile>k__BackingField: {fileID: 11400000, guid: 03dc7a15fb0e2442fabed253844c2851, type: 2}
+  <Name>k__BackingField: flower
+  <Tile>k__BackingField: {fileID: 11400000, guid: e8b02def81176f348b1e9e50165d98a0, type: 2}
   <TileOffset>k__BackingField: {x: 0, y: -0.5, z: 0}
-  <PreviewSprite>k__BackingField: {fileID: 745703028, guid: 652221c54a5f164439aab36b381cc2e3, type: 3}
+  <PreviewSprite>k__BackingField: {fileID: -29861573, guid: edfc12f9d328a464caeda509c12be3f5, type: 3}
   <GameObject>k__BackingField: {fileID: 0}
   <UseCustomCollisionSpace>k__BackingField: 1
   <CollisionSpace>k__BackingField:
     x: 0
     y: 0
     width: 1
-    height: 2
+    height: 1
+  <ItemType>k__BackingField: 1
+  <ItemPrice>k__BackingField: 100

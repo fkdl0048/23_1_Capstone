@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Roof
   <Tile>k__BackingField: {fileID: 0}
-  <TileOffset>k__BackingField: {x: 0, y: 0, z: 0}
+  <TileOffset>k__BackingField: {x: 0, y: -0.5, z: 0}
   <PreviewSprite>k__BackingField: {fileID: -664422443, guid: 833514ac1d28b31488bc2f03a1a167a7, type: 3}
   <GameObject>k__BackingField: {fileID: 1532759991141541728, guid: 3b6aacf10db6341659a2d8f550e8c5c2, type: 3}
   <UseCustomCollisionSpace>k__BackingField: 1
