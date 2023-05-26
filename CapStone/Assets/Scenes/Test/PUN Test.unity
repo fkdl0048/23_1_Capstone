@@ -259,7 +259,7 @@ MonoBehaviour:
   m_visitBtnParent: {fileID: 2091871747}
   m_plazaObject: {fileID: 1630563836}
   m_houseObject: {fileID: 891113955}
-  mainCamera: {fileID: 789921095}
+  m_mainCamera: {fileID: 789921095}
   m_oxQuiz: {fileID: 2171718918780709279, guid: 83e452b754acb47428eda5e031050e0b, type: 3}
 --- !u!114 &23077721
 MonoBehaviour:
@@ -37926,7 +37926,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f87ab59c7d8ab4fa41edee3bb6ca75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerOn: 0
   cnt: 0
+  harvest_cnt: 0
   plants:
   - {fileID: 0}
   - {fileID: 0}
