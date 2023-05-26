@@ -10,7 +10,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 {
     #region PublicVariables
     public GameObject m_playerListParent;
-    public GameObject[] m_playerList;
+    public static GameObject[] m_playerList;
     public PhotonView m_PV;
     #endregion
 
@@ -20,12 +20,13 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject m_visitBtnParent;
     [SerializeField] public GameObject m_plazaObject;
     [SerializeField] public GameObject m_houseObject;
-    [SerializeField] private GameObject mainCamera; // ±âÁ¸ Ä«¸Ş¶ó
-    [SerializeField] private GameObject playerCamera; // ÇÃ·¹ÀÌ¾î¸¦ µû¶ó´Ù´Ò Ä«¸Ş¶ó
-    [SerializeField] private GameObject parent; // ÇÃ·¹ÀÌ¾î°¡ »ı¼ºµÇ´Â ºÎ¸ğ Æú´õ
-
+    [SerializeField] private GameObject m_mainCamera; // ?ï¿½ì™?ï¿½å ?ï¿½ì˜™ ì¹´å ?ï¿½ë°??
+    //[SerializeField] private GameObject playerCamera; // ?ï¿½ì‹œë¤„ì˜™?ï¿½ì‹±?ï¿½ï¿½? ?ï¿½ì™?ï¿½å ?ï¿½ì˜™?ï¿½å ?ì¹´å ?ï¿½ë°??
+    [SerializeField] private GameObject m_oxQuiz;
     private GameObject m_isMinePlayer;
-    
+
+    private float m_cameraSpeed = 10f;
+    private bool m_mainCameraSetting = false;
     #endregion
 
     #region PublicMethod
@@ -33,7 +34,21 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     {
         m_playerList = new GameObject[20];
         m_PV = GetComponent<PhotonView>();
-        m_visitBtnParent.SetActive(false);
+        //m_visitBtnParent.SetActive(false);
+
+    }
+
+    private void LateUpdate()
+    {
+        if (m_mainCameraSetting) {
+            //Vector3 dir = m_isMinePlayer.transform.position;
+            //Vector3 moveVector = new Vector3(dir.x * m_cameraSpeed * Time.deltaTime, dir.y * m_cameraSpeed * Time.deltaTime, 0.0f);
+            //m_mainCamera.transform.Translate(dir);
+
+            Vector3 pos = new Vector3(m_isMinePlayer.transform.position.x, m_isMinePlayer.transform.position.y, -10);
+            
+            m_mainCamera.transform.position = pos;
+        }
 
     }
 
@@ -48,8 +63,15 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     public void SpawnPlayer()
     {   
         m_isMinePlayer = PhotonNetwork.Instantiate("Prefabs/Test/player", new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
-        m_isMinePlayer.name = "player(Clone)" + m_playerCount; // Ä«¸Ş¶ó¸¦ À§ÇÑ ÇÃ·¹ÀÌ¾î ±¸ºĞ
+        m_isMinePlayer.name = "player(Clone)" + m_playerCount;
         m_PV.RPC("SpawnPlayerPhoton", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID);
+
+        m_mainCameraSetting = true;
+        //GameObject CharacterCamera = Instantiate(playerCamera) as GameObject; // ?ï¿½ì‹œë¤„ì˜™?ï¿½ì‹±?ï¿½ë§ˆ?ï¿½ì™???ï¿½ì™?ï¿½å ?ï¿½ì˜™ ì¹´å ?ï¿½ë°??
+        //CharacterCamera.GetComponent<cameraController>().target = m_isMinePlayer;
+        //CharacterCamera.GetComponent<Camera>().depth = 0; // ?ï¿½ì‹œë¤„ì˜™?ï¿½ì‹±?ï¿½ì˜™ ì¹´å ?ï¿½ë°???ï¿½å ?ï¿½ì˜™??
+
+        InitQuiz();
     }
 
     public void VisitPlayerHouse()
@@ -61,9 +83,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         m_PV.RPC("UpdatePlayerPosIndex", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID , int.Parse(clickObj.name));
     }
 
-    public void CheckAnswer()
+    public void InitQuiz()
     {
-        this.GetComponent<OXQuiz>().CheckAnswer(m_playerList);
+        m_oxQuiz.GetComponent<OXQuiz>().InitQuiz(m_playerList);
     }
     #endregion
 
@@ -101,15 +123,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
         target.name = "player(Clone)" + m_playerCount;
         m_playerList[m_playerCount++] = target;
-
-        GameObject CharacterCamera = Instantiate(playerCamera) as GameObject; // ÇÃ·¹ÀÌ¾î¸¶´Ù Àü¿ë Ä«¸Ş¶ó
-        CharacterCamera.name = "CharacterCamera(Clone)" + (m_playerCount-1); // Ä«¸Ş¶ó ±¸ºĞ
-        CharacterCamera.GetComponent<cameraController>().target = parent.transform.Find("player(Clone)" + (m_playerCount - 1)).gameObject;
-
-        if (target.GetComponent<PhotonView>().IsMine) // ³ªÀÇ Ä«¸Ş¶ó¸¸ ÀÛµ¿
-        { 
-            CharacterCamera.GetComponent<Camera>().depth = 0; // ÇÃ·¹ÀÌ¾î Ä«¸Ş¶ó È°¼ºÈ­
-        }
 
 
     }

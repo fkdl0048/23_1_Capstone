@@ -16,7 +16,7 @@ MonoBehaviour:
     AppIdRealtime: cefb22db-47e5-49ec-afa0-4f508a95a192
     AppIdFusion: 
     AppIdChat: 
-    AppIdVoice: effcea39-fe36-4104-ae77-b1b7c2605edd
+    AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
     FixedRegion: 
@@ -28,24 +28,32 @@ MonoBehaviour:
     AuthMode: 0
     EnableLobbyStatistics: 0
     NetworkLogging: 1
-  DevRegion: 
+  DevRegion: kr
   PunLogging: 0
   EnableSupportLogger: 0
   RunInBackground: 1
   StartInOfflineMode: 0
   RpcList:
-  - CantHearYou
-  - ChangeColour
   - ClickRpc
   - DestroyRpc
-  - HeresWhy
-  - CheckRequestHouseWatch
   - DestroySpaceship
   - Fire
-  - FlipXRPC
   - RespawnSpaceship
+  - CheckRequestHouseWatch
   - SpawnPlayerPhoton
   - UpdatePlayerPosIndex
+  - FlipXRPC
+  - treeCut
+  - plantSeed
+  - DroopRPC
+  - growRPC
+  - droopRPC
+  - plantRPC
+  - setPlantGenerator
+  - plantingRPC
+  - treeRPC
+  - timeRPC
+  - RPC_StartQuiz
   DisableAutoOpenWizard: 1
   ShowSettings: 1
-  DevRegionSetOnce: 0
+  DevRegionSetOnce: 1

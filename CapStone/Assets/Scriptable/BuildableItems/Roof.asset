@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6fe74757f5ba42f399bfb6524be2652, type: 3}
-  m_Name: roof
+  m_Name: Roof
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: roof
+  <Name>k__BackingField: Roof
   <Tile>k__BackingField: {fileID: 0}
   <TileOffset>k__BackingField: {x: 0, y: -0.5, z: 0}
   <PreviewSprite>k__BackingField: {fileID: -664422443, guid: 833514ac1d28b31488bc2f03a1a167a7, type: 3}
@@ -23,5 +23,3 @@ MonoBehaviour:
     y: 0
     width: 5
     height: 5
-  <ItemType>k__BackingField: 1
-  <ItemPrice>k__BackingField: 100
