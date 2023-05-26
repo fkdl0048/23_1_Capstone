@@ -68,7 +68,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public void CreatePhotonRoom()
     {
-        PhotonNetwork.CreateRoom(m_roomName, new RoomOptions { MaxPlayers = 10 });
+        //PhotonNetwork.CreateRoom(m_roomName, new RoomOptions { MaxPlayers = 10 });
+        PhotonNetwork.JoinOrCreateRoom(m_roomName, new RoomOptions { MaxPlayers = 10 }, null);
     }
 
     public void JoinPhotonRoom()
@@ -85,14 +86,12 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     }
 
 
-    public override void OnJoinRoomFailed(short returnCode, string message) => print("FailJoinedRoom");
+    public override void OnJoinRoomFailed(short returnCode, string message) => print(message);
     #endregion
 
     #region PrivateVariables
     private void ConnectPhotonServer()
     {
-        
-
         ConnectToServer();
     }
 
