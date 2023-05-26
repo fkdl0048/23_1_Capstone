@@ -91,7 +91,8 @@ public class MainMenuUIController : MonoBehaviour
         // temp
         //SceneManager.LoadScene("PUN Test");
         
-        SceneManager.LoadScene("Game");
+        //SceneManager.LoadScene("Game");
+        LoadingSceneManager.LoadScene("Game");
         // PhotonTest _photonTest = FindObjectOfType<PhotonTest>();
         // _photonTest.LoginToPhotonServer();
     }
