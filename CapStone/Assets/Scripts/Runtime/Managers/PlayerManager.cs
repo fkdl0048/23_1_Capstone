@@ -51,7 +51,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
         mainCamera.GetComponent<cameraController>().target = m_isMinePlayer;
 
-        //InitQuiz();
+        InitQuiz();
     }
 
     public void VisitPlayerHouse()
