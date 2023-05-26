@@ -27,12 +27,13 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         PlayFabClientAPI.GetPlayerProfile(new GetPlayerProfileRequest(), request =>
         {
             m_playerName = request.PlayerProfile.DisplayName;
+            m_roomName = "Room1";
+            print("Yes");
+            ConnectPhotonServer();
+           
         }, errorCallback => Debug.Log("Fail"));
 
-        m_roomName = "Room1";
-        print("Yes");
-        ConnectPhotonServer();
-        Invoke("RequestSpawnPlayer", 3f);
+       
     }
 
     private void Update()
@@ -41,6 +42,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         {
             check = false;
             CreatePhotonRoom();
+            Invoke("RequestSpawnPlayer", 3f);
         }
     }
 
