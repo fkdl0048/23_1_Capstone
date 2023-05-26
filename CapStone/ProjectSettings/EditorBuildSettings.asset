@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Flow/MainMenu.unity
     guid: 31ec4053559028a4aa434b8fd3ce64c1
   - enabled: 1
+    path: Assets/Scenes/Flow/LoadingScene.unity
+    guid: d19809c545859274db2de0ca97abe35e
+  - enabled: 1
     path: Assets/Scenes/Test/PUN Test.unity
     guid: 05ecf7feaefe8974596dda5aa7e59435
   m_configObjects: {}

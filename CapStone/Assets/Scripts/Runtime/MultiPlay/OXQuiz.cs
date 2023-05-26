@@ -84,6 +84,9 @@ public class OXQuiz : MonoBehaviourPunCallbacks
     [PunRPC]
     private void RPC_StartQuiz()
     {
+        if (m_playerList == null)
+            return;
+
         foreach (var iter in m_playerList)
         {
             if (iter == null)
