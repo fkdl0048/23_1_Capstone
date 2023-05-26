@@ -802,8 +802,7 @@ MonoBehaviour:
   m_visitBtnParent: {fileID: 1823147296}
   m_plazaObject: {fileID: 344722701}
   m_houseObject: {fileID: 592100713}
-  mainCamera: {fileID: 254535313}
-  playerCamera: {fileID: 1632750263909397188, guid: 0eeaed3d394a02249afbc680b9ad4b38, type: 3}
+  m_mainCamera: {fileID: 254535313}
   m_oxQuiz: {fileID: 2171718918908677186}
 --- !u!4 &1437572636
 Transform:

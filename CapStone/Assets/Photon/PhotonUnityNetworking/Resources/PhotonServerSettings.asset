@@ -56,6 +56,9 @@ MonoBehaviour:
   - RPC_StartQuiz
   - harvestRPC
   - wateringRPC
+  - CantHearYou
+  - ChangeColour
+  - HeresWhy
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

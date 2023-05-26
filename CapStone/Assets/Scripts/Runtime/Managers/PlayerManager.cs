@@ -20,10 +20,13 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject m_visitBtnParent;
     [SerializeField] public GameObject m_plazaObject;
     [SerializeField] public GameObject m_houseObject;
-    [SerializeField] private GameObject mainCamera; // ?�쏙?�占?�옙 카占?�띰??
+    [SerializeField] private GameObject m_mainCamera; // ?�쏙?�占?�옙 카占?�띰??
+    //[SerializeField] private GameObject playerCamera; // ?�시뤄옙?�싱?��? ?�쏙?�占?�옙?�占?카占?�띰??
     [SerializeField] private GameObject m_oxQuiz;
     private GameObject m_isMinePlayer;
-    
+
+    private float m_cameraSpeed = 10f;
+    private bool m_mainCameraSetting = false;
     #endregion
 
     #region PublicMethod
@@ -35,12 +38,31 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     }
 
+    private void LateUpdate()
+    {
+        if (m_mainCameraSetting) {
+            //Vector3 dir = m_isMinePlayer.transform.position;
+            //Vector3 moveVector = new Vector3(dir.x * m_cameraSpeed * Time.deltaTime, dir.y * m_cameraSpeed * Time.deltaTime, 0.0f);
+            //m_mainCamera.transform.Translate(dir);
+
+            Vector3 pos = new Vector3(m_isMinePlayer.transform.position.x, m_isMinePlayer.transform.position.y, -10);
+            
+            m_mainCamera.transform.position = pos;
+        }
+
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             ShowVisitBtn();
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            ReturnPlaza();
+        }
+
     }
 
     public void SpawnPlayer()
@@ -49,7 +71,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         m_isMinePlayer.name = "player(Clone)" + m_playerCount;
         m_PV.RPC("SpawnPlayerPhoton", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID);
 
-        mainCamera.GetComponent<cameraController>().target = m_isMinePlayer;
+        m_mainCameraSetting = true;
+        //GameObject CharacterCamera = Instantiate(playerCamera) as GameObject; // ?�시뤄옙?�싱?�마?�쏙???�쏙?�占?�옙 카占?�띰??
+        //CharacterCamera.GetComponent<cameraController>().target = m_isMinePlayer;
+        //CharacterCamera.GetComponent<Camera>().depth = 0; // ?�시뤄옙?�싱?�옙 카占?�띰???�占?�옙??
 
         InitQuiz();
     }
@@ -61,6 +86,14 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         m_houseObject.SetActive(true);
 
         m_PV.RPC("UpdatePlayerPosIndex", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID , int.Parse(clickObj.name));
+    }
+
+    public void ReturnPlaza()
+    {
+        m_plazaObject.SetActive(true);
+        m_houseObject.SetActive(false);
+
+        m_PV.RPC("UpdatePlayerPosIndex", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID, 0);
     }
 
     public void InitQuiz()
