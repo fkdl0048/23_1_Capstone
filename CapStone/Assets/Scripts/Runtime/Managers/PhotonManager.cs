@@ -32,7 +32,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         m_roomName = "Room1";
         print("Yes");
         ConnectPhotonServer();
-        Invoke("RequestSpawnPlayer", 3f);
+        
     }
 
     private void Update()
@@ -41,6 +41,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         {
             check = false;
             CreatePhotonRoom();
+            Invoke("RequestSpawnPlayer", 3f);
         }
     }
 
