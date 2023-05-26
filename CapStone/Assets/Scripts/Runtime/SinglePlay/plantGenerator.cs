@@ -38,6 +38,7 @@ public class plantGenerator : MonoBehaviour
         pt.name = "plant(Clone)" + farm.GetComponent<farming>().cnt; // 클론 숫자 붙여서 구분
         farm.GetComponent<farming>().plants[farm.GetComponent<farming>().cnt] = pt;
         farm.GetComponent<farming>().cnt++;
+        farm.GetComponent<farming>().timerOn = true; // 식물이 심어진 후에 타이머 작동
     }
 
 }

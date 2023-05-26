@@ -54,6 +54,8 @@ MonoBehaviour:
   - treeRPC
   - timeRPC
   - RPC_StartQuiz
+  - harvestRPC
+  - wateringRPC
   - CantHearYou
   - ChangeColour
   - HeresWhy
