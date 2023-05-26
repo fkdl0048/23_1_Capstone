@@ -3,8 +3,29 @@ Photon Chat C# Client - Changelog
 Exit Games GmbH - www.photonengine.com - forum.photonengine.com
 
 
-Version 4.1.6.17 (02. August 2022)
+Version 4.1.6.24 (15. May 2023 - rev6894)
+    No notable changes.
+
+Version 4.1.6.23 (15. March 2023 - rev6743)
+    Note: No notable changes for Chat API.
+
+Version 4.1.6.22  (21. December 2022 - rev6637)
+    Note: No notable changes. Only Reatime API changed.
+
+Version 4.1.6.21  (14. December 2022 - rev6623)
     Note: No notable changes.
+
+Version 4.1.6.20  (23. September 2022 - rev6568)
+    No notable changes.
+
+Version 4.1.6.19 (12. October 2022 - rev6519)
+    No notable changes.
+
+Version 4.1.6.18 (20. September 2022 - rev6501)
+    Added: More details to some reference docs.
+
+Version 4.1.6.17 (02. August 2022 - rev6472)
+    Removed: ChatAppSettings.AppId (was obsolete for a while).
 
 Version 4.1.6.16 (20. June 2022)
     Fixed: The ProxyServerAddress is also applied when connecting to the Frontend Server (was missing in previous update).
