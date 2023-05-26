@@ -85,12 +85,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         JoinPhotonRoom();
     }
 
-
-<<<<<<< HEAD
-    public override void OnJoinRoomFailed(short returnCode, string message) => print(message);
-=======
     public override void OnJoinRoomFailed(short returnCode, string message) => print(returnCode + message);
->>>>>>> Map
     #endregion
 
     #region PrivateVariables
