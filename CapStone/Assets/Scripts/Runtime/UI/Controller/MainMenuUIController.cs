@@ -10,7 +10,6 @@ public class MainMenuUIController : MonoBehaviour
     
     private void Start()
     {
-        // initialize the UI Navigation
         _uiNavigation = new UINavigation();
         _mainMenuView = _uiNavigation.UIViewPush("MainMenuView") as MainMenuUIView;
         
@@ -92,7 +91,8 @@ public class MainMenuUIController : MonoBehaviour
         // temp
         //SceneManager.LoadScene("PUN Test");
         
-        SceneManager.LoadScene("Game");
+        //SceneManager.LoadScene("Game");
+        LoadingSceneManager.LoadScene("Game");
         // PhotonTest _photonTest = FindObjectOfType<PhotonTest>();
         // _photonTest.LoginToPhotonServer();
     }

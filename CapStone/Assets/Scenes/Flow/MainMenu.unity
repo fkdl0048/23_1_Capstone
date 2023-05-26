@@ -505,13 +505,5 @@ PrefabInstance:
       propertyPath: m_AnimatedTiles.Array.data[11].second.m_AnimationSpeed
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 2954949220409992932, guid: b75c6fcd89beb59499c2a6bbd06db8cf, type: 3}
-      propertyPath: m_ChunkCullingBounds.x
-      value: 3.6875
-      objectReference: {fileID: 0}
-    - target: {fileID: 2954949220409992932, guid: b75c6fcd89beb59499c2a6bbd06db8cf, type: 3}
-      propertyPath: m_ChunkCullingBounds.y
-      value: 3.84375
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b75c6fcd89beb59499c2a6bbd06db8cf, type: 3}

@@ -17,12 +17,17 @@ public class OXQuiz : MonoBehaviourPunCallbacks
     private float m_countTime = 5f;
     private bool isRun = false;
     private int m_answer = 1;
+    private PhotonView m_PV;
+    private static GameObject[] m_playerList;
     #endregion
 
     #region PublicMethod
     private void Start()
-    {   
+    {
+        GameObject sub = Resources.Load("Prefabs/Test/OXQuiz/QuizTimer") as GameObject;
+        m_quizTimer = Instantiate(sub);
         m_quizTimer.SetActive(false);
+        m_PV = this.GetComponent<PhotonView>();
     }
 
     private void Update()
@@ -36,31 +41,35 @@ public class OXQuiz : MonoBehaviourPunCallbacks
             {
                 isRun = false;
                 m_quizTimer.SetActive(false);
-                //CheckAnswer();
+                CheckAnswer();
                 m_countTime = m_limitTime;
             }
         }
     }
 
+    public void InitQuiz(GameObject[] _playerList)
+    {
+        m_playerList = _playerList;
+    }
+
     public void StartQuiz()
     {
-        m_quizTimer.SetActive(true);
-        isRun = true;
+        m_PV.RPC("RPC_StartQuiz", RpcTarget.AllBuffered);
     }
     #endregion
 
     #region PrivateMethod
-     public void CheckAnswer(GameObject[] _playerList)
+     private void CheckAnswer()
      {   
-        foreach (var iter in _playerList){
+        foreach (var iter in m_playerList){
             if (iter == null)
                 break;
 
-            if(iter.GetComponent<player_controller>().m_quizState == m_answer)
+            if (iter.GetComponent<player_controller>().m_quizState == m_answer)
             {
                 Debug.Log("Correct!");
             }
-            else if(iter.GetComponent<player_controller>().m_quizState == 0)
+            else if (iter.GetComponent<player_controller>().m_quizState == 0)
             {
                 Debug.Log("Not Participate in");
             }
@@ -69,8 +78,23 @@ public class OXQuiz : MonoBehaviourPunCallbacks
                 iter.transform.position = Vector3.zero;
                 Debug.Log("Incorrect!");
             }
-
         }
      }
+
+    [PunRPC]
+    private void RPC_StartQuiz()
+    {
+        foreach (var iter in m_playerList)
+        {
+            if (iter == null)
+                break;
+
+            if (iter.GetComponent<player_controller>().m_quizState != 0)
+            {
+                m_quizTimer.SetActive(true);
+                isRun = true;
+            }
+        }
+    }
     #endregion
 }

@@ -10,7 +10,7 @@ namespace Enums
         End,
     }
 
-    public enum ItemType
+    enum ItemType
     {
         Material,
         Furniture,

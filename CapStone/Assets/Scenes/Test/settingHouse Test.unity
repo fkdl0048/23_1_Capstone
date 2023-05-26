@@ -485,7 +485,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232020726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.88, y: 0.05, z: 0}
+  m_LocalPosition: {x: -8.3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -535,15 +535,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buildables:
   - {fileID: 11400000, guid: cd909e808c9dc4f949d040353e29e2a2, type: 2}
-  - {fileID: 11400000, guid: 8fbc15b6058524084aeee78507c55c80, type: 2}
   - {fileID: 11400000, guid: b89c0f75d46de4af1bd98e10c2d0f05d, type: 2}
-  - {fileID: 11400000, guid: b803909d412e94134b9d4454467d764e, type: 2}
-  - {fileID: 11400000, guid: ebacecdd476494d408cb05dbc70077af, type: 2}
-  - {fileID: 11400000, guid: 515492a34bdae41d0832139286b8dce3, type: 2}
-  - {fileID: 11400000, guid: 0f8ceb3484f834cde8e206376f152ac0, type: 2}
   - {fileID: 11400000, guid: 1f3bcf12cba0246d2a62ed148a926a6f, type: 2}
-  - {fileID: 11400000, guid: 481369ea002a643d68dfa11ce4ce8658, type: 2}
-  - {fileID: 11400000, guid: 8f675b9ba7c26454eabc6f3b33e41fdb, type: 2}
   _buildingPlacer: {fileID: 1232020731}
 --- !u!1 &1290901257
 GameObject:

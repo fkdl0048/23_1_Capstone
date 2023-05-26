@@ -66,10 +66,10 @@ public class DataManager
             var request = new ConsumeItemRequest() {ConsumeCount = 1, ItemInstanceId = itemInstanceId};
             PlayFabClientAPI.ConsumeItem(request, result =>
             {
-                SetPlayerMoney(price);
-                
+
                 var popup = GameManager.UI.UINavigation.PopupPush("DefalutPopup") as DefalutPopup;
                 popup.SetText("판매 성공!");
+                SetPlayerMoney(price);
                 OnUpdateMoney?.Invoke();
             }, error =>
             {
@@ -175,8 +175,7 @@ public class DataManager
     // 인벤 가져오기
     public void GetPlayerItems(Action<GetUserInventoryResult> onGetPlayerItem)
     {
-        var request = new GetUserInventoryRequest();
-        PlayFabClientAPI.GetUserInventory(request, result =>
+        PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest(), result =>
         {
             Debug.Log("GetUserInventory Success");
             onGetPlayerItem?.Invoke(result);
