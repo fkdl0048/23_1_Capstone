@@ -17,13 +17,17 @@ public class OXQuiz : MonoBehaviourPunCallbacks
     private float m_countTime = 5f;
     private bool isRun = false;
     private int m_answer = 1;
-    private GameObject[] m_playerList;
+    private PhotonView m_PV;
+    private static GameObject[] m_playerList;
     #endregion
 
     #region PublicMethod
     private void Start()
-    {   
+    {
+        GameObject sub = Resources.Load("Prefabs/Test/OXQuiz/QuizTimer") as GameObject;
+        m_quizTimer = Instantiate(sub);
         m_quizTimer.SetActive(false);
+        m_PV = this.GetComponent<PhotonView>();
     }
 
     private void Update()
@@ -43,16 +47,19 @@ public class OXQuiz : MonoBehaviourPunCallbacks
         }
     }
 
-    public void StartQuiz(GameObject[] _playerList)
+    public void InitQuiz(GameObject[] _playerList)
     {
-        m_quizTimer.SetActive(true);
-        isRun = true;
         m_playerList = _playerList;
+    }
+
+    public void StartQuiz()
+    {
+        m_PV.RPC("RPC_StartQuiz", RpcTarget.AllBuffered);
     }
     #endregion
 
     #region PrivateMethod
-     public void CheckAnswer()
+     private void CheckAnswer()
      {   
         foreach (var iter in m_playerList){
             if (iter == null)
@@ -73,5 +80,21 @@ public class OXQuiz : MonoBehaviourPunCallbacks
             }
         }
      }
+
+    [PunRPC]
+    private void RPC_StartQuiz()
+    {
+        foreach (var iter in m_playerList)
+        {
+            if (iter == null)
+                break;
+
+            if (iter.GetComponent<player_controller>().m_quizState != 0)
+            {
+                m_quizTimer.SetActive(true);
+                isRun = true;
+            }
+        }
+    }
     #endregion
 }

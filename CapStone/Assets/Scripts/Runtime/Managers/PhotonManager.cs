@@ -17,7 +17,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     #region PrivateVariables
     private string m_roomName;
     private string m_playerName;
-
+    private bool check = false;
     [SerializeField] private GameObject m_playerManager;
     #endregion
 
@@ -27,15 +27,24 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         PlayFabClientAPI.GetPlayerProfile(new GetPlayerProfileRequest(), request =>
         {
             m_playerName = request.PlayerProfile.DisplayName;
+            m_roomName = "Room1";
+            print("Yes");
+            ConnectPhotonServer();
+           
         }, errorCallback => Debug.Log("Fail"));
 
-        m_roomName = "Room1";
-        print("Yes");
-        ConnectPhotonServer();
-        Invoke("RequestSpawnPlayer", 3f);
+       
     }
 
-
+    private void Update()
+    {
+        if (check)
+        {
+            check = false;
+            CreatePhotonRoom();
+            Invoke("RequestSpawnPlayer", 3f);
+        }
+    }
 
     public void ConnectToServer()
     {
@@ -45,6 +54,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         PhotonNetwork.LocalPlayer.NickName = m_playerName;
+        check = true;
         print("SuccessConnectServer");
     }
 
@@ -79,20 +89,16 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     #endregion
 
     #region PrivateVariables
-    private async void ConnectPhotonServer()
+    private void ConnectPhotonServer()
     {
-        ConnectToServer();
+        
 
-        await Task.Delay(1000);
-        JoinLobby();
-        await Task.Delay(1000);
-        CreatePhotonRoom();
+        ConnectToServer();
     }
 
     private void RequestSpawnPlayer()
     {
         m_playerManager.GetComponent<PlayerManager>().SpawnPlayer();
     }
-
     #endregion
 }
