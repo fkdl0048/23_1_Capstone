@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
@@ -81,10 +82,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     private async void ConnectPhotonServer()
     {
         ConnectToServer();
-        Invoke("JoinLobby", 1f);
-        Invoke("CreatePhotonRoom", 2f);
-        //JoinLobby();
-        //CreatePhotonRoom();
+
+        await Task.Delay(1000);
+        JoinLobby();
+        await Task.Delay(1000);
+        CreatePhotonRoom();
     }
 
     private void RequestSpawnPlayer()
