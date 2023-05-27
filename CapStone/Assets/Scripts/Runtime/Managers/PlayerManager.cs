@@ -21,7 +21,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     [SerializeField] public GameObject m_plazaObject;
     [SerializeField] public GameObject m_houseObject;
     [SerializeField] private GameObject m_mainCamera; // ?�쏙?�占?�옙 카占?�띰??
-    //[SerializeField] private GameObject playerCamera; // ?�시뤄옙?�싱?��? ?�쏙?�占?�옙?�占?카占?�띰??
     [SerializeField] private GameObject m_oxQuiz;
     private GameObject m_isMinePlayer;
 
@@ -72,9 +71,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         m_PV.RPC("SpawnPlayerPhoton", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID);
 
         m_mainCameraSetting = true;
-        //GameObject CharacterCamera = Instantiate(playerCamera) as GameObject; // ?�시뤄옙?�싱?�마?�쏙???�쏙?�占?�옙 카占?�띰??
-        //CharacterCamera.GetComponent<cameraController>().target = m_isMinePlayer;
-        //CharacterCamera.GetComponent<Camera>().depth = 0; // ?�시뤄옙?�싱?�옙 카占?�띰???�占?�옙??
 
         InitQuiz();
     }
