@@ -15,7 +15,15 @@ public class player_controller : MonoBehaviourPunCallbacks
     private GameObject water;
     [SerializeField]
     private GameObject farm;
-   
+    [SerializeField]
+    private GameObject Abutton;
+    [SerializeField]
+    private GameObject Sbutton;
+    [SerializeField]
+    private GameObject Dbutton;
+    [SerializeField]
+    private GameObject Zbutton;
+
     private float xMove, yMove;
     private bool isThereTree = false; // 근처에 벌목할 수 있는 나무가 있는지
     private bool isThereWater = false; // 근처에 낚시가능한 물이 있는지
@@ -50,6 +58,10 @@ public class player_controller : MonoBehaviourPunCallbacks
         sprite = this.GetComponent<SpriteRenderer>();
         animator = this.GetComponent<Animator>();
         m_PV = this.GetComponent<PhotonView>();
+        Abutton.SetActive(false); // 조작키 아이콘 비활성화
+        Sbutton.SetActive(false);
+        Dbutton.SetActive(false);
+        Zbutton.SetActive(false);
     }
 
     void Update()
@@ -71,17 +83,25 @@ public class player_controller : MonoBehaviourPunCallbacks
             tree = collision.GetComponent<Collider2D>().gameObject;
             tree.transform.Find("Canvas-tree").gameObject.SetActive(true);
             isThereTree = true;
+            if(m_PV.IsMine)
+            Zbutton.SetActive(true);
         }
-   
-        if (collision.GetComponent<Collider2D>().gameObject.CompareTag("water")) // 해당 오브젝트가 물일때만
-                isThereWater = true;
 
-        if (collision.GetComponent<Collider2D>().gameObject.CompareTag("farm")) // 해당 오브젝트가 농장일때만
+        if (collision.GetComponent<Collider2D>().gameObject.CompareTag("water"))  // 해당 오브젝트가 물일때만
+        {
+            isThereWater = true;
+            if(m_PV.IsMine && !nowFishing) // 낚시 중이 아닐때만 보여줌 
+                Zbutton.SetActive(true);
+        }
+
+            if (collision.GetComponent<Collider2D>().gameObject.CompareTag("farm")) // 해당 오브젝트가 농장일때만
         {
             farm = collision.GetComponent<Collider2D>().gameObject;
             this.GetComponent<plantGenerator>().farm = this.farm;
             this.GetComponent<plantGenerator>().farmSet = true;
             isThereFarm = true;
+            if(m_PV.IsMine && farm.GetComponent<farming>().cnt == 0) // 아직 식물을 심지 않았을때만 보여줌
+                Zbutton.SetActive(true);
         }
 
 
@@ -102,8 +122,15 @@ public class player_controller : MonoBehaviourPunCallbacks
                 plants = farm.GetComponent<farming>().plants;
                 if (plants[i] != null && collision == plants[i].GetComponent<BoxCollider2D>())
                 {
+                    if(m_PV.IsMine)
+                    Abutton.SetActive(true);
                     isTherePlant = true;
                     nowPlant = i;
+                    if (m_PV.IsMine && plants[nowPlant].GetComponent<growPlant>().level >= 4 && plants[nowPlant].GetComponent<growPlant>().droop == false)
+                    {
+                        Abutton.SetActive(false);
+                        Dbutton.SetActive(true); // 수확 버튼
+                    }
                 }
             }
         }
@@ -126,15 +153,23 @@ public class player_controller : MonoBehaviourPunCallbacks
         {
             tree.transform.Find("Canvas-tree").gameObject.SetActive(false);
             isThereTree = false;
+            if(m_PV.IsMine)
+            Zbutton.SetActive(false);
         }
 
-        if (collision.GetComponent<Collider2D>().gameObject.CompareTag("water")) // 해당 오브젝트가 물일때만
+        if (collision.GetComponent<Collider2D>().gameObject.CompareTag("water"))
+        { // 해당 오브젝트가 물일때만
             isThereWater = false;
+            if(m_PV.IsMine)
+            Zbutton.SetActive(false);
+        }
 
 
         if (collision.GetComponent<Collider2D>().gameObject.CompareTag("farm")) // 해당 오브젝트가 농장일때만
         {
             isThereFarm = false;
+            if(m_PV.IsMine)
+            Zbutton.SetActive(false);
         }
 
         if (isThereFarm)
@@ -143,7 +178,14 @@ public class player_controller : MonoBehaviourPunCallbacks
             {
                 plants = farm.GetComponent<farming>().plants;
                 if (plants[i] != null && collision == plants[i].GetComponent<BoxCollider2D>())
+                {
                     isTherePlant = false;
+                    if (m_PV.IsMine)
+                    {
+                        Abutton.SetActive(false);
+                        Dbutton.SetActive(false);
+                    }
+                }
             }
         }
 
@@ -220,6 +262,11 @@ public class player_controller : MonoBehaviourPunCallbacks
                 print("낚시 시작");
                 nowFishing = true;
                 animator.SetBool("isFishing", true);
+                if (m_PV.IsMine)
+                {
+                    Zbutton.SetActive(false);
+                    Sbutton.SetActive(true);
+                }
 
             }
 
@@ -228,6 +275,8 @@ public class player_controller : MonoBehaviourPunCallbacks
                 nowFishing = false;
                 animator.SetBool("isFishing", false);
                 print("낚시 끝 " + fishCount + "마리 낚았습니다.");
+                Sbutton.SetActive(false);
+                Zbutton.SetActive(true);      
             }
 
             if (nowFishing)
@@ -288,6 +337,8 @@ public class player_controller : MonoBehaviourPunCallbacks
     {
         plants = farm.GetComponent<farming>().plants;
         m_PV.RPC("harvestRPC", RpcTarget.AllBuffered, nowPlant);
+        if(m_PV.IsMine)
+        Dbutton.SetActive(false);
     }
 
     [PunRPC]
