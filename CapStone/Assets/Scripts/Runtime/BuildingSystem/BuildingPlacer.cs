@@ -1,6 +1,7 @@
 using UnityEngine;
 using GameInput;
 using BuildingSystem.Models;
+using Photon.Pun;
 
 namespace BuildingSystem
 {
@@ -21,6 +22,13 @@ namespace BuildingSystem
         [SerializeField]
         private MouseUser _mouseUser;
 
+        private PhotonView m_PV;
+
+        private void Start()
+        {
+            m_PV = this.GetComponent<PhotonView>();
+        }
+
         private void Update()
         {
             if (!IsMouseWithinBuildableRange()) _previewLayer.ClearPreview();
@@ -33,14 +41,14 @@ namespace BuildingSystem
                 _constructionLayer.Destroy(mousePos);
             }
             if (ActiveBuildable == null) return;
-
+            
             var isSpaceEmpty = _constructionLayer.IsEmpty(mousePos,
                 ActiveBuildable.UseCustomCollisionSpace ? ActiveBuildable.CollisionSpace : default);
 
             _previewLayer.ShowPreview(ActiveBuildable, mousePos, isSpaceEmpty && collider == null);
             if (_mouseUser.IsMouseButtonPressed(MouseButton.Left) && isSpaceEmpty && collider == null)
             {
-                _constructionLayer.Build(mousePos, ActiveBuildable);
+                m_PV.RPC("InstallHouseObject", RpcTarget.AllBuffered, mousePos /*, index*/);
             }
         }
 
@@ -52,6 +60,16 @@ namespace BuildingSystem
         public void SetActiveBuildable(BuildableItem item)
         {
             ActiveBuildable = item;
+        }
+
+        [PunRPC]
+        private void InstallHouseObject(Vector2 mousePos, int index)
+        {
+            if(m_PV.IsMine)
+            {
+                //index∏¶ ≥—∞‹¡‡æﬂµ .
+                _constructionLayer.Build(mousePos, ActiveBuildable);
+            }
         }
     }
 }

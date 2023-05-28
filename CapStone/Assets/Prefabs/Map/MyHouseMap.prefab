@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4670286121741839817}
   - component: {fileID: 6632603849972049934}
   - component: {fileID: 4389422159433653187}
+  - component: {fileID: 6032054610690798408}
   m_Layer: 6
   m_Name: build
   m_TagString: Untagged
@@ -140,6 +141,28 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 481369ea002a643d68dfa11ce4ce8658, type: 2}
   - {fileID: 11400000, guid: 8f675b9ba7c26454eabc6f3b33e41fdb, type: 2}
   _buildingPlacer: {fileID: 6632603849972049934}
+--- !u!114 &6032054610690798408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511580584438043855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2125596176366508923
 GameObject:
   m_ObjectHideFlags: 0
