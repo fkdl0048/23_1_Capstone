@@ -33,7 +33,10 @@ public class PhotonManager : MonoBehaviourPunCallbacks
            
         }, errorCallback => Debug.Log("Fail"));
 
-       
+        m_roomName = "Room1";
+        print("Yes");
+        ConnectPhotonServer();
+
     }
 
     private void Update()
