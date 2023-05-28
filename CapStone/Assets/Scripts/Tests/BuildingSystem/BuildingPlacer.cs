@@ -1,13 +1,21 @@
 using UnityEngine;
 using GameInput;
 using BuildingSystem.Models;
+using Photon.Pun;
+using System.Collections.Generic;
+
 
 namespace BuildingSystem
 {
     public class BuildingPlacer : MonoBehaviour
     {
+        [SerializeField]
+        public List<BuildableItem> _buildables;
+
         [field:SerializeField]
-        public BuildableItem ActiveBuildable { get; private set; }
+        public BuildableItem ActiveBuildable;
+
+        private int ActiveBuildableIndex;
 
         [SerializeField]
         private float _maxBuildingDistance = 2000f;
@@ -21,6 +29,13 @@ namespace BuildingSystem
         [SerializeField]
         private MouseUser _mouseUser;
 
+        private PhotonView m_PV;
+
+        private void Start()
+        {
+            m_PV = this.GetComponent<PhotonView>();
+        }
+
         private void Update()
         {
             if (!IsMouseWithinBuildableRange()) _previewLayer.ClearPreview();
@@ -33,14 +48,15 @@ namespace BuildingSystem
                 _constructionLayer.Destroy(mousePos);
             }
             if (ActiveBuildable == null) return;
-
+            
             var isSpaceEmpty = _constructionLayer.IsEmpty(mousePos,
                 ActiveBuildable.UseCustomCollisionSpace ? ActiveBuildable.CollisionSpace : default);
 
             _previewLayer.ShowPreview(ActiveBuildable, mousePos, isSpaceEmpty && collider == null);
             if (_mouseUser.IsMouseButtonPressed(MouseButton.Left) && isSpaceEmpty && collider == null)
             {
-                _constructionLayer.Build(mousePos, ActiveBuildable);
+                //_constructionLayer.Build(mousePos, ActiveBuildable);
+                m_PV.RPC("InstallHouseObject", RpcTarget.AllBuffered, mousePos, ActiveBuildableIndex);
             }
         }
 
@@ -49,9 +65,19 @@ namespace BuildingSystem
             return Vector3.Distance(_mouseUser.MouseInWorldPosition, transform.position) <= _maxBuildingDistance;
         }
 
-        public void SetActiveBuildable(BuildableItem item)
+        public void SetActiveBuildable(int index)
         {
-            ActiveBuildable = item;
+            ActiveBuildableIndex = index;
+            ActiveBuildable = _buildables[index];
+        }
+
+        [PunRPC]
+        private void InstallHouseObject(Vector2 mousePos, int index)
+        {
+            if(m_PV.IsMine)
+            {
+                _constructionLayer.Build(mousePos, ActiveBuildable);
+            }
         }
     }
 }
