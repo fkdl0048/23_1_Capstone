@@ -27,7 +27,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         PlayFabClientAPI.GetPlayerProfile(new GetPlayerProfileRequest(), request =>
         {
             m_playerName = request.PlayerProfile.DisplayName;
-            m_roomName = "Room2";
+            m_roomName = "Room1";
             print("Yes");
             ConnectPhotonServer();
            
