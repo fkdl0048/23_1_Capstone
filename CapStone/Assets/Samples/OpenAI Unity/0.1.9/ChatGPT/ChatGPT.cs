@@ -7,7 +7,7 @@ namespace OpenAI
 {
     public class ChatGPT : MonoBehaviour
     {
-        /*[SerializeField] private TMP_InputField inputField;
+        [SerializeField] private TMP_InputField inputField;
         [SerializeField] private Button button;
         [SerializeField] private TMP_Text textArea;
 
@@ -69,6 +69,6 @@ namespace OpenAI
 
             button.enabled = true;
             inputField.enabled = true;
-        } */
+        } 
     }
 }
