@@ -66,7 +66,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     public void SpawnPlayer()
     {   
-        m_isMinePlayer = PhotonNetwork.Instantiate("Prefabs/Test/player", new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
+        m_isMinePlayer = PhotonNetwork.Instantiate("Prefabs/Test/player", new Vector3(Random.Range(44f, 52f), -44f, 0), Quaternion.identity);
         m_isMinePlayer.name = "player(Clone)" + m_playerCount;
         m_PV.RPC("SpawnPlayerPhoton", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID);
 
