@@ -24,21 +24,24 @@ public class farming : MonoBehaviour
         harvest_cnt = 0;
         timerOn = false;
 
-        for (int i = 0; i < plants.Length; i++) // 배열 초기화
+        for (int i = 0; i < plants.Length; i++)
+        { // 배열 초기화
             plants[i] = null;
+        }
     }
 
 
     void Update()
     {
         timer();
+
         for (int i = 0; i < plants.Length; i++)
         {
-                if (plants[i] != null && totaltime >= Random.Range(10, 15))
-                {
-                    PV.RPC("growRPC", RpcTarget.AllBuffered, i);
-                    PV.RPC("droopRPC", RpcTarget.AllBuffered, i);
-                }
+            if (plants[i] != null && totaltime >= Random.Range(10, 15))
+            {
+                PV.RPC("growRPC", RpcTarget.AllBuffered, i);
+                PV.RPC("droopRPC", RpcTarget.AllBuffered, i);
+            }
         }
     }
 
