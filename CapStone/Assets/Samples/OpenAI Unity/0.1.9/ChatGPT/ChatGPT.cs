@@ -7,14 +7,14 @@ namespace OpenAI
 {
     public class ChatGPT : MonoBehaviour
     {
-        [SerializeField] private TMP_InputField inputField;
-        [SerializeField] private Button button;
+        private TMP_InputField inputField;
+        private Button button;
         [SerializeField] private TMP_Text textArea;
 
         [SerializeField] private NPCInfo npcInfo;
         [SerializeField] private WorldInfo worldInfo;
 
-        private OpenAIApi openai = new OpenAIApi("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");
+        private OpenAIApi openai = new OpenAIApi("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");
 
         private string userInput;
         private string Instruction = "Act as an NPC in the given context and reply to the questions of the Adventurer who talks to you.\n" +
@@ -35,10 +35,21 @@ namespace OpenAI
 
             Debug.Log(Instruction);
 
+            //button.onClick.AddListener(SendReply);
+        }
+
+        public void SetInputField(TMP_InputField playerInputField)
+        {
+            inputField = playerInputField;
+        }
+
+        public void SetButton(Button playerButton)
+        {
+            button = playerButton;
             button.onClick.AddListener(SendReply);
         }
 
-        private async void SendReply()
+        public async void SendReply()
         {
             userInput = inputField.text;
             Instruction += $"{userInput}\nNPC : ";

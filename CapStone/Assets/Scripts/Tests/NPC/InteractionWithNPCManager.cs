@@ -1,13 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using OpenAI;
+using UnityEngine.UI;
+using TMPro;
+
 
 public class InteractionWithNPCManager : MonoBehaviour
 {
     [SerializeField]
     public GameObject PlayerChat;
 
+    [SerializeField]
+    public TMP_InputField InputField;
+
+    [SerializeField]
+    public Button button;
+
     public float interactionDistance = 3f;
+
+    private ChatGPT npc;
 
     private GameObject currentNPC;
 
@@ -28,6 +40,9 @@ public class InteractionWithNPCManager : MonoBehaviour
         if (other.CompareTag("NPC"))
         {
             currentNPC = other.gameObject;
+            npc = other.gameObject.GetComponentInChildren<ChatGPT>();
+            npc.SetInputField(InputField);
+            npc.SetButton(button);
         }
     }
 
