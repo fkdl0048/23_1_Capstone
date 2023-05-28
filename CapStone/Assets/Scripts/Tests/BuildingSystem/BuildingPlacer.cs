@@ -74,10 +74,11 @@ namespace BuildingSystem
         [PunRPC]
         private void InstallHouseObject(Vector2 mousePos, int index)
         {
-            if(m_PV.IsMine)
-            {
-                _constructionLayer.Build(mousePos, ActiveBuildable);
-            }
+
+     
+            SetActiveBuildable(index);
+            _constructionLayer.Build(mousePos, ActiveBuildable);
+            
         }
     }
 }

@@ -55,7 +55,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            ShowVisitBtn();
+            //ShowVisitBtn();
+            VisitPlayerHouse();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
@@ -81,7 +82,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         m_plazaObject.SetActive(false);
         m_houseObject.SetActive(true);
 
-        m_PV.RPC("UpdatePlayerPosIndex", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID , int.Parse(clickObj.name));
+        m_isMinePlayer.transform.position = Vector3.zero;
+
+        m_PV.RPC("UpdatePlayerPosIndex", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID , 0);
     }
 
     public void ReturnPlaza()
@@ -89,7 +92,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         m_plazaObject.SetActive(true);
         m_houseObject.SetActive(false);
 
-        m_PV.RPC("UpdatePlayerPosIndex", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID, 0);
+        m_isMinePlayer.transform.position = new Vector3(Random.Range(44f, 52f), -44f, 0);
+
+        m_PV.RPC("UpdatePlayerPosIndex", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID, -1);
     }
 
     public void InitQuiz()
