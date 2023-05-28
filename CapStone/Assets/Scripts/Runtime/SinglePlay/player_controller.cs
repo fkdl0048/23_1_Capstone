@@ -303,7 +303,7 @@ public class player_controller : MonoBehaviourPunCallbacks
             plants = farm.GetComponent<farming>().plants;
             if (Input.GetKeyDown(KeyCode.Z))
             { // Z키 눌러서 씨앗 심기
-                if (farm.GetComponent<farming>().cnt > 2)
+                if (farm.GetComponent<farming>().cnt > 14)
                     return;
                 print("씨앗을 심었습니다.");
                 m_PV.RPC("plantingRPC", RpcTarget.AllBuffered);

@@ -23,8 +23,8 @@ public class plantGenerator : MonoBehaviour
         if (farmSet)
         {
             // 처음 위치
-            px = farm.transform.position.x - 2.0f;
-            py = farm.transform.position.y;
+            px = farm.GetComponent<BoxCollider2D>().offset.x - 28.9f;
+            py = farm.GetComponent<BoxCollider2D>().offset.y - 17.7f;
             pz = 0f;
             farmSet = false;
         }
@@ -33,7 +33,7 @@ public class plantGenerator : MonoBehaviour
     public void Planting()
     {
         print("현재 씨앗 수 = " + farm.GetComponent<farming>().cnt);
-        if (farm.GetComponent<farming>().cnt > 2) return; // 개수 제한
+        if (farm.GetComponent<farming>().cnt > 14) return; // 개수 제한
         GameObject pt = Instantiate(plant, new Vector3(px + 2.0f * farm.GetComponent<farming>().cnt, py, pz), Quaternion.identity);
         pt.name = "plant(Clone)" + farm.GetComponent<farming>().cnt; // 클론 숫자 붙여서 구분
         farm.GetComponent<farming>().plants[farm.GetComponent<farming>().cnt] = pt;

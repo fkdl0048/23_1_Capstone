@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.Tilemaps;
 
 public class farming : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class farming : MonoBehaviour
     public bool timerOn = false;
     public int cnt = 0; // 식물 개수
     public int harvest_cnt = 0; // 수확한 식물 수
-    public GameObject[] plants = { null, null, null }; // 식물
+    public GameObject[] plants; // 식물
     public int nowPlant;
     public PhotonView PV;
 
@@ -22,19 +23,25 @@ public class farming : MonoBehaviour
         cnt = 0;
         harvest_cnt = 0;
         timerOn = false;
+
+        for (int i = 0; i < plants.Length; i++)
+        { // 배열 초기화
+            plants[i] = null;
+        }
     }
 
 
     void Update()
     {
         timer();
+
         for (int i = 0; i < plants.Length; i++)
         {
-                if (plants[i] != null && totaltime >= Random.Range(10, 15))
-                {
-                    PV.RPC("growRPC", RpcTarget.AllBuffered, i);
-                    PV.RPC("droopRPC", RpcTarget.AllBuffered, i);
-                }
+            if (plants[i] != null && totaltime >= Random.Range(10, 15))
+            {
+                PV.RPC("growRPC", RpcTarget.AllBuffered, i);
+                PV.RPC("droopRPC", RpcTarget.AllBuffered, i);
+            }
         }
     }
 
