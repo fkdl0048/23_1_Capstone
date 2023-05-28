@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using BuildingSystem.Models;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
@@ -10,6 +12,8 @@ public class DataManager
     private const string CatalogVersion  = "Item";
     
     public Action OnUpdateMoney;
+    
+    private Dictionary<string, int> _storeInventory = new Dictionary<string, int>();
 
     // 아이템 구매
     public void BuyItem(string itemID)
@@ -47,7 +51,7 @@ public class DataManager
     }
     
     // 아이템 판매
-    public void SellItem(string itemID)
+    public void SellItem(string itemID, Action SetInventory)
     {
         string itemInstanceId = null;
         int price = 0;
@@ -62,15 +66,16 @@ public class DataManager
                     price = (int)item.UnitPrice;
                 }
             }
-            
+
             var request = new ConsumeItemRequest() {ConsumeCount = 1, ItemInstanceId = itemInstanceId};
             PlayFabClientAPI.ConsumeItem(request, result =>
             {
 
                 var popup = GameManager.UI.UINavigation.PopupPush("DefalutPopup") as DefalutPopup;
                 popup.SetText("판매 성공!");
-                SetPlayerMoney(price);
+                SetPlayerMoney(50);
                 OnUpdateMoney?.Invoke();
+                SetInventory?.Invoke();
             }, error =>
             {
                 var popup = GameManager.UI.UINavigation.PopupPush("DefalutPopup") as DefalutPopup;
@@ -81,10 +86,11 @@ public class DataManager
     }
 
 
-    private void SetPlayerMoney(int money)
+    public void SetPlayerMoney(int money)
     {
         if (money >= 0)
         {
+            
             var request = new AddUserVirtualCurrencyRequest
             {
                 VirtualCurrency = VirtualCurrency,
@@ -186,4 +192,22 @@ public class DataManager
         });
     }
     
+    public void AddStoreInventory(string item)
+    {
+        if (_storeInventory.ContainsKey(item))
+        {
+            _storeInventory[item]++;
+        }
+        else
+        {
+            _storeInventory.Add(item, 1);
+        }
+        
+        Debug.Log("추가 확인");
+    }
+    
+    public Dictionary<string, int> GetStoreInventory()
+    {
+        return _storeInventory;
+    }
 }

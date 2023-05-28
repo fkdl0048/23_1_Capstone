@@ -8,11 +8,25 @@ using UnityEngine.UI;
 public class InventoryPopup : UIView
 {
     [SerializeField] private HorizontalLayoutGroup _horizontalLayoutGroup;
+    [SerializeField] private HorizontalLayoutGroup _gridLayoutGroup;
     
     private List<InventoryItem> _inventoryItems = new List<InventoryItem>();
     public void OnEnable()
     {
         UpdateInventory();
+        
+    }
+
+    private void Start()
+    {
+        StoreInitItems("bed");
+        StoreInitItems("bird house");
+        StoreInitItems("bookshelf");
+        StoreInitItems("chair");
+        StoreInitItems("kitchen table");
+        StoreInitItems("refrigerator");
+        StoreInitItems("sofa");
+        StoreInitItems("table");
     }
 
     private void Update()
@@ -37,9 +51,16 @@ public class InventoryPopup : UIView
     {
         var inventoryItem = GameManager.Resource.Load<InventoryItem>("Prefabs/UI/InventoryItem");
         inventoryItem = Instantiate(inventoryItem, _horizontalLayoutGroup.transform);
-        inventoryItem.SetItem(item.ItemId, item.RemainingUses.Value);
+        inventoryItem.SetItem(item.ItemId, item.RemainingUses.Value, UpdateInventory);
 
         _inventoryItems.Add(inventoryItem);
+    }
+    
+    private void StoreInitItems(string storeItemID)
+    {
+        var storeItem = GameManager.Resource.Load<StoreItem>("Prefabs/UI/StoreItem");
+        storeItem = Instantiate(storeItem, _gridLayoutGroup.transform);
+        storeItem.SetItem(storeItemID);
     }
 
     private void OnDisable()
