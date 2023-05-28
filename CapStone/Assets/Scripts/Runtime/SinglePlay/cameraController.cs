@@ -5,15 +5,15 @@ using Photon.Realtime;
 public class cameraController : MonoBehaviour
 {
 
-    public GameObject target = null; // Ä«¸Þ¶ó°¡ µû¶ó´Ù´Ò Å¸°Ù
+    public GameObject target = null; // Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½Ù´ï¿½ Å¸ï¿½ï¿½
 
     [SerializeField]
-    float CameraSpeed = 10.0f;       // Ä«¸Þ¶óÀÇ ¼Óµµ
+    float CameraSpeed = 10.0f;       // Ä«ï¿½Þ¶ï¿½ï¿½ï¿½ ï¿½Óµï¿½
 
-    Vector3 TargetPos;                      // Å¸°ÙÀÇ À§Ä¡
+    Vector3 TargetPos;                      // Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
 
     // Update is called once per frame
-    void FixedUpdate()
+    void LateUpdate()
     {
 
         if (target != null)

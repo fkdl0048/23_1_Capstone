@@ -12,17 +12,18 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     [SerializeField] TextMeshProUGUI _itemCountText;
 
     private string _itemName;
+    private Action _updateInventory;
     
-    public void SetItem(string itemName, int count)
+    public void SetItem(string itemName, int count, Action UpdateInventory)
     {
         _itemName = itemName;
         _itemImage.sprite = Resources.Load<Sprite>("sprite/item/" + _itemName);
         _itemCountText.text = count.ToString();
+        _updateInventory = UpdateInventory;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //GameManager.UI.GetUIView()
-        GameManager.Data.SellItem(_itemName);
+        GameManager.Data.SellItem(_itemName, _updateInventory);
     }
 }
