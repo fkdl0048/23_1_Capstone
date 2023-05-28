@@ -7,7 +7,6 @@ using Photon.Realtime;
 public class farming : MonoBehaviour
 {
     private float totaltime = 0.0f;
-    private float delaytime = 0.0f;
 
     public bool timerOn = false;
     public int cnt = 0; // 식물 개수
