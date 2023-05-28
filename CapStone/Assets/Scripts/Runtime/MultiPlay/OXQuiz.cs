@@ -10,6 +10,7 @@ public class OXQuiz : MonoBehaviourPunCallbacks
 {
     #region PublicVariables
     public GameObject m_quizTimer;
+    public GameObject m_canvas;
     #endregion
 
     #region PrivateVariables
@@ -19,6 +20,7 @@ public class OXQuiz : MonoBehaviourPunCallbacks
     private int m_answer = 1;
     private PhotonView m_PV;
     private static GameObject[] m_playerList;
+    
     #endregion
 
     #region PublicMethod
@@ -27,6 +29,10 @@ public class OXQuiz : MonoBehaviourPunCallbacks
         GameObject sub = Resources.Load("Prefabs/Test/OXQuiz/QuizTimer") as GameObject;
         m_quizTimer = Instantiate(sub);
         m_quizTimer.SetActive(false);
+
+        m_quizTimer.transform.SetParent(m_canvas.transform);
+        m_quizTimer.GetComponent<RectTransform>().localPosition= Vector3.zero;
+
         m_PV = this.GetComponent<PhotonView>();
     }
 
@@ -75,7 +81,7 @@ public class OXQuiz : MonoBehaviourPunCallbacks
             }
             else
             {
-                iter.transform.position = Vector3.zero;
+                iter.transform.position = this.transform.position;
                 Debug.Log("Incorrect!");
             }
         }

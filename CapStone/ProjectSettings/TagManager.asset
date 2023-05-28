@@ -8,6 +8,7 @@ TagManager:
   - farm
   - water
   - PlantGenerator
+  - NPC
   layers:
   - Default
   - TransparentFX
