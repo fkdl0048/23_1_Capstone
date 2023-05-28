@@ -8,8 +8,8 @@ namespace BuildingSystem
 {
     public class BuildingSelector : MonoBehaviour
     {
-        [SerializeField]
-        private List<BuildableItem> _buildables;
+        //[SerializeField]
+        //private List<BuildableItem> _buildables;
 
         [SerializeField]
         private BuildingPlacer _buildingPlacer;
@@ -28,8 +28,8 @@ namespace BuildingSystem
 
         private void NextItem()
         {
-            _activeBuildableIndex = (_activeBuildableIndex + 1) % _buildables.Count;
-            _buildingPlacer.SetActiveBuildable(_buildables[_activeBuildableIndex]);
+            _activeBuildableIndex = (_activeBuildableIndex + 1) % _buildingPlacer._buildables.Count;
+            _buildingPlacer.SetActiveBuildable(_activeBuildableIndex);
         }
     }
 }
