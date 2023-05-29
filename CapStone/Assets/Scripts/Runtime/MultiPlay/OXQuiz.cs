@@ -33,14 +33,20 @@ public class OXQuiz : MonoBehaviourPunCallbacks
     private void Update()
     {
         if (isRun)
-        {
+        {   
             m_countTime -= Time.deltaTime;
             m_quizTimer.GetComponent<TMP_Text>().text = Mathf.Round(m_countTime).ToString();
+
+            //TO-DO : Show OX Problem UI
+            
 
             if(m_countTime < 0f)
             {
                 isRun = false;
                 m_quizTimer.SetActive(false);
+
+                //TO-DO : Set m_answer code : O == 1, X == 0;
+
                 CheckAnswer();
                 m_countTime = m_limitTime;
             }
