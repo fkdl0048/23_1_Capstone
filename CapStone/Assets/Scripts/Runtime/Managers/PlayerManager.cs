@@ -126,13 +126,13 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
         target.transform.SetParent(m_playerListParent.transform);
 
-        Button _btn = Instantiate(m_visitBtn, new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
+        //Button _btn = Instantiate(m_visitBtn, new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
 
-        _btn.name = target.GetComponent<PhotonView>().ViewID.ToString();
+        //_btn.name = target.GetComponent<PhotonView>().ViewID.ToString();
 
-        _btn.transform.SetParent(m_visitBtnParent.transform);
-        _btn.transform.position = new Vector3(Random.Range(-6f, 19f), 4, 0);
-        _btn.onClick.AddListener(VisitPlayerHouse);
+        //_btn.transform.SetParent(m_visitBtnParent.transform);
+        //_btn.transform.position = new Vector3(Random.Range(-6f, 19f), 4, 0);
+        //_btn.onClick.AddListener(VisitPlayerHouse);
 
         //if (PhotonNetwork.IsMasterClient)
         //{
