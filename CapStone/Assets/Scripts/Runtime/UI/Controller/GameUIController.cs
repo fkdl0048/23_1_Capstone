@@ -27,15 +27,4 @@ public class GameUIController : MonoBehaviour
             _gameUIView.CharacterName.text = result.PlayerProfile.DisplayName;
         }, error => Debug.LogWarning("불러오기 실패"));
     }
-    
-    
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            var popup = GameManager.UI.UINavigation.PopupPush("InventoryPopup") as InventoryPopup;
-        }
-    }
 }
