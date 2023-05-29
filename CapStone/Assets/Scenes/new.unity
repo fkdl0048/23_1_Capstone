@@ -676,32 +676,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 6316031589980978620, guid: bda74d4b5440c7041b0aa3117231bcb7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -186.745
+      objectReference: {fileID: 0}
+    - target: {fileID: 6316031589980978620, guid: bda74d4b5440c7041b0aa3117231bcb7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 99.99991
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bda74d4b5440c7041b0aa3117231bcb7, type: 3}
---- !u!1 &659421058 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3534723138864964499, guid: 8998ea0757b05cc49b51fe64577d4a85, type: 3}
-  m_PrefabInstance: {fileID: 2121149063}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &659421059 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3534723138864964498, guid: 8998ea0757b05cc49b51fe64577d4a85, type: 3}
-  m_PrefabInstance: {fileID: 2121149063}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &659421063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 659421058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f453716be7f1f4447be57df6fb5027ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  beFollowedRectTransform: {fileID: 1353633218}
-  followerRectTransform: {fileID: 659421059}
 --- !u!1 &1015692034
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,11 +731,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &1353633218 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8698026020205315369, guid: 8998ea0757b05cc49b51fe64577d4a85, type: 3}
-  m_PrefabInstance: {fileID: 2121149063}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2121149063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -765,7 +744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3520134697875576456, guid: 8998ea0757b05cc49b51fe64577d4a85, type: 3}
       propertyPath: sceneViewId
-      value: 1
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 3534723138737697315, guid: 8998ea0757b05cc49b51fe64577d4a85, type: 3}
       propertyPath: m_Camera
@@ -833,7 +812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3534723138737697327, guid: 8998ea0757b05cc49b51fe64577d4a85, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3534723138864964498, guid: 8998ea0757b05cc49b51fe64577d4a85, type: 3}
       propertyPath: m_LocalScale.x

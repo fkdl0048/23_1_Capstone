@@ -22,6 +22,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     [SerializeField] public GameObject m_houseObject;
     [SerializeField] private GameObject m_mainCamera; // ?�쏙?�占?�옙 카占?�띰??
     [SerializeField] private GameObject m_oxQuiz;
+    [SerializeField] private GameObject[] m_loadingScene;
     private GameObject m_isMinePlayer;
 
     private float m_cameraSpeed = 10f;
@@ -69,9 +70,18 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     {   
         m_isMinePlayer = PhotonNetwork.Instantiate("Prefabs/Test/player", new Vector3(Random.Range(44f, 52f), -44f, 0), Quaternion.identity);
         m_isMinePlayer.name = "player(Clone)" + m_playerCount;
+        Transform childTransform = m_isMinePlayer.transform.Find("PlayerChat");
+        Canvas childCanvas = childTransform.GetComponent<Canvas>();
+        childCanvas.renderMode = RenderMode.ScreenSpaceCamera;
+        childCanvas.worldCamera = m_mainCamera.GetComponent<Camera>();
         m_PV.RPC("SpawnPlayerPhoton", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID);
 
         m_mainCameraSetting = true;
+
+        foreach (var iter in m_loadingScene)
+        {
+            iter.SetActive(false);
+        }
 
         InitQuiz();
     }
@@ -122,13 +132,13 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
         target.transform.SetParent(m_playerListParent.transform);
 
-        Button _btn = Instantiate(m_visitBtn, new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
+        //Button _btn = Instantiate(m_visitBtn, new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
 
-        _btn.name = target.GetComponent<PhotonView>().ViewID.ToString();
+        //_btn.name = target.GetComponent<PhotonView>().ViewID.ToString();
 
-        _btn.transform.SetParent(m_visitBtnParent.transform);
-        _btn.transform.position = new Vector3(Random.Range(-6f, 19f), 4, 0);
-        _btn.onClick.AddListener(VisitPlayerHouse);
+        //_btn.transform.SetParent(m_visitBtnParent.transform);
+        //_btn.transform.position = new Vector3(Random.Range(-6f, 19f), 4, 0);
+        //_btn.onClick.AddListener(VisitPlayerHouse);
 
         //if (PhotonNetwork.IsMasterClient)
         //{
