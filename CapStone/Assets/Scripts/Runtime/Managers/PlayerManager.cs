@@ -69,6 +69,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     {   
         m_isMinePlayer = PhotonNetwork.Instantiate("Prefabs/Test/player", new Vector3(Random.Range(44f, 52f), -44f, 0), Quaternion.identity);
         m_isMinePlayer.name = "player(Clone)" + m_playerCount;
+        Transform childTransform = m_isMinePlayer.transform.Find("PlayerChat");
+        Canvas childCanvas = childTransform.GetComponent<Canvas>();
+        childCanvas.renderMode = RenderMode.ScreenSpaceCamera;
+        childCanvas.worldCamera = m_mainCamera.GetComponent<Camera>();
         m_PV.RPC("SpawnPlayerPhoton", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID);
 
         m_mainCameraSetting = true;

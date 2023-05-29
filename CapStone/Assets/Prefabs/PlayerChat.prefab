@@ -368,7 +368,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: 750630987
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &7193332830062488839
@@ -439,7 +439,7 @@ RectTransform:
   m_GameObject: {fileID: 7193332830207851704}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.1291013, y: 6.4184375, z: 1}
+  m_LocalScale: {x: 0.7928125, y: 1.4078126, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7193332829872161436}
@@ -450,7 +450,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -307, y: 53}
+  m_AnchoredPosition: {x: -188.8, y: -1174.3}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7193332830207851708
@@ -950,8 +950,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 750630987
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -1256792791, guid: b4f1c7c7801b80e4dbb033a1cccdef68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

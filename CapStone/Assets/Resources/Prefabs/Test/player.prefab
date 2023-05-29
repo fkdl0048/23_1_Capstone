@@ -1006,6 +1006,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerChat
       objectReference: {fileID: 0}
+    - target: {fileID: 7193332830062488836, guid: 297a12e1d0c9cf046b360e57b53ebfc2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7193332830062488837, guid: 297a12e1d0c9cf046b360e57b53ebfc2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1107,12 +1111,36 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7193332830207851706, guid: 297a12e1d0c9cf046b360e57b53ebfc2, type: 3}
   m_PrefabInstance: {fileID: 5971212283304992555}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 3534723138864964499}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &3534723138864964498 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7193332830207851705, guid: 297a12e1d0c9cf046b360e57b53ebfc2, type: 3}
+  m_PrefabInstance: {fileID: 5971212283304992555}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3534723138864964499 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7193332830207851704, guid: 297a12e1d0c9cf046b360e57b53ebfc2, type: 3}
+  m_PrefabInstance: {fileID: 5971212283304992555}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7016255853733316314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3534723138864964499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f453716be7f1f4447be57df6fb5027ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beFollowedRectTransform: {fileID: 8698026020205315369}
+  followerRectTransform: {fileID: 3534723138864964498}
 --- !u!114 &3534723139067469238 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7193332829872161437, guid: 297a12e1d0c9cf046b360e57b53ebfc2, type: 3}

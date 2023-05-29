@@ -22,6 +22,6 @@ public class FollowNPC : MonoBehaviour
         //transform.localPosition = localPos;
         //transform.localScale = Vector3.one;
         //GetComponent<RectTransform>().sizeDelta = parentSize;
-        followerRectTransform.position = beFollowedRectTransform.position + new Vector3(0, followerRectTransform.sizeDelta.y/5, 0);
+        followerRectTransform.position = beFollowedRectTransform.position + new Vector3(0, followerRectTransform.sizeDelta.y/10, 0);
     }
 }
