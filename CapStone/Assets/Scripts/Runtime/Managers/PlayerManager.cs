@@ -22,6 +22,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     [SerializeField] public GameObject m_houseObject;
     [SerializeField] private GameObject m_mainCamera; // ?�쏙?�占?�옙 카占?�띰??
     [SerializeField] private GameObject m_oxQuiz;
+    [SerializeField] private GameObject[] m_loadingScene;
     private GameObject m_isMinePlayer;
 
     private float m_cameraSpeed = 10f;
@@ -76,6 +77,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         m_PV.RPC("SpawnPlayerPhoton", RpcTarget.AllBuffered, m_isMinePlayer.GetComponent<PhotonView>().ViewID);
 
         m_mainCameraSetting = true;
+
+        foreach (var iter in m_loadingScene)
+        {
+            iter.SetActive(false);
+        }
 
         InitQuiz();
     }
