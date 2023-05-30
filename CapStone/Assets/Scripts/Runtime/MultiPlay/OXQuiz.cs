@@ -10,6 +10,7 @@ public class OXQuiz : MonoBehaviourPunCallbacks
 {
     #region PublicVariables
     public GameObject m_quizTimer;
+    public GameObject m_problemUI;
     #endregion
 
     #region PrivateVariables
@@ -19,32 +20,59 @@ public class OXQuiz : MonoBehaviourPunCallbacks
     private int m_answer = 1;
     private PhotonView m_PV;
     private static GameObject[] m_playerList;
+    private TextMeshProUGUI m_quizTimerText;
+    private TextMeshProUGUI m_quizText;
     #endregion
 
     #region PublicMethod
     private void Start()
     {
         GameObject sub = Resources.Load("Prefabs/Test/OXQuiz/QuizTimer") as GameObject;
+        m_problemUI = Resources.Load("Prefabs/Test/OXQuiz/QuizProblem") as GameObject;
+        
         m_quizTimer = Instantiate(sub);
         m_quizTimer.SetActive(false);
+
+        m_problemUI = Instantiate(m_problemUI);
+        m_problemUI.SetActive(false);
+        
         m_PV = this.GetComponent<PhotonView>();
+        
+        m_quizTimerText = m_quizTimer.GetComponentInChildren<TextMeshProUGUI>();
+        m_quizText = m_problemUI.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     private void Update()
     {
         if (isRun)
-        {
+        {   
             m_countTime -= Time.deltaTime;
-            m_quizTimer.GetComponent<TMP_Text>().text = Mathf.Round(m_countTime).ToString();
-
+            
+            m_quizTimerText.text = Mathf.Round(m_countTime).ToString();
+            
+            //TO-DO : Show OX Problem UI
+            m_problemUI.SetActive(true);
+            m_quizText.text = "1 + 1 = 2";
+            
             if(m_countTime < 0f)
             {
                 isRun = false;
+                
                 m_quizTimer.SetActive(false);
+                
+                StartCoroutine(SetAnswer());
+                //TO-DO : Set m_answer code : O == 1, X == 0;
                 CheckAnswer();
                 m_countTime = m_limitTime;
             }
         }
+    }
+    
+    private IEnumerator SetAnswer()
+    {
+        m_quizText.text = m_answer == 1 ? "O" : "X";
+        yield return new WaitForSeconds(2f);
+        m_problemUI.SetActive(false);
     }
 
     public void InitQuiz(GameObject[] _playerList)
