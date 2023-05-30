@@ -25,6 +25,7 @@ public class StoreItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
     {
         GameManager.Data.AddStoreInventory(_itemName);
         GameManager.Data.SetPlayerMoney(100);
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)

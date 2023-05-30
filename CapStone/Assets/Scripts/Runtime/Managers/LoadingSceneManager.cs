@@ -33,12 +33,6 @@ public class LoadingSceneManager : MonoBehaviour
         
         float timer = 0.0f;
 
-        while (timer <= 1f)
-        {
-            yield return null;
-            timer += Time.deltaTime;
-        }
-        
         timer = 0.0f;
         
         while (!op.isDone)
