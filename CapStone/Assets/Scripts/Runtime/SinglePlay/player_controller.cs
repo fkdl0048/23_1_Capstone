@@ -82,6 +82,8 @@ public class player_controller : MonoBehaviourPunCallbacks
         {
             tree = collision.GetComponent<Collider2D>().gameObject;
             tree.transform.Find("Canvas-tree").gameObject.SetActive(true);
+            if (tree.GetComponent<logging>().HP <= 0)
+                return;
             isThereTree = true;
             if(m_PV.IsMine)
             Zbutton.SetActive(true);
@@ -242,6 +244,7 @@ public class player_controller : MonoBehaviourPunCallbacks
             {
                 isThereTree = false; // 행동 중지
                 tree.transform.Find("Canvas-tree").gameObject.SetActive(false); // 체력바 안보이게
+                GameManager.Data.AddPlayerItem("HardWood");
                 return;
             }
             if (Input.GetKeyDown(KeyCode.Z)) // 도끼질 할때마다 1씩 감소
@@ -275,6 +278,7 @@ public class player_controller : MonoBehaviourPunCallbacks
                 nowFishing = false;
                 animator.SetBool("isFishing", false);
                 print("낚시 끝 " + fishCount + "마리 낚았습니다.");
+                fishCount = 0;
                 Sbutton.SetActive(false);
                 Zbutton.SetActive(true);      
             }
@@ -288,6 +292,7 @@ public class player_controller : MonoBehaviourPunCallbacks
                     animator.SetTrigger("getFish");
                     print(fish[random] + " 물고기를 낚았습니다!");
                     fishCount++;
+                    GameManager.Data.AddPlayerItem("Fish");
                 }
 
                 totaltime += Time.deltaTime;
@@ -337,8 +342,11 @@ public class player_controller : MonoBehaviourPunCallbacks
     {
         plants = farm.GetComponent<farming>().plants;
         m_PV.RPC("harvestRPC", RpcTarget.AllBuffered, nowPlant);
-        if(m_PV.IsMine)
-        Dbutton.SetActive(false);
+        if (m_PV.IsMine)
+        {
+            Dbutton.SetActive(false);
+            GameManager.Data.AddPlayerItem("Wheat");
+        }
     }
 
     [PunRPC]
